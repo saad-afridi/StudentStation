@@ -1,0 +1,98 @@
+.TitleContainer{
+    padding: 20px;
+}
+
+h1 {
+    line-height: 3;
+    text-align: center;
+    text-decoration: underline;
+    color: rgb(212, 209, 209);
+    width: 320px;
+    margin: auto;
+}
+
+body {
+    background: #252a3d;
+}
+
+.AppContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 520px;
+    min-height: 600px;
+    background: #252a3d;
+    text-align: center;
+    margin: 64px auto;
+    border-radius: 10px;
+    padding: 10px;
+    padding-bottom: 32px;
+}
+
+.AddToDo {
+    margin-bottom: 32px;
+    padding: 10px;
+}
+
+.AddToDo::placeholder {
+    color: #e2e2e2;
+}
+
+#addTodoInput {
+    padding: 14px 32px 14px 16px;
+    border-radius: 4px 0 0 4px;
+    border: 2px solid #5d0cff;
+    outline: none;
+    width: 320px;
+    background: transparent;
+    color: #fff;
+}
+
+#addTodoButton {
+    padding: 16px;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    outline: none;
+    background: linear-gradient(
+        90deg,
+        rgba(93, 12, 255, 1) 0%,
+        rgba(137, 1, 221) 100%
+    );
+    color: #fff;
+    text-transform: capitalize;  
+}
+
+#addTodoButton:hover {
+    filter: brightness(80%);
+}
+
+
+.TodoItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px auto;
+    color: #fff;
+    background: linear-gradient(
+    90deg,
+    rgba(93, 12, 255, 1) 0%,
+    rgba(137, 1, 221) 100%
+    );
+    padding: 16px;
+    border-radius: 5px;
+    width: 85%;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.4;
+}
+
+.complete {
+    background-color: #252a3d; /* Blue background */
+    color: black; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
