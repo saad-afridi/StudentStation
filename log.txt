@@ -1,6 +1,7 @@
 === Next Steps ====
 >> Including Icons in TODO App (Done)
->> Delete Items from TODO App 
+>> Delete Items from TODO App  (Done)
+>> 
 
 === BIG ROADMAP ===
 

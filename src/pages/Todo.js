@@ -48,7 +48,12 @@ class ToDoPage extends React.Component {
     }
 
     // Don't let them add repeated task with same name
-    // TODO: 
+    for (let i = 0; i < this.state.todos.length; i++) {
+      if (this.state.todos[i].text === todo) {
+        console.log(this.state.todos[i].text);
+        return;
+      }
+    }
 
     // Update todo lists
     await this.setState({ todos: [...this.state.todos, {
