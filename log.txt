@@ -1,0 +1,17 @@
+=== ROADMAP ===
+
+>> Fix and finish TODO List app 
+
+(Research required)
+         |
+         v
+>> Connect the TODO list app with Django and decide on Database and stuff
+>> Build GPA Calculator and a Planner Scheduler App, this time work alongside backend )
+>> Connect the 3 Apps (research required) 
+>> Login System and Users
+>> Deploy the App and Add more features with time
+
+
+Additional features ideas:
+- Chatting with Other Students Users
+- Multiple themes
