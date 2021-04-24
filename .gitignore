@@ -12,7 +12,7 @@
 /build
 
 # misc
-.log.txt
+.log
 .DS_Store
 .env.local
 .env.development.local
