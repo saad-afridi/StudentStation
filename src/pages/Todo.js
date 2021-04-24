@@ -2,8 +2,12 @@ import React from 'react';
 import TodoList from '../components/todolist';
 import AddTodo from '../components/addtodo';
 import './Todo.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
 
-class App extends React.Component {
+const icon_title = <FontAwesomeIcon icon={faClipboardList} />;
+
+class ToDoPage extends React.Component {
 
   constructor() {
     super();
@@ -14,16 +18,10 @@ class App extends React.Component {
 
   render() {
     return(
-    <>
-    <head>
-    <script src="https://kit.fontawesome.com/8a17ba31bf.js" crossorigin="anonymous"></script>
-    <title> TODO List </title>
-    </head>
-    
-    
+    <> 
     <div className="AppContainer"> 
       <div className="TitleContainer"> 
-      <h1> TODO List </h1>
+      <h1> { icon_title } TODO List </h1>
       </div>
       <AddTodo addToDoFn = {this.addTodo}> </AddTodo>
       <TodoList updateTodoFn = {this.updateTodo} todos={this.state.todos}> </TodoList>
@@ -44,34 +42,50 @@ class App extends React.Component {
   }
 
   addTodo = async (todo) => {
+    // Don't let them add empty
     if (todo === '') {
       return;
     }
+
+    // Don't let them add repeated task with same name
+    // TODO: 
+
+    // Update todo lists
     await this.setState({ todos: [...this.state.todos, {
       text: todo, 
       completed: false
     }]});
+
+    // Hold in storage
     localStorage.setItem('todos', JSON.stringify(this.state.todos));
-    console.log(localStorage.getItem('todos'));
+
+    // Reset the text, shouldn't be needed when checking for repetition
     todo = '';
   }
 
   updateTodo = async (todo) => {
-    const newTodos = this.state.todos.map(_todo => {
-      if(todo === _todo) {
-        return {
-          text: todo.text,
-          completed: !todo.completed
+    let newTodos;
+    // Delete the item
+    if (todo.text === '') {
+       newTodos = this.state.todos.filter(function(value) {
+        return value.text !== '';
+      });
+    }
+    else {
+      // Else change complete status
+      newTodos = this.state.todos.map(_todo => {
+        if(todo === _todo) {
+          return {
+            text: todo.text,
+            completed: !todo.completed
+          }
         }
-      }
-      else {
-        return _todo
-      }
-    });
-
+        return _todo;
+      });
+    }
     await this.setState({ todos: newTodos});
     localStorage.setItem('todos', JSON.stringify(this.state.todos));
   }
 }
 
-export default App;
+export default ToDoPage;
