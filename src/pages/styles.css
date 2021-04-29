@@ -7,7 +7,7 @@ Generic Styles for Whole App
 
 label {
     margin: 5px;
-    size: 12px;
+    font-size: 18px;
     color: rgb(212, 209, 209);
 }
 
@@ -137,6 +137,7 @@ The Timer App Specific Styles
 */
 .SetTimer {
     display: flex;
+    justify-content: center;
     margin-bottom: 32px;
     padding: 10px;
 }
@@ -145,15 +146,28 @@ The Timer App Specific Styles
     color: #e2e2e2;
 }
 
-#timeForm {
-    display: flex;
-    margin: 32px 32px 32px 32px;
-    width: 80%;
+.timeInput {
+    margin-bottom: 30px;
+}
+
+.TimeViewContainer {
+    display: inline-block;
+    border: 2px rgba(93, 12, 255, 1);
+    justify-content: center;
+    width: 90%;
+    height: 100px;
+    padding: auto;
+    margin: auto;
+}
+
+#timeTitle {
+    text-align: center;
+    font-size: 70px;
 }
 
 #setHours {
     padding: 14px 32px 14px 16px;
-    margin: 8px 14px 8px 0px;
+    margin: 8px 0px 8px 8px;
     border-radius: 4px 0 0 4px;
     border: 2px solid #5d0cff;
     outline: none;
@@ -164,7 +178,7 @@ The Timer App Specific Styles
 
 #setMinutes {
     padding: 14px 32px 14px 16px;
-    margin: 8px;
+    margin: 8px 0px 8px 8px;
     border-radius: 4px 0 0 4px;
     border: 2px solid #5d0cff;
     outline: none;

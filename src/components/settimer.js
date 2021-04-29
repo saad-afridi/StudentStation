@@ -17,14 +17,14 @@ class SetTimer extends React.Component {
     render() {
         return (
             <div className='SetTimer'>
-                <form id="timeForm" onSubmit={(e) => this.submitAlarm(e)}>
+                <form onSubmit={(e) => this.submitAlarm(e)}>
                     <div className="timeInput"> 
                     <input id='setHours' type='text' maxLength="2" placeholder="0" onChange={(e) => this.updateHours(e)}></input>
-                    <label> Hours </label>
+                    <label id='hoursL'> Hours </label>
                     <input id='setMinutes' type='text' maxLength="4" placeholder="0" onChange={(e) => this.updateMinutes(e)}></input>
-                    <label> Minutes </label>
+                    <label id='minsL'> Minutes </label>
                     </div>
-                    <button id='addTodoButton' type='submit'> Alarm {icon_set} </button>
+                    <button id='addTodoButton' type='submit'> {icon_set} </button>
                 </form>
             </div>
         );

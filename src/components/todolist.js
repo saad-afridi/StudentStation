@@ -15,7 +15,7 @@ class TodoList extends React.Component {
 
         return(
         <>
-        <div className='ToDolistContainer'> 
+        <div className='CompletedContainer'> 
             {
                 notcompleted.map((_todo, _index) => {
                     return(
@@ -25,7 +25,7 @@ class TodoList extends React.Component {
             }
         </div>
         {(completed.length > 0 ? <hr></hr> : '')}
-        <div>
+        <div className='NotCompletedContainer'>
             {
                 completed.map((_todo, _index) => {
                     return(
