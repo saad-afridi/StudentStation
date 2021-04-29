@@ -5,16 +5,36 @@ class TodoList extends React.Component {
     render() {
         const { todos } = this.props;
 
+        const completed = todos.filter(function(value) {
+            return value.completed === true;
+        });
+
+        const notcompleted = todos.filter(function(value) {
+            return value.completed === false;
+        });
+
         return(
+        <>
         <div className='ToDolistContainer'> 
             {
-                todos.map((_todo, _index) => {
+                notcompleted.map((_todo, _index) => {
                     return(
                         <TodoItem updateTodoFn={this.updateTodo} key={_index} todo={_todo}></TodoItem>
                     )
                 })
             }
         </div>
+        {(completed.length > 0 ? <hr></hr> : '')}
+        <div>
+            {
+                completed.map((_todo, _index) => {
+                    return(
+                        <TodoItem updateTodoFn={this.updateTodo} key={_index} todo={_todo}></TodoItem>
+                    )
+                })
+            }
+        </div>
+        </>
         );
     }
 
