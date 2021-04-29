@@ -16,7 +16,9 @@ class TodoItem extends React.Component {
         return(
         <>
         <div className={'TodoItem' + (todo.completed ? ' completed': '')}> 
+            <div className='TodoText'>
             {todo.text}
+            </div>
             <button class ="btncomplete" onClick={this.toggleTodo}> 
                 { icon_complete }
             </button>

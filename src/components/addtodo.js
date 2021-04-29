@@ -15,9 +15,9 @@ class AddTodo extends React.Component {
 
     render() {
         return(
-        <div className='AddToDo container'> 
+        <div className='AddToDo'> 
             <form onSubmit={(e) => this.submitTodo(e)}>
-                <input id ='addTodoInput' onChange={(e) => this.updateInput(e)} type='text'></input> {}
+                <input id ='addTodoInput' maxlength="50" onChange={(e) => this.updateInput(e)} type='text'></input> {}
                 <button id ='addTodoButton' type="submit"> {icon_add} </button>
             </form>
         </div>

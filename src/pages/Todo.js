@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoList from '../components/todolist';
 import AddTodo from '../components/addtodo';
-import './Todo.css';
+import './styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,21 +12,19 @@ class ToDoPage extends React.Component {
   constructor() {
     super();
     this.state = {
-      todos: []
+      todos: [],
     };
   }
 
   render() {
     return(
-    <> 
     <div className="AppContainer"> 
       <div className="TitleContainer"> 
-      <h1> { icon_title } TODO List </h1>
+      <h1> { icon_title } What To Do? </h1>
       </div>
       <AddTodo addToDoFn = {this.addTodo}> </AddTodo>
       <TodoList updateTodoFn = {this.updateTodo} todos={this.state.todos}> </TodoList>
     </div>
-    </>
     )
   }
 
@@ -42,15 +40,13 @@ class ToDoPage extends React.Component {
   }
 
   addTodo = async (todo) => {
-    // Don't let them add empty
-    if (todo === '') {
+
+    if (todo.length === 0) {
       return;
     }
-
     // Don't let them add repeated task with same name
     for (let i = 0; i < this.state.todos.length; i++) {
       if (this.state.todos[i].text === todo) {
-        console.log(this.state.todos[i].text);
         return;
       }
     }
@@ -67,6 +63,7 @@ class ToDoPage extends React.Component {
     // Reset the text, shouldn't be needed when checking for repetition
     todo = '';
   }
+
 
   updateTodo = async (todo) => {
     let newTodos;
