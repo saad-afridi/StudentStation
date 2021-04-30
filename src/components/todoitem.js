@@ -7,9 +7,8 @@ const icon_complete = <FontAwesomeIcon icon={faCheck} />;
 const icon_delete = <FontAwesomeIcon icon= {faTrash} />;
 
 class TodoItem extends React.Component {
-    
-    render() {
 
+    render() {
         const { todo } = this.props;
         console.log(todo);
 

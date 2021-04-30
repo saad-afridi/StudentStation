@@ -5,10 +5,24 @@ Generic Styles for Whole App
     padding: 20px;
 }
 
+.MainTitleContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 label {
     margin: 5px;
     font-size: 18px;
     color: rgb(212, 209, 209);
+}
+
+#titleLabel {
+    display: flex;
+    font-family: 'Brush Script MT', cursive;
+    text-align: center;
+    font-size: 90px;
+    color: #384166;
 }
 
 h1 {
@@ -163,6 +177,13 @@ The Timer App Specific Styles
 #timeTitle {
     text-align: center;
     font-size: 70px;
+    background: linear-gradient(
+    90deg,
+    rgba(93, 12, 255, 1) 0%,
+    rgba(137, 1, 221) 100%
+    );
+    padding: 4px 16px 8px 16px;
+    border-radius: 5px;
 }
 
 #setHours {

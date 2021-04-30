@@ -14,6 +14,7 @@ class ShowTime extends React.Component {
         if (Number(mins) < 10) {mins = "0" + mins};
         if (Number(secs) < 10) {secs = "0" + secs};
 
+        
         return (
         <div className='TimeViewContainer'>
             <label id="timeTitle"> {hours + ":" + mins + ":" + secs} </label>

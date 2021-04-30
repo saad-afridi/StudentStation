@@ -1,14 +1,13 @@
 import React from 'react';
-import TodoList from '../components/todolist';
-import AddTodo from '../components/addtodo';
-import './styles.css';
+import TodoList from '../components/TodoList';
+import AddTodo from '../components/AddTodo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
 
 const icon_title = <FontAwesomeIcon icon={faClipboardList} />;
 
 class ToDoPage extends React.Component {
-
+  
   constructor() {
     super();
     this.state = {
