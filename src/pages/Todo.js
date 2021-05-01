@@ -1,10 +1,9 @@
 import React from 'react';
 import TodoList from '../components/TodoList';
 import AddTodo from '../components/AddTodo';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
-
-const icon_title = <FontAwesomeIcon icon={faClipboardList} />;
+import {Typography, Container, Grid} from '@material-ui/core'
+import ListIcon from '@material-ui/icons/List'
+import './styles.css'
 
 class ToDoPage extends React.Component {
   
@@ -17,16 +16,25 @@ class ToDoPage extends React.Component {
 
   render() {
     return(
-    <div className="AppContainer"> 
-      <div className="TitleContainer"> 
-      <h1> { icon_title } What To Do? </h1>
-      </div>
+    <Container className="AppContainer" >
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+      <Grid container spacing={3} direction="row" justify="flex-end" alignItems="center">
+        <Grid item> 
+          <ListIcon color="primary" style={{transform: 'scale(2.0)'}} /> 
+        </Grid>
+        <Grid item xs={9} sm={8} md={7}>
+        <Typography variant="h3" component="div" color="primary" align="left" className="TitleContainer"> 
+        What To Do?
+        </Typography>
+        </Grid>
+      </Grid>
+      
       <AddTodo addToDoFn = {this.addTodo}> </AddTodo>
       <TodoList updateTodoFn = {this.updateTodo} todos={this.state.todos}> </TodoList>
-    </div>
+    </Container>
     )
   }
-
+  
   componentDidMount = () => {
     const todos = localStorage.getItem('todos');
     if (todos) {

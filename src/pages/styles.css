@@ -11,19 +11,6 @@ Generic Styles for Whole App
     width: 100%;
 }
 
-label {
-    margin: 5px;
-    font-size: 18px;
-    color: rgb(212, 209, 209);
-}
-
-#titleLabel {
-    display: flex;
-    font-family: 'Brush Script MT', cursive;
-    text-align: center;
-    font-size: 90px;
-    color: #384166;
-}
 
 h1 {
     line-height: 3;
@@ -34,112 +21,48 @@ h1 {
 }
 
 body {
-    background: #252a3d;
+    background: #11141f;
 }
 
 hr {
-    margin: 20px;
-    width: 92%;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    width: 100%;
     color:rgb(212, 209, 209);
     text-align: center;
 }
 
-.AppContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 520px;
-    min-height: 600px;
+/* .AppContainer {
     background: #292f4b;
-    text-align: center;
     margin: 64px auto;
     border-radius: 10px;
     padding: 10px;
     padding-bottom: 32px;
-}
+} */
 
 /*
 The TODO App Specfic Styles
 */
-.AddToDo {
+.AddTodoContainer{
     margin-bottom: 32px;
-    padding: 10px;
-}
-
-#addTodoInput {
-    padding: 14px 32px 14px 16px;
-    border-radius: 4px 0 0 4px;
-    border: 2px solid #5d0cff;
-    outline: none;
-    width: 320px;
-    background: transparent;
-    color: #fff;
-}
-
-#addTodoButton {
-    padding: 16px;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-    outline: none;
-    background: linear-gradient(
-        90deg,
-        rgba(93, 12, 255, 1) 0%,
-        rgba(137, 1, 221) 100%
-    );
-    color: #fff;
-    text-transform: capitalize;  
-}
-
-#addTodoButton:hover {
-    filter: brightness(80%);
 }
 
 
-.TodoItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 8px 20px 8px 20px;
+/* .TodoItem {
     color: #fff;
     background: linear-gradient(
     90deg,
     rgba(93, 12, 255, 1) 0%,
     rgba(137, 1, 221) 100%
     );
-    padding: 16px;
-    border-radius: 5px;
-}
+    margin: 25px;
+} */
 
 .completed {
     text-decoration: line-through;
     opacity: 0.4;
 }
 
-.btncomplete {
-    display: flex;
-    margin-left: auto;
-    justify-content: flex-end;
-    background-color: #252a3d; 
-    color: rgb(1, 221, 137); 
-    padding: 6px; 
-    outline: none;
-    border: none;
-    font-size: 16px; 
-    cursor: pointer; 
-}
-
-.btndelete {
-    display: flex;
-    margin-left: 14px;
-    background-color: #252a3d;
-    color:rgb(223, 65, 65);
-    outline: none;
-    border: none;
-    padding: 6px;
-    font-size: 16px;
-    cursor: pointer;
-}
 
 button:hover {
     background-color: #46485f;

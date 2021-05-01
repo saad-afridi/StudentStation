@@ -1,8 +1,20 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import AddIcon from '@material-ui/icons/Add';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/styles';
+import { Grid, Button, TextField } from '@material-ui/core'
+import { blueGrey } from '@material-ui/core/colors'
 
-const icon_add = <FontAwesomeIcon icon={faPlus} />;
+const styles = theme => ({
+    root: {
+      marginBottom: "35px"
+    },
+
+    textInput: {
+        backgroundColor: blueGrey[700],
+        marginLeft: "10px",
+    }
+});
 
 class AddTodo extends React.Component {
 
@@ -14,13 +26,21 @@ class AddTodo extends React.Component {
     }
 
     render() {
+        const {classes} = this.props;
+
         return(
-        <div className='AddToDo'> 
-            <form onSubmit={(e) => this.submitTodo(e)}>
-                <input id ='addTodoInput' maxlength="50" onChange={(e) => this.updateInput(e)} type='text'></input> {}
-                <button id ='addTodoButton' type="submit"> {icon_add} </button>
-            </form>
-        </div>
+        <form onSubmit={(e) => this.submitTodo(e)}>
+            <Grid container spacing={1} direction="row" className={classes.root} justify="space-between" 
+            alignItems="center">
+                <Grid item xs={9} sm={10} md={11}>
+                    <TextField id='add-task-input' variant="filled" label="Add a Task" fullWidth={true}
+                    className={classes.textInput} onChange={(e) => this.updateInput(e)} > </TextField>  
+                </Grid>
+                <Grid item>
+                    <Button variant="outlined" color="primary" onClick={(e) => this.submitTodo(e)}> <AddIcon /> </Button>
+                </Grid>
+            </Grid>
+        </form>
         )
     }
 
@@ -32,8 +52,12 @@ class AddTodo extends React.Component {
         e.preventDefault();
         this.props.addToDoFn(this.state.todo);
         this.setState({ todo: ''});
-        document.getElementById('addTodoInput').value = '';
+        document.getElementById('add-task-input').value = '';
     }
 }
 
-export default AddTodo;
+AddTodo.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(AddTodo);

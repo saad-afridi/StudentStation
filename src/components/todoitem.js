@@ -1,31 +1,42 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import DeleteIcon from '@material-ui/icons/Clear'
+import { green, red } from '@material-ui/core/colors'
+import { Grid, Typography, Button, Checkbox } from '@material-ui/core'
+import { withStyles } from '@material-ui/styles';
+import PropTypes from 'prop-types';
 
-const icon_complete = <FontAwesomeIcon icon={faCheck} />;
-const icon_delete = <FontAwesomeIcon icon= {faTrash} />;
+const styles = theme => ({
+    root: {
+      marginBottom: "35px"
+    },
+
+    text: {
+        color: (props) => 
+        !props.todo.completed
+            ? '#3f50b5' : green[500], 
+    }
+});
 
 class TodoItem extends React.Component {
 
     render() {
-        const { todo } = this.props;
+        const { classes, todo } = this.props;
         console.log(todo);
 
         return(
-        <>
-        <div className={'TodoItem' + (todo.completed ? ' completed': '')}> 
-            <div className='TodoText'>
-            {todo.text}
-            </div>
-            <button class ="btncomplete" onClick={this.toggleTodo}> 
-                { icon_complete }
-            </button>
-            <button class ="btndelete" onClick={this.deleteTodo}> 
-                { icon_delete }
-            </button>
-        </div>
-        </>
+        <Grid container spacing={1} direction="row"  justify="space-between" alignItems="center" 
+        className={'TodoItem' + (todo.completed ? ' completed': '')} > 
+            <Grid item>
+                <Checkbox checked={todo.completed ? true : false} 
+                onChange={this.toggleTodo} style={{color: green[400]}}></Checkbox>
+            </Grid>
+            <Grid item xs={6} sm={8} md={10}>
+                <Typography variant="h5" component="div" className={classes.text}>{todo.text}</Typography>
+            </Grid>
+            <Grid item style={{justifyContent: 'flex-end'}}>
+                <Button variant='outlined' style={{color: red[400], borderColor: red[400]}} onClick={this.deleteTodo} > <DeleteIcon /> </Button>
+            </Grid>
+        </Grid>
         );
     }
 
@@ -40,4 +51,9 @@ class TodoItem extends React.Component {
     }
 }
 
-export default TodoItem;
+TodoItem.propTypes = {
+    classes: PropTypes.object.isRequired,
+    todo: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(TodoItem);
