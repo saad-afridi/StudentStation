@@ -1,11 +1,25 @@
 import React from 'react';
-import TodoList from '../components/TodoList';
-import AddTodo from '../components/AddTodo';
+import TodoList from '../components/TodoList/TodoList';
+import AddTodo from '../components/TodoList/AddTodo';
 import {Typography, Container, Grid} from '@material-ui/core'
 import ListIcon from '@material-ui/icons/List'
-import './styles.css'
+import { withStyles } from '@material-ui/styles';
+import PropTypes from 'prop-types';
+
+
+
+const styles = theme => ({
+  root: {
+    marginBottom: "35px"
+  },
+
+  header: {
+      margin: "80px 0px 30px 0px",
+  }
+});
 
 class ToDoPage extends React.Component {
+
   
   constructor() {
     super();
@@ -15,10 +29,11 @@ class ToDoPage extends React.Component {
   }
 
   render() {
+  const {classes} = this.props;
     return(
     <Container className="AppContainer" >
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-      <Grid container spacing={3} direction="row" justify="flex-end" alignItems="center">
+      <Grid container spacing={3} direction="row" justify="flex-end" alignItems="center" className={classes.header}>
         <Grid item> 
           <ListIcon color="primary" style={{transform: 'scale(2.0)'}} /> 
         </Grid>
@@ -28,13 +43,13 @@ class ToDoPage extends React.Component {
         </Typography>
         </Grid>
       </Grid>
-      
+
       <AddTodo addToDoFn = {this.addTodo}> </AddTodo>
       <TodoList updateTodoFn = {this.updateTodo} todos={this.state.todos}> </TodoList>
     </Container>
     )
   }
-  
+
   componentDidMount = () => {
     const todos = localStorage.getItem('todos');
     if (todos) {
@@ -97,4 +112,8 @@ class ToDoPage extends React.Component {
   }
 }
 
-export default ToDoPage;
+AddTodo.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(ToDoPage);

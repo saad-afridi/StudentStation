@@ -1,6 +1,6 @@
 import React from 'react';
-import SetTimer from '../components/SetTimer';
-import ShowTime from '../components/ShowTime';
+import SetTimer from '../components/Timer/SetTimer';
+import ShowTime from '../components/Timer/ShowTime';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStopwatch } from '@fortawesome/free-solid-svg-icons';
 

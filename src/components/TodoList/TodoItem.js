@@ -1,19 +1,24 @@
 import React from 'react';
 import DeleteIcon from '@material-ui/icons/Clear'
-import { green, red } from '@material-ui/core/colors'
-import { Grid, Typography, Button, Checkbox } from '@material-ui/core'
+import { green, red, grey } from '@material-ui/core/colors'
+import { Grid, Typography, Checkbox, IconButton } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 
 const styles = theme => ({
     root: {
-      marginBottom: "35px"
+      margin: "10px 0px 10px 0px",
+      backgroundColor: grey[100],
+      paddingRight: '5px',
     },
 
     text: {
         color: (props) => 
         !props.todo.completed
-            ? '#3f50b5' : green[500], 
+            ? grey[900] : grey[500], 
+        textDecoration: (props) =>
+        !props.todo.completed
+            ? '' : 'line-through'
     }
 });
 
@@ -21,11 +26,10 @@ class TodoItem extends React.Component {
 
     render() {
         const { classes, todo } = this.props;
-        console.log(todo);
 
         return(
         <Grid container spacing={1} direction="row"  justify="space-between" alignItems="center" 
-        className={'TodoItem' + (todo.completed ? ' completed': '')} > 
+        className={classes.root} > 
             <Grid item>
                 <Checkbox checked={todo.completed ? true : false} 
                 onChange={this.toggleTodo} style={{color: green[400]}}></Checkbox>
@@ -34,7 +38,8 @@ class TodoItem extends React.Component {
                 <Typography variant="h5" component="div" className={classes.text}>{todo.text}</Typography>
             </Grid>
             <Grid item style={{justifyContent: 'flex-end'}}>
-                <Button variant='outlined' style={{color: red[400], borderColor: red[400]}} onClick={this.deleteTodo} > <DeleteIcon /> </Button>
+                <IconButton variant='outlined' style={{color: red[400], borderColor: red[400]}} 
+                onClick={this.deleteTodo} > <DeleteIcon /> </IconButton>
             </Grid>
         </Grid>
         );

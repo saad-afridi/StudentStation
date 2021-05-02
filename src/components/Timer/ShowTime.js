@@ -13,7 +13,6 @@ class ShowTime extends React.Component {
         if (Number(hours) < 10) {hours = "0" + hours};
         if (Number(mins) < 10) {mins = "0" + mins};
         if (Number(secs) < 10) {secs = "0" + secs};
-
         
         return (
         <div className='TimeViewContainer'>

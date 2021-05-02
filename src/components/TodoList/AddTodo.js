@@ -2,8 +2,8 @@ import React from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/styles';
-import { Grid, Button, TextField } from '@material-ui/core'
-import { blueGrey } from '@material-ui/core/colors'
+import { Grid, TextField, Fab } from '@material-ui/core'
+// import { grey } from '@material-ui/core/colors'
 
 const styles = theme => ({
     root: {
@@ -11,8 +11,7 @@ const styles = theme => ({
     },
 
     textInput: {
-        backgroundColor: blueGrey[700],
-        marginLeft: "10px",
+        // backgroundColor: grey[500],
     }
 });
 
@@ -37,7 +36,7 @@ class AddTodo extends React.Component {
                     className={classes.textInput} onChange={(e) => this.updateInput(e)} > </TextField>  
                 </Grid>
                 <Grid item>
-                    <Button variant="outlined" color="primary" onClick={(e) => this.submitTodo(e)}> <AddIcon /> </Button>
+                    <Fab color="primary" onClick={(e) => this.submitTodo(e)}> <AddIcon /> </Fab>
                 </Grid>
             </Grid>
         </form>
