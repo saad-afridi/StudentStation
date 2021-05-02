@@ -3,9 +3,13 @@ import ToDoPage from './Todo';
 import TimerPage from './Timer';
 import {AppBar, Toolbar, Typography, 
         Tabs, Tab } from '@material-ui/core';
-import { withStyles } from '@material-ui/styles';
+import { withStyles, ThemeProvider} from '@material-ui/styles';
 import PropTypes from 'prop-types';
-// import './styles.css'
+import { purple } from '@material-ui/core/colors'
+import { createMuiTheme } from '@material-ui/core/styles';
+import CssBaseline from "@material-ui/core/CssBaseline";
+
+
 
 const styles = theme => ({
     title: {
@@ -14,7 +18,19 @@ const styles = theme => ({
 
 });
 
-class Home extends React.Component {
+const themeDark = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#5d0cff',
+        },
+        type: 'dark',
+        background: {
+            default: '#11141f',
+        },  
+    }
+})
+
+class App extends React.Component {
 
     constructor(){
         super();
@@ -36,9 +52,11 @@ class Home extends React.Component {
 
     render() {
         const {classes} = this.props;
-
+        console.log(themeDark);
         return (
         <div className="App">
+        <ThemeProvider theme={themeDark}>
+            <CssBaseline />
             <AppBar>
                 <Toolbar>
                     <Typography variant="h4" className={classes.title}>
@@ -53,7 +71,9 @@ class Home extends React.Component {
             </AppBar>
             {this.state.selectedTab === 1 && <ToDoPage />}
             {this.state.selectedTab === 2 && <TimerPage />}
+        </ThemeProvider>
         </div>
+        
         )
     }
 
@@ -63,8 +83,8 @@ class Home extends React.Component {
     }
 }
 
-Home.propTypes = {
+App.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Home);
+export default withStyles(styles)(App);

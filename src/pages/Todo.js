@@ -20,7 +20,6 @@ const styles = theme => ({
 
 class ToDoPage extends React.Component {
 
-  
   constructor() {
     super();
     this.state = {

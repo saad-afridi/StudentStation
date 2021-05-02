@@ -8,14 +8,15 @@ import PropTypes from 'prop-types';
 const styles = theme => ({
     root: {
       margin: "10px 0px 10px 0px",
-      backgroundColor: grey[100],
+      backgroundColor: theme['type'] === 'dark' ? grey[200] : grey[800],
       paddingRight: '5px',
+      borderRadius: '15px',
     },
 
     text: {
-        color: (props) => 
-        !props.todo.completed
-            ? grey[900] : grey[500], 
+        opacity: (props) =>
+            !props.todo.completed
+            ? '1' : '0.4',
         textDecoration: (props) =>
         !props.todo.completed
             ? '' : 'line-through'
