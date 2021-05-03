@@ -7,7 +7,6 @@ import { withStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 
 
-
 const styles = theme => ({
   root: {
     marginBottom: "35px"
@@ -15,9 +14,10 @@ const styles = theme => ({
 
   header: {
       margin: "80px 0px 30px 0px",
+      color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
   }
 });
-
+ 
 class ToDoPage extends React.Component {
 
   constructor() {
@@ -34,10 +34,10 @@ class ToDoPage extends React.Component {
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
       <Grid container spacing={3} direction="row" justify="flex-end" alignItems="center" className={classes.header}>
         <Grid item> 
-          <ListIcon color="primary" style={{transform: 'scale(2.0)'}} /> 
+          <ListIcon style={{transform: 'scale(2.0)'}} /> 
         </Grid>
         <Grid item xs={9} sm={8} md={7}>
-        <Typography variant="h3" component="div" color="primary" align="left" className="TitleContainer"> 
+        <Typography variant="h3" component="div" align="left" className="TitleContainer"> 
         What To Do?
         </Typography>
         </Grid>

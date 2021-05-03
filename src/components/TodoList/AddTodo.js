@@ -3,16 +3,11 @@ import AddIcon from '@material-ui/icons/Add';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/styles';
 import { Grid, TextField, Fab } from '@material-ui/core'
-// import { grey } from '@material-ui/core/colors'
 
 const styles = theme => ({
     root: {
       marginBottom: "35px"
     },
-
-    textInput: {
-        // backgroundColor: grey[500],
-    }
 });
 
 class AddTodo extends React.Component {

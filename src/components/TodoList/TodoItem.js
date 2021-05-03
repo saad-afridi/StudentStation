@@ -1,6 +1,6 @@
 import React from 'react';
 import DeleteIcon from '@material-ui/icons/Clear'
-import { green, red, grey } from '@material-ui/core/colors'
+import { green, red } from '@material-ui/core/colors'
 import { Grid, Typography, Checkbox, IconButton } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
@@ -8,9 +8,9 @@ import PropTypes from 'prop-types';
 const styles = theme => ({
     root: {
       margin: "10px 0px 10px 0px",
-      backgroundColor: theme['type'] === 'dark' ? grey[200] : grey[800],
+      backgroundColor: theme.palette.secondary.main,
       paddingRight: '5px',
-      borderRadius: '15px',
+      borderRadius: '5px',
     },
 
     text: {
@@ -39,7 +39,7 @@ class TodoItem extends React.Component {
                 <Typography variant="h5" component="div" className={classes.text}>{todo.text}</Typography>
             </Grid>
             <Grid item style={{justifyContent: 'flex-end'}}>
-                <IconButton variant='outlined' style={{color: red[400], borderColor: red[400]}} 
+                <IconButton variant='outlined' style={{color: red[400]}} 
                 onClick={this.deleteTodo} > <DeleteIcon /> </IconButton>
             </Grid>
         </Grid>
