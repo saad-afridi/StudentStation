@@ -78,7 +78,7 @@ class SetPomodoro extends React.Component {
 
     submitPom = (e) => {
         e.preventDefault();
-        this.props.setPomFn(this.state.work, this.state.shortBreak, this.state.longBreak);
+        this.props.getPomFn(this.state.work, this.state.shortBreak, this.state.longBreak);
         this.setState({
             work: '25',
             shortBreak: '5',

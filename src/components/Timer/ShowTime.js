@@ -10,6 +10,9 @@ import PropTypes from 'prop-types';
 const styles = theme => ({
     root: {
         margin: "5px 0px 50px 15px",
+        color: (props) => 
+        props.pomOn && props.session % 2 === 0 
+        ? theme.palette.secondary.main : theme.palette.primary.main,
     }
 })
 
@@ -17,7 +20,7 @@ class ShowTime extends React.Component {
     
     render () {
         const {classes} = this.props;
-        let { timeLeft } = this.props;
+        let { timeLeft} = this.props;
         if (timeLeft < 0) {timeLeft = 0;}
 
         let hours = String(timeLeft / 3600 | 0);
@@ -31,7 +34,7 @@ class ShowTime extends React.Component {
         return (
         <Grid container justify="center" alignItems="center">
             <Grid item>
-                <Typography variant="h1" color="primary" component="div" className={classes.root}>
+                <Typography variant="h1" component="div" className={classes.root} >
                     {hours + ":" + mins + ":" + secs}
                 </Typography>
             </Grid>
@@ -41,6 +44,8 @@ class ShowTime extends React.Component {
 
 ShowTime.propTypes = {
     classes: PropTypes.object.isRequired,
+    pomOn: PropTypes.bool.isRequired,
+    session: PropTypes.number.isRequired,
 };
 
 export default withStyles(styles)(ShowTime);
