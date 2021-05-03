@@ -1,10 +1,26 @@
 import React from 'react';
+
+// Timer Components
 import SetTimer from '../components/Timer/SetTimer';
 import ShowTime from '../components/Timer/ShowTime';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStopwatch } from '@fortawesome/free-solid-svg-icons';
 
-const icon_title = <FontAwesomeIcon icon={faStopwatch} />;
+// Material UI Components
+import {Typography, Container, Grid} from '@material-ui/core'
+
+// Material UI Icons
+import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
+
+// Theme and Styling
+import { withStyles } from '@material-ui/styles';
+import PropTypes from 'prop-types';
+
+
+const styles = theme => ({
+    header: {
+        margin: "80px 0px 30px 0px",
+        color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
+    }
+});
 
 class TimerPage extends React.Component {
 
@@ -16,7 +32,6 @@ class TimerPage extends React.Component {
         this.setAlarmTime = this.setAlarmTime.bind(this);
     }
 
-
     componentDidMount(){
         this.interval = setInterval(
           () => this.checkAlarmClock(),1000)
@@ -24,6 +39,30 @@ class TimerPage extends React.Component {
     
     componentWillUnmount() {
         clearInterval(this.interval);
+    }
+
+    render () {
+        const {classes} = this.props;
+
+        return (
+        
+        <Container className="TimerContainer"> 
+            <Grid container spacing={3} direction="row" justify="center" 
+            alignItems="center" className={classes.header}>
+                <Grid item> 
+                    <AccessAlarmIcon style={{transform: 'scale(2.0)'}} /> 
+                </Grid>
+                <Grid item>
+                    <Typography variant="h3" component="div" align="left" className="TitleContainer"> 
+                    Track Yourself
+                    </Typography>
+                </Grid>
+            </Grid>
+            
+            <ShowTime timeLeft={this.state.alarm}></ShowTime>
+            <SetTimer setAlarmFn={this.setAlarmTime}></SetTimer>
+        </Container>
+        )
     }
 
     // Sets the Alarm Time -> Converts hours + minutes to seconds
@@ -54,18 +93,10 @@ class TimerPage extends React.Component {
             console.log("not yet");
         }
     }
-
-    render () {
-        return (
-        <div className="AppContainer"> 
-            <div className="TitleContainer"> 
-            <h1> { icon_title } Track Yourself </h1>
-            </div>
-            <SetTimer setAlarmFn = {this.setAlarmTime}></SetTimer>
-            <ShowTime timeLeft={this.state.alarm}></ShowTime>
-        </div>
-        )
-    }
 }
 
-export default TimerPage;
+TimerPage.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(TimerPage);

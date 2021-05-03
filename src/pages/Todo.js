@@ -1,17 +1,21 @@
 import React from 'react';
+
+// Todo Components
 import TodoList from '../components/TodoList/TodoList';
 import AddTodo from '../components/TodoList/AddTodo';
+
+// Material UI Components
 import {Typography, Container, Grid} from '@material-ui/core'
+
+// Material UI Icons
 import ListIcon from '@material-ui/icons/List'
+
+// Theme and Styling
 import { withStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 
 
 const styles = theme => ({
-  root: {
-    marginBottom: "35px"
-  },
-
   header: {
       margin: "80px 0px 30px 0px",
       color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
@@ -29,14 +33,14 @@ class ToDoPage extends React.Component {
 
   render() {
   const {classes} = this.props;
+  
     return(
-    <Container className="AppContainer" >
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-      <Grid container spacing={3} direction="row" justify="flex-end" alignItems="center" className={classes.header}>
+    <Container className="TodoContainer" >
+      <Grid container spacing={3} direction="row" justify="center" alignItems="center" className={classes.header}>
         <Grid item> 
           <ListIcon style={{transform: 'scale(2.0)'}} /> 
         </Grid>
-        <Grid item xs={9} sm={8} md={7}>
+        <Grid item>
         <Typography variant="h3" component="div" align="left" className="TitleContainer"> 
         What To Do?
         </Typography>
@@ -111,7 +115,7 @@ class ToDoPage extends React.Component {
   }
 }
 
-AddTodo.propTypes = {
+ToDoPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 

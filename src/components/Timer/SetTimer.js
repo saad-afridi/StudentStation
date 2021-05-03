@@ -1,8 +1,21 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
-const icon_set = <FontAwesomeIcon icon={faPlay} />;
+// Material UI Components
+import {Grid, Button, TextField} from '@material-ui/core'
+
+// Material UI Icons
+import AlarmOnIcon from '@material-ui/icons/AlarmOn';
+
+// Theme and Styling
+import { withStyles } from '@material-ui/styles';
+import PropTypes from 'prop-types';
+
+
+const styles = theme => ({
+    root: {
+        margin: "5px",
+    }
+})
 
 class SetTimer extends React.Component {
 
@@ -16,17 +29,24 @@ class SetTimer extends React.Component {
 
     render() {
         return (
-            <div className='SetTimer'>
-                <form onSubmit={(e) => this.submitAlarm(e)}>
-                    <div className="timeInput"> 
-                    <input id='setHours' type='text' maxLength="2" placeholder="0" onChange={(e) => this.updateHours(e)}></input>
-                    <label id='hoursL'> Hours </label>
-                    <input id='setMinutes' type='text' maxLength="4" placeholder="0" onChange={(e) => this.updateMinutes(e)}></input>
-                    <label id='minsL'> Minutes </label>
-                    </div>
-                    <button id='addTodoButton' type='submit'> {icon_set} </button>
-                </form>
-            </div>
+            <form onSubmit={(e) => this.submitAlarm(e)}>
+                <Grid container spacing={3} direction="row" justify="center" alignItems="center">
+                    <Grid item>
+                        <TextField variant="filled" label="Hours" id="set-hours"
+                        onChange={(e) => this.updateHours(e)}> </TextField>
+                    </Grid>
+                    <Grid item>
+                        <TextField variant="filled" label="Minutes" id="set-mins"
+                        autofocus="true" onChange={(e) => this.updateMinutes(e)}> </TextField>
+                    </Grid>
+                    <Grid item>
+                        <Button variant="contained" color="primary" 
+                        onClick={(e)=>this.submitAlarm(e)}> 
+                            <AlarmOnIcon />
+                        </Button>
+                    </Grid>
+                </Grid>
+            </form>
         );
     }
 
@@ -45,9 +65,13 @@ class SetTimer extends React.Component {
             hours: '',
             minutes: ''
         });
-        document.getElementById('setHours').value = '';
-        document.getElementById('setMinutes').value = '';
+        document.getElementById('set-hours').value = '';
+        document.getElementById('set-mins').value = '';
     }
 }
 
-export default SetTimer;
+SetTimer.propTypes = {
+    classes: PropTypes.object.isRequired,
+}
+
+export default withStyles(styles)(SetTimer);

@@ -1,8 +1,22 @@
 import React from 'react';
 
+// Material UI Components
+import {Typography, Grid} from '@material-ui/core'
+
+// Theme and Styling
+import { withStyles } from '@material-ui/styles';
+import PropTypes from 'prop-types';
+
+const styles = theme => ({
+    root: {
+        margin: "5px 0px 50px 15px",
+    }
+})
+
 class ShowTime extends React.Component {
     
     render () {
+        const {classes} = this.props;
         let { timeLeft } = this.props;
         if (timeLeft < 0) {timeLeft = 0;}
 
@@ -15,10 +29,18 @@ class ShowTime extends React.Component {
         if (Number(secs) < 10) {secs = "0" + secs};
         
         return (
-        <div className='TimeViewContainer'>
-            <label id="timeTitle"> {hours + ":" + mins + ":" + secs} </label>
-        </div>
+        <Grid container justify="center" alignItems="center">
+            <Grid item>
+                <Typography variant="h1" color="primary" component="div" className={classes.root}>
+                    {hours + ":" + mins + ":" + secs}
+                </Typography>
+            </Grid>
+        </Grid>
     )};
 }
 
-export default ShowTime;
+ShowTime.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(ShowTime);

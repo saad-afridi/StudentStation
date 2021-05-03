@@ -27,7 +27,7 @@ class AddTodo extends React.Component {
             <Grid container spacing={1} direction="row" className={classes.root} justify="space-between" 
             alignItems="center">
                 <Grid item xs={9} sm={10} md={11}>
-                    <TextField id='add-task-input' variant="filled" label="Add a Task" fullWidth={true}
+                    <TextField variant="filled" label="Add a Task" fullWidth={true} id="add-task-input"
                     className={classes.textInput} onChange={(e) => this.updateInput(e)} > </TextField>  
                 </Grid>
                 <Grid item>

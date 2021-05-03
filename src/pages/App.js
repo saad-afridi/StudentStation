@@ -1,14 +1,25 @@
 import React from 'react';
+
+// Material UI Components
+import {AppBar, Toolbar, Typography, 
+    Tabs, Tab, IconButton } from '@material-ui/core';
+
+// Material UI Icons
+import Brightness4Icon from '@material-ui/icons/Brightness4';
+import ListIcon from '@material-ui/icons/List';
+import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
+import HomeIcon from '@material-ui/icons/Home'
+
+// App Pages
 import ToDoPage from './Todo';
 import TimerPage from './Timer';
-import {AppBar, Toolbar, Typography, 
-        Tabs, Tab, IconButton } from '@material-ui/core';
+
+// Theme and Styling
 import { withStyles, ThemeProvider} from '@material-ui/styles';
 import PropTypes from 'prop-types';
 import { lightBlue, teal, grey, blueGrey } from '@material-ui/core/colors'
 import { createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Brightness4Icon from '@material-ui/icons/Brightness4';
 
 
 
@@ -46,6 +57,7 @@ const themeDark = createMuiTheme({
     }
 })
 
+
 class App extends React.Component {
 
     constructor(){
@@ -74,6 +86,7 @@ class App extends React.Component {
         return (
         <div className="App">
         <ThemeProvider theme={this.state.darkMode ? themeDark : themeLight}>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
             <CssBaseline />
             <AppBar>
                 <Toolbar>
@@ -81,9 +94,9 @@ class App extends React.Component {
                         Student Station
                     </Typography>
                     <Tabs value={this.state.selectedTab} onChange={this.changeTabs}>
-                        <Tab label="Home" />
-                        <Tab label="Todo List" />
-                        <Tab label="Timer" />
+                        <Tab label="Home" icon={<HomeIcon />} />
+                        <Tab label="Todo List" icon={<ListIcon />} />
+                        <Tab label="Timer" icon={<AccessAlarmIcon />} />
                     </Tabs>
                     <IconButton onClick={this.changeThemes}>
                         <Brightness4Icon />
