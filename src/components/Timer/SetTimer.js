@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 
 const styles = theme => ({
     root: {
-        margin: "5px",
+        margin: "10px",
     }
 })
 
@@ -28,16 +28,18 @@ class SetTimer extends React.Component {
     }
 
     render() {
+        const {classes} = this.props;
         return (
-            <form onSubmit={(e) => this.submitAlarm(e)}>
-                <Grid container spacing={3} direction="row" justify="center" alignItems="center">
+            <form onSubmit={this.submitAlarm}>
+                <Grid container spacing={3} direction="row" justify="center" alignItems="center"
+                className={classes.root}>
                     <Grid item>
-                        <TextField variant="filled" label="Hours" id="set-hours"
-                        onChange={(e) => this.updateHours(e)}> </TextField>
+                        <TextField variant="filled" type="number" label="Hours" id="set-hours" 
+                        onKeyDown={this.keyPress} onChange={this.updateHours}> </TextField>
                     </Grid>
                     <Grid item>
-                        <TextField variant="filled" label="Minutes" id="set-mins"
-                        autofocus="true" onChange={(e) => this.updateMinutes(e)}> </TextField>
+                        <TextField variant="filled" type="number" label="Minutes" id="set-mins" 
+                        onKeyDown={this.keyPress} onChange={this.updateMinutes}> </TextField>
                     </Grid>
                     <Grid item>
                         <Button variant="contained" color="primary" 
@@ -56,6 +58,13 @@ class SetTimer extends React.Component {
     
     updateMinutes = (e) => {
         this.setState({minutes : e.target.value});
+    }
+
+    keyPress = (e) => {
+        // Submit if they press enter
+        if(e.keyCode === 13) {
+            this.submitAlarm(e);
+        }
     }
 
     submitAlarm = (e) => {

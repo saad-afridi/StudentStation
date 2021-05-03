@@ -59,9 +59,6 @@ class ToDoPage extends React.Component {
       const savedTodos = JSON.parse(todos);
       this.setState({ todos: savedTodos });
     }
-    else {
-      console.log('No todos');
-    }
   }
 
   addTodo = async (todo) => {
@@ -77,10 +74,10 @@ class ToDoPage extends React.Component {
     }
 
     // Update todo lists
-    await this.setState({ todos: [...this.state.todos, {
+    await this.setState({ todos: [{
       text: todo, 
       completed: false
-    }]});
+    }, ...this.state.todos]});
 
     // Hold in storage
     localStorage.setItem('todos', JSON.stringify(this.state.todos));

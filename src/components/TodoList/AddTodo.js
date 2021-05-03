@@ -28,7 +28,7 @@ class AddTodo extends React.Component {
             alignItems="center">
                 <Grid item xs={9} sm={10} md={11}>
                     <TextField variant="filled" label="Add a Task" fullWidth={true} id="add-task-input"
-                    className={classes.textInput} onChange={(e) => this.updateInput(e)} > </TextField>  
+                    autoFocus={true} className={classes.textInput} onChange={(e) => this.updateInput(e)} > </TextField>  
                 </Grid>
                 <Grid item>
                     <Fab color="primary" onClick={(e) => this.submitTodo(e)}> <AddIcon /> </Fab>

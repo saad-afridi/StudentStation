@@ -5,10 +5,12 @@ import SetTimer from '../components/Timer/SetTimer';
 import ShowTime from '../components/Timer/ShowTime';
 
 // Material UI Components
-import {Typography, Container, Grid} from '@material-ui/core'
+import {Typography, Container, Grid, Button} from '@material-ui/core'
 
 // Material UI Icons
 import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
+import PlayIcon from '@material-ui/icons/PlayArrow';
+import PauseIcon from '@material-ui/icons/Pause'
 
 // Theme and Styling
 import { withStyles } from '@material-ui/styles';
@@ -27,7 +29,8 @@ class TimerPage extends React.Component {
     constructor () {
         super();
         this.state = {
-            alarm : -2
+            alarm : -2,
+            paused: true,
         };
         this.setAlarmTime = this.setAlarmTime.bind(this);
     }
@@ -61,6 +64,14 @@ class TimerPage extends React.Component {
             
             <ShowTime timeLeft={this.state.alarm}></ShowTime>
             <SetTimer setAlarmFn={this.setAlarmTime}></SetTimer>
+            
+            <Grid container justify="center" alignItems="center">
+                <Grid item>
+                    <Button color="primary" size="large" variant="contained" onClick={this.togglePause}> 
+                    {this.state.paused ? <PlayIcon /> : <PauseIcon />} 
+                    </Button>
+                </Grid>
+            </Grid>
         </Container>
         )
     }
@@ -78,12 +89,13 @@ class TimerPage extends React.Component {
             return;
         }
         this.setState({ alarm: (n1 * 60 + n2) * 60 });
+        this.setState({ paused: false});
         console.log(this.state.alarm);
     }
 
     // Check if Alarm is over or not
     checkAlarmClock = async () => {
-        if (this.state.alarm === -2){
+        if (this.state.alarm === -2 || this.state.paused){
             return;
         } else if(this.state.alarm === -1) {
             alert("Time's Up!");
@@ -91,6 +103,12 @@ class TimerPage extends React.Component {
         } else {
             this.setState({ alarm: this.state.alarm - 1 });
             console.log("not yet");
+        }
+    }
+
+    togglePause = () => {
+        if (this.state.alarm !== -2) {
+            this.setState({paused: !this.state.paused});
         }
     }
 }
