@@ -3,6 +3,7 @@ import React from 'react';
 // Timer Components
 import SetTimer from '../components/Timer/SetTimer';
 import ShowTime from '../components/Timer/ShowTime';
+import SetPomodoro from '../components/Timer/SetPomodoro'
 
 // Material UI Components
 import {Typography, Container, Grid, Button} from '@material-ui/core'
@@ -62,9 +63,10 @@ class TimerPage extends React.Component {
                 </Grid>
             </Grid>
             
-            <ShowTime timeLeft={this.state.alarm}></ShowTime>
-            <SetTimer setAlarmFn={this.setAlarmTime}></SetTimer>
             
+
+            <ShowTime timeLeft={this.state.alarm}></ShowTime>
+
             <Grid container justify="center" alignItems="center">
                 <Grid item>
                     <Button color="primary" size="large" variant="contained" onClick={this.togglePause}> 
@@ -72,6 +74,10 @@ class TimerPage extends React.Component {
                     </Button>
                 </Grid>
             </Grid>
+            
+            <SetTimer setAlarmFn={this.setAlarmTime}></SetTimer>
+            <SetPomodoro setPomFn={this.setPom}></SetPomodoro>
+            
         </Container>
         )
     }
@@ -110,6 +116,10 @@ class TimerPage extends React.Component {
         if (this.state.alarm !== -2) {
             this.setState({paused: !this.state.paused});
         }
+    }
+
+    setPom = (work, shortBreak, longBreak) => {
+        console.log(work, shortBreak, longBreak);
     }
 }
 
