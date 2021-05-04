@@ -12,8 +12,9 @@ import HomeIcon from '@material-ui/icons/Home'
 import FaceIcon from '@material-ui/icons/Face';
 
 // App Pages
-import ToDoPage from './Todo';
-import TimerPage from './Timer';
+import ToDoPage from './pages/Todo';
+import TimerPage from './pages/Timer';
+import CalculatorPage from './pages/Calculator'
 
 // Theme and Styling
 import { withStyles, ThemeProvider} from '@material-ui/styles';
@@ -143,6 +144,8 @@ class App extends React.Component {
             pom={this.state.pom}
             >
             </TimerPage>}
+
+            {this.state.selectedTab === 3 && <CalculatorPage />}
         </ThemeProvider>
         </div>
         )
