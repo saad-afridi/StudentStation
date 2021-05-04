@@ -32,6 +32,14 @@ class ToDoPage extends React.Component {
     };
   }
 
+  componentDidMount = () => {
+    const todos = localStorage.getItem('todos');
+    if (todos) {
+      const savedTodos = JSON.parse(todos);
+      this.setState({ todos: savedTodos });
+    }
+  }
+
   render() {
     return(
     <Container className="TodoContainer" >
@@ -41,15 +49,7 @@ class ToDoPage extends React.Component {
     </Container>
     )
   }
-
-  componentDidMount = () => {
-    const todos = localStorage.getItem('todos');
-    if (todos) {
-      const savedTodos = JSON.parse(todos);
-      this.setState({ todos: savedTodos });
-    }
-  }
-
+  
   addTodo = async (todo) => {
 
     if (todo.length === 0) {

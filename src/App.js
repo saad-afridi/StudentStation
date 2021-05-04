@@ -19,7 +19,7 @@ import CalculatorPage from './pages/Calculator'
 // Theme and Styling
 import { withStyles, ThemeProvider} from '@material-ui/styles';
 import PropTypes from 'prop-types';
-import { lightBlue, teal, grey, blueGrey } from '@material-ui/core/colors'
+import { teal, grey, blueGrey, indigo } from '@material-ui/core/colors'
 import { createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from "@material-ui/core/CssBaseline";
 
@@ -35,12 +35,15 @@ const styles = theme => ({
 const themeLight = createMuiTheme({
     palette: {
         primary: {
-            main: lightBlue[700],
+            main: indigo[400],
         },
         secondary : {
             main: grey[300],
         },
         type: 'light',
+        background: {
+            default: grey[100],
+        }
     }
 })
 
