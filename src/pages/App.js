@@ -9,6 +9,7 @@ import Brightness4Icon from '@material-ui/icons/Brightness4';
 import ListIcon from '@material-ui/icons/List';
 import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 import HomeIcon from '@material-ui/icons/Home'
+import FaceIcon from '@material-ui/icons/Face';
 
 // App Pages
 import ToDoPage from './Todo';
@@ -117,6 +118,7 @@ class App extends React.Component {
                         <Tab label="Home" icon={<HomeIcon />} />
                         <Tab label="Todo List" icon={<ListIcon />} />
                         <Tab label="Timer" icon={<AccessAlarmIcon />} />
+                        <Tab label="Calculator" icon={<FaceIcon />} />
                     </Tabs>
                     <IconButton onClick={this.changeThemes}>
                         <Brightness4Icon />

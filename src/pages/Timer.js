@@ -4,10 +4,11 @@ import React from 'react';
 import SetTimer from '../components/Timer/SetTimer';
 import ShowTime from '../components/Timer/ShowTime';
 import SetPomodoro from '../components/Timer/SetPomodoro'
+import PageTitle from '../components/PageTitle'
 
 // Material UI Components
-import {Typography, Container, Grid,
-     Button, LinearProgress} from '@material-ui/core'
+import {Container, Grid, Button,
+     LinearProgress} from '@material-ui/core'
 
 // Material UI Icons
 import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
@@ -32,36 +33,13 @@ const styles = theme => ({
 
 class TimerPage extends React.Component {
 
-    constructor () {
-        super();
-        this.state = {
-            alarm : -2,
-            paused: false,
-            pomOn: false,
-            pom: [25, 5, 30],
-            session: 0,
-        };
-        this.setAlarmTime = this.setAlarmTime.bind(this);
-    }
-
-
     render () {
         const {classes} = this.props;
         const {alarm, session, pomOn, paused, pom} = this.props;
         return (
         
         <Container className="TimerContainer"> 
-            <Grid container spacing={3} direction="row" justify="center" 
-            alignItems="center" className={classes.header}>
-                <Grid item> 
-                    <AccessAlarmIcon style={{transform: 'scale(2.0)'}} /> 
-                </Grid>
-                <Grid item>
-                    <Typography variant="h3" component="div" align="left" className="TitleContainer"> 
-                    Track Yourself
-                    </Typography>
-                </Grid>
-            </Grid>
+            <PageTitle text={"Track Yourself"} icon={<AccessAlarmIcon style={{transform: 'scale(2.0)'}} />} />
             
             <ShowTime timeLeft={alarm} pomOn={pomOn} session={session}></ShowTime>
 
