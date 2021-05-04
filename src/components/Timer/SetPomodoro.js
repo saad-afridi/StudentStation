@@ -11,9 +11,10 @@ import { withStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 
 const styles = theme => ({
-    root: {
+    formControl: {
         margin: theme.spacing(2),
-        minWidth: 500,
+        fullWidth: true,
+        minWidth: 120,
     }
 })
 
@@ -49,7 +50,7 @@ class SetPomodoro extends React.Component {
             <Grid container spacing={2} direction="row" justify="center" alignItems="center"
             className={classes.root}>
                 <Grid item>
-                    <FormControl variant="standard">
+                    <FormControl variant="standard" className={classes.formControl}>
                         <InputLabel id="set-work-time">Work</InputLabel>
                         <Select id="set-work" value={this.state.work} onChange={this.updateWork}>
                             {
@@ -63,7 +64,7 @@ class SetPomodoro extends React.Component {
                     </FormControl>
                 </Grid>
                 <Grid item>
-                    <FormControl variant="standard">
+                    <FormControl variant="standard" className={classes.formControl}>
                         <InputLabel id="set-long-break">Short Break</InputLabel>
                         <Select id="set-work" value={this.state.shortBreak} onChange={this.updateBreak}>
                             {
@@ -77,7 +78,7 @@ class SetPomodoro extends React.Component {
                     </FormControl>
                 </Grid>
                 <Grid item>
-                    <FormControl variant="standard">
+                    <FormControl variant="standard" className={classes.formControl}>
                         <InputLabel id="set-short-break">Long Break</InputLabel>
                         <Select id="set-work" value={this.state.longBreak} onChange={this.updateLongBreak}>
                             {
@@ -91,8 +92,9 @@ class SetPomodoro extends React.Component {
                     </FormControl>
                 </Grid>
                 <Grid item>
-                    <Button variant="contained" color="primary" onClick={this.submitPom}> 
-                        <InputIcon />
+                    <Button variant="contained" color="primary" size="large" 
+                    onClick={this.submitPom} endIcon={<InputIcon />}> 
+                    Pomodoro  
                     </Button>
                 </Grid>
             </Grid>

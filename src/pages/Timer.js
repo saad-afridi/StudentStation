@@ -13,7 +13,7 @@ import {Typography, Container, Grid,
 import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 import PlayIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause'
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import SkipNextIcon from '@material-ui/icons/SkipNext';
 
 // Theme and Styling
 import { withStyles } from '@material-ui/styles';
@@ -79,7 +79,7 @@ class TimerPage extends React.Component {
                 <Grid item>
                     <Button color="primary" size="large" variant="contained" 
                     onClick={this.nextSession} disabled={!pomOn}> 
-                        Skip <NavigateNextIcon />
+                        Skip <SkipNextIcon />
                     </Button>
                 </Grid>
             </Grid>
