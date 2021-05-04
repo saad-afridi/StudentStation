@@ -35,8 +35,8 @@ class CourseList extends Component {
         )
     }
 
-    updateMarks = (marks) => {
-
+    updateMarks = (course, marks) => {
+        this.props.updateMarksFn(course, marks);
     }
 
 }

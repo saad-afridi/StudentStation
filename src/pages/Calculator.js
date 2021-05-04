@@ -70,10 +70,18 @@ class CalculatorPage extends Component {
         localStorage.setItem("courses", JSON.stringify(this.state.courses));
     }
 
-    updateMarks = (marks) => {
-        this.setState({
-            
-        });        
+    updateMarks = async (course, mark) => {
+        const newCourses = this.state.courses.map(_course => {
+            if(_course.name === course.name) {
+                return {
+                    name: course.name,
+                    mark: [...course.marks, mark]
+                }
+            }
+            return _course;
+        })
+        await this.setState({ courses: newCourses});
+        localStorage.setItem('courses', JSON.stringify(this.state.courses));    
     }
 }
 

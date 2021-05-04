@@ -24,13 +24,13 @@ class CourseItem extends Component {
         return (
         <Grid item> 
             <Typography variant="h5" align="left"> {course.name} </Typography>
-            <AddMark updateMarksFn={this.updateMarks}/>
+            <AddMark updateMarksFn={this.updateMarks} course={course} />
         </Grid>
         )
     }
 
-    updateMarks = (mark) => {
-        this.props.updateMarksFn();
+    updateMarks = (course, mark) => {
+        this.props.updateMarksFn(course, mark);
     }
 
 }
