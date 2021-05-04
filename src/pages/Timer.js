@@ -24,6 +24,9 @@ const styles = theme => ({
     header: {
         margin: "80px 0px 30px 0px",
         color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
+    },
+    control: {
+        margin: "20px 0px 20px 0px"
     }
 });
 
@@ -69,8 +72,9 @@ class TimerPage extends React.Component {
             </Grid>
             
             <ShowTime timeLeft={this.state.alarm} pomOn={this.state.pomOn} session={this.state.session}></ShowTime>
-
-            <Grid container spacing={2} justify="center" alignItems="center">
+            <LinearProgress variant="determinate" value={this.calculateProgress()}></LinearProgress>
+            
+            <Grid container spacing={2} justify="center" alignItems="center" className={classes.control}>
                 <Grid item>
                     <Button color="primary" size="large" variant="contained" onClick={this.togglePause}> 
                         {this.state.paused ?  'Play' : 'Pause'} 
@@ -87,7 +91,7 @@ class TimerPage extends React.Component {
 
             <SetTimer setAlarmFn={this.setAlarmTime}></SetTimer>
             <SetPomodoro getPomFn={this.getPom}></SetPomodoro>
-            
+
         </Container>
         )
     }
@@ -123,24 +127,24 @@ class TimerPage extends React.Component {
         }
     }
 
+    // Pause button
     togglePause = () => {
         if (this.state.alarm !== -2) {
             this.setState({paused: !this.state.paused});
         }
     }
 
+    // Getting Pom Input
     getPom = (work, shortBreak, longBreak) => {
-        console.log(work, shortBreak, longBreak);
-        
         // Dealing with invalid input
         if (Number(work) === 0 || Number(shortBreak) === 0 || Number(longBreak) === 0) {
             return;
         }
-
         this.setState({pom: [Number(work) * 60, Number(shortBreak) * 60, Number(longBreak) * 60], 
         session: 0, pomOn: true});
     }
 
+    // Checking Pomodoro
     checkPom = () => {
         // Starting Pomodoro
         if (this.state.session === 0) {
@@ -177,6 +181,7 @@ class TimerPage extends React.Component {
         }
     }
 
+    // Skipping to next Session
     nextSession = () => {
         console.log(this.state.session);
         // Work -> Long Break
@@ -196,6 +201,14 @@ class TimerPage extends React.Component {
                 this.setState({alarm: this.state.pom[0], session: 1});
             }
         }
+    }
+
+    // Calculate progress for linearBar
+    calculateProgress = () => {
+        if(this.state.alarm <= 0 || !this.state.pomOn) {
+            return 100;
+        }
+        return (this.state.session / 8) * 100;
     }
 }
 
