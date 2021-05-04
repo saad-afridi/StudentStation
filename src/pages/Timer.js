@@ -25,9 +25,9 @@ const styles = theme => ({
         margin: "80px 0px 30px 0px",
         color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
     },
-    control: {
+    controlButtons: {
         margin: "20px 0px 20px 0px"
-    }
+    },
 });
 
 class TimerPage extends React.Component {
@@ -44,14 +44,6 @@ class TimerPage extends React.Component {
         this.setAlarmTime = this.setAlarmTime.bind(this);
     }
 
-    componentDidMount(){
-        this.interval = setInterval(
-          () => this.checkAlarmClock(),1000);
-    }
-    
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
 
     render () {
         const {classes} = this.props;
@@ -74,9 +66,10 @@ class TimerPage extends React.Component {
             <ShowTime timeLeft={alarm} pomOn={pomOn} session={session}></ShowTime>
 
             {pomOn ? <LinearProgress variant="determinate" value={this.calculateProgress()} 
-            color={pomOn && session % 2 === 0 ? "primary" : "secondary"}></LinearProgress> : ''}
+            ></LinearProgress> : ''}
             
-            <Grid container spacing={2} justify="center" alignItems="center" className={classes.control}>
+            <Grid container spacing={2} justify="center" alignItems="center" 
+            className={classes.controlButtons}>
                 <Grid item>
                     <Button color="primary" size="large" variant="contained" onClick={this.togglePause} disabled={alarm === -2}> 
                         {paused ?  'Play' : 'Pause'} 
@@ -136,6 +129,7 @@ class TimerPage extends React.Component {
 
 TimerPage.propTypes = {
     classes: PropTypes.object.isRequired,
+    session: PropTypes.number.isRequired,
 };
 
 export default withStyles(styles)(TimerPage);

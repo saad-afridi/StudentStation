@@ -11,8 +11,17 @@ const styles = theme => ({
     root: {
         margin: "5px 0px 50px 15px",
         color: (props) => 
-        props.pomOn && props.session % 2 === 0 
-        ? theme.palette.secondary.main : theme.palette.primary.main,
+        { 
+            if(props.pomOn && props.session % 2 === 0) {
+                if(theme.palette.type === "light") {
+                    return theme.palette.secondary.dark;
+                } else {
+                    return theme.palette.secondary.light;
+                }
+            } else {
+                return theme.palette.primary.main;
+            }
+        }
     }
 })
 

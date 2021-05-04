@@ -18,7 +18,7 @@ const styles = theme => ({
             !props.todo.completed
             ? '1' : '0.4',
         textDecoration: (props) =>
-        !props.todo.completed
+            !props.todo.completed
             ? '' : 'line-through'
     }
 });

@@ -12,7 +12,8 @@ import PropTypes from 'prop-types';
 
 const styles = theme => ({
     root: {
-        margin: '5px',
+        margin: theme.spacing(2),
+        minWidth: 500,
     }
 })
 
@@ -99,18 +100,16 @@ class SetPomodoro extends React.Component {
     }
 
     updateSettings = (pom) => {
-        this.setState({work: pom[0], shortBreak: pom[1], longBreak: pom[2]});
+        this.setState({work: pom[0] / 60, shortBreak: pom[1] / 60, longBreak: pom[2] / 60});
     }
 
     updateWork = (e) => {
         this.setState({work: e.target.value});
     }
 
-    
     updateBreak = (e) => {
         this.setState({shortBreak: e.target.value});
     }
-
     
     updateLongBreak = (e) => {
         this.setState({longBreak: e.target.value});
