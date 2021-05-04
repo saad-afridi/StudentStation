@@ -88,6 +88,7 @@ class App extends React.Component {
             this.setState({ darkMode: savedTheme})
         }
         const pom = localStorage.getItem('pom-settings');
+        console.log(pom);
         if (pom) {
             const savedPom = JSON.parse(pom);
             this.setState({ pom: savedPom});
@@ -138,7 +139,8 @@ class App extends React.Component {
             session={this.state.session}
             paused={this.state.paused}
             pom={this.state.pom}
-            />}
+            >
+            </TimerPage>}
         </ThemeProvider>
         </div>
         )
@@ -200,7 +202,7 @@ class App extends React.Component {
         }
         await this.setState({pom: [Number(work) * 60, Number(shortBreak) * 60, Number(longBreak) * 60], 
         session: 0, pomOn: true});
-        localStorage.setItem('pom-settings', JSON.stringify(this.state.pomOn));
+        localStorage.setItem('pom-settings', JSON.stringify(this.state.pom));
     }
 
     // Checking Pomodoro
@@ -236,7 +238,6 @@ class App extends React.Component {
             }
         } else {
             this.setState({ alarm: this.state.alarm - 1 });
-            console.log("not yet");
         }
     }
 

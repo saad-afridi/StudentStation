@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Material UI Components
-import {Grid, TextField, Button} from '@material-ui/core';
+import {Grid, FormControl, InputLabel, Select, MenuItem, Button} from '@material-ui/core';
 
 // Material UI Icons
 import InputIcon from '@material-ui/icons/Input';
@@ -16,50 +16,90 @@ const styles = theme => ({
     }
 })
 
+const minsArr = () => {
+    let arr = [];
+    for (let i = 5; i <= 60; i += 5) {
+        arr.push(i);
+    }
+    return arr;
+}
+
 class SetPomodoro extends React.Component {
 
     constructor() {
         super();
         this.state = {
-            work: '25',
-            shortBreak: '5',
-            longBreak: '30',
+            work: 0,
+            shortBreak: 0,
+            longBreak: 0,
         }
     }
 
     render () {
-        const {classes} = this.props;
+        const {classes, pom} = this.props;
+        const minArr = minsArr();
+
+        if (this.state.work === 0 || this.state.shortBreak === 0 || this.state.longBreak === 0 ) {
+            this.updateSettings(pom);
+        }
+
         return (
-            <form onSubmit={this.submitPom}>
-                <Grid container spacing={2} direction="row" justify="center" alignItems="center"
-                className={classes.root}>
-                    <Grid item>
-                        <TextField variant="filled" type="number" label="Work" id="set-work" defaultValue='25'
-                        onKeyDown={this.keyPress} onChange={this.updateWork}> </TextField>
-                    </Grid>
-                    <Grid item>
-                        <TextField variant="filled" type="number" label="Short Break" id="set-break" defaultValue='5'
-                        onKeyDown={this.keyPress} onChange={this.updateBreak}> </TextField>
-                    </Grid>
-                    <Grid item>
-                        <TextField variant="filled" type="number" label="Long Break" id="set-longBreak" defaultValue='30'
-                        onKeyDown={this.keyPress} onChange={this.updateLongBreak}> </TextField>
-                    </Grid>
-                    <Grid item>
-                        <Button variant="contained" color="primary" onClick={this.submitPom}> 
-                            <InputIcon />
-                        </Button>
-                    </Grid>
+            
+            <Grid container spacing={2} direction="row" justify="center" alignItems="center"
+            className={classes.root}>
+                <Grid item>
+                    <FormControl variant="standard">
+                        <InputLabel id="set-work-time">Work</InputLabel>
+                        <Select id="set-work" value={this.state.work} onChange={this.updateWork}>
+                            {
+                                minArr.map((_value) => {
+                                    return(
+                                        <MenuItem value={_value}> {String(_value) + " mins"}</MenuItem>
+                                    )
+                                })
+                            }
+                        </Select>
+                    </FormControl>
                 </Grid>
-            </form>
+                <Grid item>
+                    <FormControl variant="standard">
+                        <InputLabel id="set-long-break">Short Break</InputLabel>
+                        <Select id="set-work" value={this.state.shortBreak} onChange={this.updateBreak}>
+                            {
+                                minArr.map((_value) => {
+                                    return(
+                                        <MenuItem value={_value}> {String(_value) + " mins"}</MenuItem>
+                                    )
+                                })
+                            }
+                        </Select>
+                    </FormControl>
+                </Grid>
+                <Grid item>
+                    <FormControl variant="standard">
+                        <InputLabel id="set-short-break">Long Break</InputLabel>
+                        <Select id="set-work" value={this.state.longBreak} onChange={this.updateLongBreak}>
+                            {
+                                minArr.map((_value) => {
+                                    return(
+                                        <MenuItem value={_value}> {String(_value) + " mins"}</MenuItem>
+                                    )
+                                })
+                            }
+                        </Select>
+                    </FormControl>
+                </Grid>
+                <Grid item>
+                    <Button variant="contained" color="primary" onClick={this.submitPom}> 
+                        <InputIcon />
+                    </Button>
+                </Grid>
+            </Grid>
         )
     }
 
-    keyPress = (e) => {
-        // Submit if they press enter
-        if(e.keyCode === 13) {
-            this.submitPom(e);
-        }
+    updateSettings = (pom) => {
+        this.setState({work: pom[0], shortBreak: pom[1], longBreak: pom[2]});
     }
 
     updateWork = (e) => {
@@ -79,14 +119,6 @@ class SetPomodoro extends React.Component {
     submitPom = (e) => {
         e.preventDefault();
         this.props.getPomFn(this.state.work, this.state.shortBreak, this.state.longBreak);
-        this.setState({
-            work: '25',
-            shortBreak: '5',
-            longBreak: '30',
-        });
-        document.getElementById('set-work').value = '25';
-        document.getElementById('set-break').value = '5';
-        document.getElementById('set-longBreak').value = '30';
     }
 }
 

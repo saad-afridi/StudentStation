@@ -55,7 +55,7 @@ class TimerPage extends React.Component {
 
     render () {
         const {classes} = this.props;
-        const {alarm, session, pomOn, paused} = this.props;
+        const {alarm, session, pomOn, paused, pom} = this.props;
         return (
         
         <Container className="TimerContainer"> 
@@ -72,12 +72,13 @@ class TimerPage extends React.Component {
             </Grid>
             
             <ShowTime timeLeft={alarm} pomOn={pomOn} session={session}></ShowTime>
-            <LinearProgress variant="determinate" value={this.calculateProgress()} 
-            color={pomOn && session % 2 === 0 ? "primary" : "secondary"}></LinearProgress>
+
+            {pomOn ? <LinearProgress variant="determinate" value={this.calculateProgress()} 
+            color={pomOn && session % 2 === 0 ? "primary" : "secondary"}></LinearProgress> : ''}
             
             <Grid container spacing={2} justify="center" alignItems="center" className={classes.control}>
                 <Grid item>
-                    <Button color="primary" size="large" variant="contained" onClick={this.togglePause}> 
+                    <Button color="primary" size="large" variant="contained" onClick={this.togglePause} disabled={alarm === -2}> 
                         {paused ?  'Play' : 'Pause'} 
                         {paused ?  <PlayIcon /> : <PauseIcon />} 
                     </Button>
@@ -91,7 +92,7 @@ class TimerPage extends React.Component {
             </Grid>
 
             <SetTimer setAlarmFn={this.setAlarmTime}></SetTimer>
-            <SetPomodoro getPomFn={this.getPom}></SetPomodoro>
+            <SetPomodoro getPomFn={this.getPom} pom={pom}></SetPomodoro>
 
         </Container>
         )
@@ -99,7 +100,7 @@ class TimerPage extends React.Component {
 
     // Sets the Alarm Time -> Converts hours + minutes to seconds
     setAlarmTime = (hours, minutes) => {
-        this.props.setAlarmFn(hours, minutes); 
+        this.props.updateAlarmTimeFn(hours, minutes); 
     }
 
     // Check if Alarm is over or not
