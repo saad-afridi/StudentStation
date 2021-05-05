@@ -24,6 +24,11 @@ const styles = theme => ({
 
 class CalculatorPage extends Component {
 
+    // <Courses> is a lit of <Course> objects
+    // where <Course> has keys, name and marks
+    // name is a unique id of a <Course>
+    // marks is a list of all the marks of a <Course> 
+
     constructor() {
         super();
         this.state = {
@@ -70,13 +75,11 @@ class CalculatorPage extends Component {
         localStorage.setItem("courses", JSON.stringify(this.state.courses));
     }
 
-    updateMarks = async (course, mark) => {
+    updateMarks = async (course) => {
+        console.log(course.name, this.state.courses);
         const newCourses = this.state.courses.map(_course => {
             if(_course.name === course.name) {
-                return {
-                    name: course.name,
-                    mark: [...course.marks, mark]
-                }
+                return course;
             }
             return _course;
         })

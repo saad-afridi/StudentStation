@@ -23,7 +23,8 @@ class CourseList extends Component {
         const {classes, courses} = this.props;
 
         return (
-        <Grid container spacing={2} className={classes.coursesContainer}>
+        <Grid container spacing={2} direction="row" alignItems="flex-start" justify="space-around" 
+        className={classes.coursesContainer}>
             {
                 courses.map((_value, _index) => {
                     return(
@@ -35,8 +36,8 @@ class CourseList extends Component {
         )
     }
 
-    updateMarks = (course, marks) => {
-        this.props.updateMarksFn(course, marks);
+    updateMarks = (course) => {
+        this.props.updateMarksFn(course);
     }
 
 }
