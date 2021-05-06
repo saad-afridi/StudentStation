@@ -30,12 +30,26 @@ class SetPomodoro extends React.Component {
 
     constructor() {
         super();
-        this.state = {
-            work: 25,
-            shortBreak: 5,
-            longBreak: 30,
+
+        const pom = localStorage.getItem('pom-settings');
+        if (pom) {
+            const savedPom = JSON.parse(pom);
+            this.state = {
+                work: savedPom[0] / 60,
+                shortBreak: savedPom[1] / 60,
+                longBreak: savedPom[2] / 60,
+            }
         }
+        else {
+            this.state = {
+                work: 25,
+                shortbreak: 5, 
+                longBreak: 30
+            }
+        }
+        
     }
+
 
     render () {
         const {classes, pom} = this.props;
