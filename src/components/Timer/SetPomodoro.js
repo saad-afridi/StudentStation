@@ -31,9 +31,9 @@ class SetPomodoro extends React.Component {
     constructor() {
         super();
         this.state = {
-            work: 0,
-            shortBreak: 0,
-            longBreak: 0,
+            work: 25,
+            shortBreak: 5,
+            longBreak: 30,
         }
     }
 
@@ -65,8 +65,8 @@ class SetPomodoro extends React.Component {
                 </Grid>
                 <Grid item>
                     <FormControl variant="standard" className={classes.formControl}>
-                        <InputLabel id="set-long-break">Short Break</InputLabel>
-                        <Select id="set-work" value={this.state.shortBreak} onChange={this.updateBreak}>
+                        <InputLabel id="set-short-break">Short Break</InputLabel>
+                        <Select id="set-short" value={this.state.shortBreak} onChange={this.updateBreak}>
                             {
                                 minArr.map((_value) => {
                                     return(
@@ -79,10 +79,10 @@ class SetPomodoro extends React.Component {
                 </Grid>
                 <Grid item>
                     <FormControl variant="standard" className={classes.formControl}>
-                        <InputLabel id="set-short-break">Long Break</InputLabel>
-                        <Select id="set-work" value={this.state.longBreak} onChange={this.updateLongBreak}>
+                        <InputLabel id="set-long-break">Long Break</InputLabel>
+                        <Select id="set-long" value={this.state.longBreak} onChange={this.updateLongBreak}>
                             {
-                                minArr.map((_value) => {
+                                minArr.map((_value, i) => {
                                     return(
                                         <MenuItem value={_value}> {String(_value) + " mins"}</MenuItem>
                                     )

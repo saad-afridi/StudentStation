@@ -29,8 +29,8 @@ class CourseItem extends Component {
         <Grid item component={Paper} className={classes.course}> 
             <Typography variant="h5" align="left"> {course.name} </Typography>
             <hr />
-            <AddMark updateMarksFn={this.updateMarks} course={course} />
-            {course.marks.length > 0 ? <MarkList marks={course.marks}/> : ""}
+            <AddMark updateMarksFn={this.updateMarks.bind(this, course)} course={course} />
+            {course.marks.length > 0 ? <MarkList updateMarksFn={this.updateMarks.bind(this, course)} course={course} /> : ""}
         </Grid>
         )
     }
@@ -38,7 +38,6 @@ class CourseItem extends Component {
     updateMarks = (course) => {
         this.props.updateMarksFn(course);
     }
-
 }
 
 CourseItem.propTypes = {

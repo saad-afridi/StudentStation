@@ -35,25 +35,25 @@ class AddMark extends Component {
 
     render() {
 
-        const {classes} = this.props;
+        const {classes, course} = this.props;
         return (
             <Grid container spacing={2} direction="row" alignItems="center" justify="space-around"
             className={classes.addMarkForm}>
                 <Grid item>
                     <FormControl className={classes.formControl} >
-                        <TextField label="Mark Type" type="text" id="mark-type"
+                        <TextField label="Mark Type" type="text" id={"mark-type " + course.name}
                         onChange={this.updateMarkType} onKeyDown={this.onKeyPress}/>
                     </FormControl>
                 </Grid>
                 <Grid item>
                     <FormControl className={classes.formControl}>
-                        <TextField label="Mark (%)" type="number" id="mark"
+                        <TextField label="Mark (%)" type="number" id={"mark " + course.name}
                         onChange={this.updateMark} onKeyDown={this.onKeyPress}/>
                     </FormControl>
                 </Grid>
                 <Grid item>
                     <FormControl className={classes.formControl}>
-                        <TextField label="Weight (%)" type="number" id="weight"
+                        <TextField label="Weight (%)" type="number" id={"weight " + course.name}
                         onChange={this.updateWeight} onKeyDown={this.onKeyPress}/>
                     </FormControl>
                 </Grid>
@@ -97,9 +97,9 @@ class AddMark extends Component {
             this.props.updateMarksFn(course);
         }
         this.setState({ type: "Test", mark: 0, weight: 0});
-        document.getElementById("mark-type").value = "";
-        document.getElementById("mark").value = "";
-        document.getElementById("weight").value = "";
+        document.getElementById("mark-type " + course.name).value = "";
+        document.getElementById("mark " + course.name).value = "";
+        document.getElementById("weight " + course.name).value = "";
     }
 
 }

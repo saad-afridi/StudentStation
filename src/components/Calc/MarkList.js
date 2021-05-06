@@ -25,15 +25,20 @@ const createData = (type, mark, weight) => {
 
 
 class MarkList extends React.Component {
+    constructor(props){
+        super(props);
+        const {course} = this.props;
+        this.state = {
+            rows: course.marks.map(_mark => {
+                return (
+                    createData(_mark[0], _mark[1], _mark[2])
+                )
+            }) 
+        };
+    }
 
     render(){
-        const {classes, marks} = this.props;
-
-        const rows = marks.map(_mark => {
-            return (
-                createData(_mark[0], _mark[1], _mark[2])
-            )
-        });
+        const {classes} = this.props;
 
         return (
             <TableContainer component={Paper}>
@@ -47,14 +52,18 @@ class MarkList extends React.Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row, index) => (
+                        {this.state.rows.map((row, index) => (
                             <TableRow key={index}>
                                 <TableCell component="th" scope="row">
                                     {row.type}
                                 </TableCell>
                                 <TableCell align="right">{row.mark}</TableCell>
                                 <TableCell align="right">{row.weight}</TableCell>
-                                <TableCell> <IconButton onClick={this.deleteMark(index)}> <DeleteIcon /> </IconButton> </TableCell>
+                                <TableCell >
+                                    <IconButton onClick={this.deleteMark.bind(this, index)}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -63,8 +72,14 @@ class MarkList extends React.Component {
         )
     }
 
-    deleteMark = (e, index) => {
-        console.log(e, index);
+    deleteMark = async (e, index) => {
+        let { rows } = this.state;
+        let { course } = this.props;
+        rows.splice(index, 1);
+        await this.setState({ rows });
+        course.marks = this.state.rows;
+        this.props.updateMarksFn(course);
+        console.log(e, course);
     }
 }
 
