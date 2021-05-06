@@ -43,7 +43,7 @@ class SetPomodoro extends React.Component {
         else {
             this.state = {
                 work: 25,
-                shortbreak: 5, 
+                shortBreak: 5, 
                 longBreak: 30
             }
         }
