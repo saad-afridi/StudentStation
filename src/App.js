@@ -111,7 +111,6 @@ class App extends React.Component {
         const {classes} = this.props;
         return (
         <div className="App">
-        <title>Student Station</title>
         <ThemeProvider theme={this.state.darkMode ? themeDark : themeLight}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
             <CssBaseline />
