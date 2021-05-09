@@ -21,21 +21,32 @@ const styles = theme => ({
 
 class CourseItem extends Component {
  
+    constructor(props) {
+        super(props);
+        const {course} = this.props;
+        
+        this.state = {
+            course : course,
+        };
+    }
 
     render() {
-        const {classes, course} = this.props;
+        const {classes} = this.props;
 
         return (
         <Grid item component={Paper} className={classes.course}> 
-            <Typography variant="h5" align="left"> {course.name} </Typography>
+            <Typography variant="h5" align="left"> {this.state.course.name} </Typography>
             <hr />
-            <AddMark updateMarksFn={this.updateMarks.bind(this, course)} course={course} />
-            {course.marks.length > 0 ? <MarkList updateMarksFn={this.updateMarks.bind(this, course)} course={course} /> : ""}
+            <AddMark updateMarksFn={this.updateMarks} course={this.state.course} />
+            {this.state.course.marks.length > 0 ? 
+            <MarkList updateMarksFn={this.updateMarks} course={this.state.course} /> : ""}
         </Grid>
         )
     }
 
     updateMarks = (course) => {
+        console.log("Something happened!", course);
+        this.setState({course});
         this.props.updateMarksFn(course);
     }
 }

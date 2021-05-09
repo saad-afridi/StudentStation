@@ -18,8 +18,8 @@ const styles = theme => ({
 
 class AddCourse extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             course : {
                 name: "",

@@ -23,8 +23,8 @@ const styles = theme => ({
 
 class AddMark extends Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             type: "Test",
             mark: 0,

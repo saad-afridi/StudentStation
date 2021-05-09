@@ -23,6 +23,13 @@ const createData = (type, mark, weight) => {
     return {type, mark, weight};
 }
 
+const revertData = (rows) => {
+    const revertedMarks = rows.map(_value => {
+        return([_value.type, _value.mark, _value.weight])
+    });
+    return revertedMarks;
+}
+
 
 class MarkList extends React.Component {
     constructor(props){
@@ -75,9 +82,11 @@ class MarkList extends React.Component {
     deleteMark = async (e, index) => {
         let { rows } = this.state;
         let { course } = this.props;
+        console.log("Before", course.marks);
         rows.splice(index, 1);
         await this.setState({ rows });
-        course.marks = this.state.rows;
+        course.marks = revertData(this.state.rows);
+        console.log("After", course.marks);
         this.props.updateMarksFn(course);
         console.log(e, course);
     }

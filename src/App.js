@@ -8,13 +8,13 @@ import {AppBar, Toolbar, Typography,
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import ListIcon from '@material-ui/icons/List';
 import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
-// import HomeIcon from '@material-ui/icons/Home'
-// import FaceIcon from '@material-ui/icons/Face';
+import HomeIcon from '@material-ui/icons/Home'
+import FaceIcon from '@material-ui/icons/Face';
 
 // App Pages
 import ToDoPage from './pages/Todo';
 import TimerPage from './pages/Timer';
-// import CalculatorPage from './pages/Calculator'
+import CalculatorPage from './pages/Calculator'
 
 // Theme and Styling
 import { withStyles, ThemeProvider} from '@material-ui/styles';
@@ -120,19 +120,19 @@ class App extends React.Component {
                         Student Station
                     </Typography>
                     <Tabs value={this.state.selectedTab} onChange={this.changeTabs}>
-                        {/* <Tab label="Home" icon={<HomeIcon />} /> */}
+                        <Tab label="Home" icon={<HomeIcon />} />
                         <Tab label="Todo List" icon={<ListIcon />} />
                         <Tab label="Timer" icon={<AccessAlarmIcon />} />
-                        {/* <Tab label="Calculator" icon={<FaceIcon />} /> */}
+                        <Tab label="Calculator" icon={<FaceIcon />} />
                     </Tabs>
                     <IconButton onClick={this.changeThemes}>
                         <Brightness4Icon />
                     </IconButton>
                 </Toolbar>
             </AppBar>
-            {this.state.selectedTab === 0 && <ToDoPage />}
+            {this.state.selectedTab === 1 && <ToDoPage />}
 
-            {this.state.selectedTab === 1 && <TimerPage 
+            {this.state.selectedTab === 2 && <TimerPage 
             updateAlarmTimeFn= {this.setAlarmTime}
             checkAlarmFn={this.checkAlarmClock}
             togglePauseFn={this.togglePause}
@@ -149,7 +149,7 @@ class App extends React.Component {
             >
             </TimerPage>}
 
-            {/* {this.state.selectedTab === 3 && <CalculatorPage />} */}
+            {this.state.selectedTab === 3 && <CalculatorPage />}
         </ThemeProvider>
         </div>
         )

@@ -29,8 +29,8 @@ class CalculatorPage extends Component {
     // name is a unique id of a <Course>
     // marks is a list of all the marks of a <Course> 
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             courses : [],
         };
