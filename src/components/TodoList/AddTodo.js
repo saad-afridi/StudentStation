@@ -1,4 +1,8 @@
 import React from 'react';
+
+// Redux
+import { useSelector, useDispatch } from 'react-redux';
+
 import AddIcon from '@material-ui/icons/Add';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/styles';
@@ -15,7 +19,7 @@ class AddTodo extends React.Component {
     constructor() {
         super();
         this.state = {
-            todo: ''
+            text: ''
         };
     }
 
@@ -39,13 +43,13 @@ class AddTodo extends React.Component {
     }
 
     updateInput = (e) => {
-        this.setState({ todo: e.target.value });
+        this.setState({ text: e.target.value });
     }
 
     submitTodo = (e) => {
         e.preventDefault();
-        this.props.addToDoFn(this.state.todo);
-        this.setState({ todo: ''});
+        this.props.addToDoFn(this.state.text);
+        this.setState({ text: ''});
         document.getElementById('add-task-input').value = '';
     }
 }
