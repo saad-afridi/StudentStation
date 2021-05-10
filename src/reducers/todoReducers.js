@@ -20,7 +20,6 @@ export default function todoReducers(state=initialState, action) {
             return {todos: [action.payload, ...state.todos]}
 
         case 'DELETE-TODO':
-            console.log("I GET HERE!");
             return {todos: delTodo(state, action.payload)}
 
         case 'TOGGLE-TODO':

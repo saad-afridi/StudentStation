@@ -14,15 +14,11 @@ import ListIcon from '@material-ui/icons/List'
 
 export default function ToDoPage() {
   return(
-
     <Container className="TodoContainer" >
-        <PageTitle>
-        text={"What To Do?"} 
-        icon={
-            <ListIcon
-            style={{transform: 'scale(2.0)'}}>
-            </ListIcon>} 
-        </PageTitle>
+        <PageTitle
+            text={"What To Do?"} 
+            icon={<ListIcon style={{transform: 'scale(2.0)'}} />} 
+        />
         <AddTodo />
         <TodoList />
     </Container>
