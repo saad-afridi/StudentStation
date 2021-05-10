@@ -20,6 +20,7 @@ export default function todoReducers(state=initialState, action) {
             return {todos: [action.payload, ...state.todos]}
 
         case 'DELETE-TODO':
+            console.log("I GET HERE!");
             return {todos: delTodo(state, action.payload)}
 
         case 'TOGGLE-TODO':
@@ -32,7 +33,7 @@ export default function todoReducers(state=initialState, action) {
 
 const delTodo = (state, todo) => {
     return state.todos.filter(function(value) {
-        return value.text === todo.text;
+        return value.text !== todo.text;
     })
 }
 

@@ -1,25 +1,27 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 
-class TodoList extends React.Component {
-    render() {
-        const { todos } = this.props;
+import { useSelector } from 'react-redux';
 
-        const completed = todos.filter(function(value) {
-            return value.completed === true;
-        });
+export const TodoList = () => {
+    
+    const {todos} = useSelector(state => state.todoListState);
 
-        const notcompleted = todos.filter(function(value) {
-            return value.completed === false;
-        });
+    const completed = todos.filter(function(value) {
+        return value.completed === true;
+    });
 
-        return(
+    const notcompleted = todos.filter(function(value) {
+        return value.completed === false;
+    });
+
+    return(
         <>
         <div className='CompletedContainer'> 
             {
                 notcompleted.map((_todo, _index) => {
                     return(
-                        <TodoItem updateTodoFn={this.updateTodo} key={_index} todo={_todo}></TodoItem>
+                        <TodoItem key={_index} todo={_todo}></TodoItem>
                     )
                 })
             }
@@ -29,18 +31,14 @@ class TodoList extends React.Component {
             {
                 completed.map((_todo, _index) => {
                     return(
-                        <TodoItem updateTodoFn={this.updateTodo} key={_index} todo={_todo}></TodoItem>
+                        <TodoItem key={_index} todo={_todo}></TodoItem>
                     )
                 })
             }
         </div>
         </>
-        );
-    }
+    );
 
-    updateTodo = (todo) => {
-        this.props.updateTodoFn(todo); 
-    }
 }
 
 export default TodoList;
