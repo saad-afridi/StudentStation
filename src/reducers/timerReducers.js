@@ -17,30 +17,38 @@ export default function timerReducers(state = initalState, action) {
 	}
 }
 
+
+// Helper functions for state changes
 const skipSession = (state) => {
 	// Work -> Long Break
-	if (this.state.session === 7) {
-		this.setState({
-			alarm: this.state.pom[2],
-			session: this.state.session + 1,
-		});
+	if (state.session === 7) {
+		return {
+            ...state,
+			alarm: state.pom[2],
+			session: state.session + 1,
+		}
 	}
 	// Work -> Short break
-	else if (this.state.session % 2 === 1) {
-		this.setState({
-			alarm: this.state.pom[1],
-			session: this.state.session + 1,
-		});
+	else if (state.session % 2 === 1) {
+		return {
+            ...state,
+			alarm: state.pom[1],
+			session: state.session + 1,
+		};
 	}
 	// Short or Long Break -> Work
 	else {
-		if (this.state.session < 7) {
-			this.setState({
-				alarm: this.state.pom[0],
-				session: this.state.session + 1,
-			});
+		if (state.session < 7) {
+			return {
+                ...state,
+				alarm: state.pom[0],
+				session: state.session + 1,
+			};
 		} else {
-			this.setState({ alarm: this.state.pom[0], session: 1 });
+			return ({ ...state, alarm: state.pom[0], session: 1 });
 		}
 	}
 };
+
+
+

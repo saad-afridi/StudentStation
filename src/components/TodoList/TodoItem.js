@@ -41,18 +41,21 @@ export const TodoItem = (props) => {
 			direction="row"
 			justify="space-between"
 			alignItems="center"
-			className={classes.root}>
+			className={classes.root}
+		>
 			<Grid item>
 				<Checkbox
 					checked={todo.completed ? true : false}
 					onChange={() => dispatch(toggleTodo(todo))}
-					style={{ color: green[400] }}></Checkbox>
+					style={{ color: green[400] }}
+				></Checkbox>
 			</Grid>
 			<Grid item xs={6} sm={8} md={10}>
 				<Typography
 					variant="h5"
 					component="div"
-					className={classes.text}>
+					className={classes.text}
+				>
 					{todo.text}
 				</Typography>
 			</Grid>
@@ -60,9 +63,9 @@ export const TodoItem = (props) => {
 				<IconButton
 					variant="outlined"
 					style={{ color: red[400] }}
-					onClick={() => dispatch(delTodo(todo))}>
-					{' '}
-					<DeleteIcon />{' '}
+					onClick={() => dispatch(delTodo(todo))}
+				>
+					<DeleteIcon />
 				</IconButton>
 			</Grid>
 		</Grid>

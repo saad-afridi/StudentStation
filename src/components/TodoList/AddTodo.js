@@ -31,7 +31,8 @@ export const AddTodo = () => {
 			direction="row"
 			className={classes.root}
 			justify="space-between"
-			alignItems="center">
+			alignItems="center"
+		>
 			<Grid item xs={9} sm={10} md={11}>
 				<TextField
 					variant="filled"
@@ -40,14 +41,12 @@ export const AddTodo = () => {
 					id="add-task-input"
 					autoFocus={true}
 					onChange={(e) => setText(e.target.value)}
-					onKeyPress={(e) => submitForm(e, stateProps)}>
-					{' '}
-				</TextField>
+					onKeyPress={(e) => submitForm(e, stateProps)}
+				></TextField>
 			</Grid>
 			<Grid item>
 				<Fab color="primary" onClick={(e) => submitForm(e, stateProps)}>
-					{' '}
-					<AddIcon />{' '}
+					<AddIcon />
 				</Fab>
 			</Grid>
 		</Grid>

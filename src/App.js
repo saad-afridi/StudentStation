@@ -112,7 +112,8 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<ThemeProvider
-					theme={this.state.darkMode ? themeDark : themeLight}>
+					theme={this.state.darkMode ? themeDark : themeLight}
+				>
 					<link
 						rel="stylesheet"
 						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
@@ -125,7 +126,8 @@ class App extends React.Component {
 							</Typography>
 							<Tabs
 								value={this.state.selectedTab}
-								onChange={this.changeTabs}>
+								onChange={this.changeTabs}
+							>
 								<Tab label="Home" icon={<HomeIcon />} />
 								<Tab label="Todo List" icon={<ListIcon />} />
 								<Tab label="Timer" icon={<AccessAlarmIcon />} />
@@ -151,7 +153,8 @@ class App extends React.Component {
 							pomOn={this.state.pomOn}
 							session={this.state.session}
 							paused={this.state.paused}
-							pom={this.state.pom}></TimerPage>
+							pom={this.state.pom}
+						></TimerPage>
 					)}
 
 					{this.state.selectedTab === 3 && <CalculatorPage />}
