@@ -24,32 +24,12 @@ const styles = theme => ({
 
 class CalculatorPage extends Component {
 
-    // <Courses> is a lit of <Course> objects
-    // where <Course> has keys, name and marks
-    // name is a unique id of a <Course>
-    // marks is a list of all the marks of a <Course> 
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            courses : [],
-        };
-    }
-
-    componentDidMount = () => {
-        const courses = localStorage.getItem('courses');
-        if (courses) {
-          const savedCourses = JSON.parse(courses);
-          this.setState({ courses: savedCourses });
-        }
-    }
-
     render() {
         return (
             <Container className="CalcContainer"> 
                 <PageTitle text={"Prepare and Analyze"} icon={<FaceIcon style={{transform: 'scale(2.0)'}}/>}/>
-                <AddCourse AddCourseFn={this.addCourse} />
-                <CourseList updateMarksFn={this.updateMarks} courses={this.state.courses} />
+                <AddCourse />
+                {/* <CourseList updateMarksFn={this.updateMarks} courses={this.state.courses} /> */}
             </Container>
         )
     }

@@ -1,66 +1,87 @@
-import React, { Component } from 'react'
+import React from 'react';
 
 // Material UI Components
-import { Grid, TextField, Fab} from '@material-ui/core'
+import { Grid, TextField, Fab } from '@material-ui/core';
 
 // Material UI Icons
 import AddIcon from '@material-ui/icons/Add';
 
 // Theme and Styling
-import { withStyles } from '@material-ui/styles';
-import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
-    root: {
-      marginBottom: "35px"
-    },
+// Redux
+import { useSelector, useDispatch } from 'react-redux';
+import { addCourse } from '../../actions/calcActions';
+
+const useStyles = makeStyles({
+	root: {
+		marginBottom: '35px',
+	},
 });
 
-class AddCourse extends Component {
+export const AddCourse = () => {
+	const classes = useStyles();
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            course : {
-                name: "",
-            },
-        };
-    }
-    
+	const [text, setText] = React.useState('');
+	const { courses } = useSelector((state) => state.calcState);
+	const dispatch = useDispatch();
 
-    render() {
-        const {classes} = this.props;
+	const stateProps = { text, setText, dispatch, courses };
 
-        return (
-        <form onSubmit={this.submitCourse}>
-            <Grid container spacing={1} direction="row" className={classes.root} justify="space-between" 
-            alignItems="center">
-                <Grid item xs={9} sm={10} md={11}>
-                    <TextField variant="filled" label="Course Name" fullWidth={true} id="add-course"
-                    autoFocus={true} className={classes.textInput} onChange={this.updateName} > </TextField>  
-                </Grid>
-                <Grid item>
-                    <Fab color="primary" onClick={this.submitCourse}> <AddIcon /> </Fab>
-                </Grid>
-            </Grid>
-        </form>
-        )
-    }
+	return (
+		<Grid
+			container
+			spacing={1}
+			direction="row"
+			className={classes.root}
+			justify="space-between"
+			alignItems="center"
+		>
+			<Grid item xs={9} sm={10} md={11}>
+				<TextField
+					variant="filled"
+					label="Course Name"
+					fullWidth={true}
+					id="add-course"
+					autoFocus={true}
+					onChange={(e) => setText(e.target.value)}
+					onKeyPress={(e) => submitForm(e, stateProps)}
+				></TextField>
+			</Grid>
+			<Grid item>
+				<Fab color="primary" onClick={(e) => submitForm(e, stateProps)}>
+					<AddIcon />
+				</Fab>
+			</Grid>
+		</Grid>
+	);
+};
 
-    updateName = (e) => {
-        this.setState({course: { name: e.target.value}});
-    }
+const submitForm = (e, stateProps) => {
+	const { text, setText, dispatch, courses } = stateProps;
 
-    submitCourse = (e) => {
-        e.preventDefault();
-        this.props.AddCourseFn(this.state.course);
-        this.setState({course : { name: ""}});
-        document.getElementById("add-course").value = "";
-    }
-}
+	// If clicked or pressed enter => Submit
+	if (e.charCode === 13 || e.charCode === undefined) {
+		// check if text empty or arleady exists
+        let isValid = true;
 
-AddCourse.propTypes = {
-    classes: PropTypes.object.isRequired,
-}
+		for (let i = 0; i < courses.length; i++) {
+			if (courses[i].name === text) {
+				isValid = false;
+			}
+		}
 
-export default withStyles(styles)(AddCourse);
+		if (text === '') {
+            isValid = false;
+        }
+
+		e.preventDefault();
+        (isValid) 
+            ? dispatch(addCourse({ name: text, marks: [] })) 
+		    : dispatch(addCourse({ name: 'Course ' + String(courses.length + 1), marks: [] }));
+		document.getElementById('add-course').value = '';
+		setText('');
+	}
+};
+
+export default AddCourse;
