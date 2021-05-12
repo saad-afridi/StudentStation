@@ -1,49 +1,43 @@
-import React, { Component } from 'react'
+import React from 'react';
 
 // Calc Components
-import CourseItem from './CourseItem'
+import CourseItem from './CourseItem';
 
 // Material UI Components
-import { Grid } from '@material-ui/core'
+import { Grid } from '@material-ui/core';
 
 // Theme and Styling
-import { withStyles } from '@material-ui/styles';
-import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
-    coursesContainer: {
-      marginBottom: "35px"
-    },
+// Redux
+import { useSelector } from 'react-redux';
+
+const useStyles = makeStyles({
+	coursesContainer: {
+		marginBottom: '35px',
+	},
 });
 
-class CourseList extends Component {
- 
+export const CourseList = () => {
+	const classes = useStyles();
+	const { courses } = useSelector((state) => state.calcState);
 
-    render() {
-        const {classes, courses} = this.props;
+    console.log("SHOWING COURSES WHEN SOMETHNG HAPENNES", courses);
 
-        return (
-        <Grid container spacing={2} direction="row" alignItems="flex-start" justify="space-around" 
-        className={classes.coursesContainer}>
-            {
-                courses.map((_value, _index) => {
-                    return(
-                        <CourseItem  updateMarksFn={this.updateMarks} course={_value} key={_index}  />
-                    ) 
-                })
-            }
-        </Grid>
-        )
-    }
+	return (
+		<Grid
+			container
+			spacing={2}
+			direction="row"
+			alignItems="flex-start"
+			justify="space-around"
+			className={classes.coursesContainer}
+		>
+			{courses.map((_value, _index) => {
+				return <CourseItem course={_value} key={_index} />;
+			})}
+		</Grid>
+	);
+};
 
-    updateMarks = (course) => {
-        this.props.updateMarksFn(course);
-    }
-
-}
-
-CourseList.propTypes = {
-    classes: PropTypes.object.isRequired,
-}
-
-export default withStyles(styles)(CourseList);
+export default CourseList;

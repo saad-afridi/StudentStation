@@ -1,111 +1,175 @@
-import React, { Component } from 'react'
+import React from 'react';
 
 // Material UI Components
-import { Grid, TextField, Fab, FormControl} from '@material-ui/core'
+import { Grid, TextField, Fab, FormControl } from '@material-ui/core';
 
 // Material UI Icons
 import AddIcon from '@material-ui/icons/Add';
 
 // Theme and Styling
-import { withStyles } from '@material-ui/styles';
-import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
-    addMarkForm: {
-        margin: "10px 0px 5px 0px",
-    },
+// Redux
+import { useDispatch } from 'react-redux';
+import { addMark } from '../../actions/calcActions';
 
-    formControl: {
-        maxWidth: "90px",
+const useStyles = makeStyles({
+	addMarkForm: {
+		margin: '10px 0px 5px 0px',
+	},
 
-    }
+	formControl: {
+		maxWidth: '90px',
+	},
 });
 
-class AddMark extends Component {
+export const AddMark = (props) => {
+	const { course } = props;
+	const classes = useStyles();
 
-    constructor(props){
-        super(props);
-        this.state = {
-            type: "Test",
-            mark: 0,
-            weight: 0,
-        }
-    }
- 
+	const [type, setType] = React.useState('test');
+	const [mark, setMark] = React.useState(0);
+	const [weight, setWeight] = React.useState(0);
 
-    render() {
+	const dispatch = useDispatch();
 
-        const {classes, course} = this.props;
-        return (
-            <Grid container spacing={2} direction="row" alignItems="center" justify="space-around"
-            className={classes.addMarkForm}>
-                <Grid item>
-                    <FormControl className={classes.formControl} >
-                        <TextField label="Mark Type" type="text" id={"mark-type " + course.name}
-                        onChange={this.updateMarkType} onKeyDown={this.onKeyPress}/>
-                    </FormControl>
-                </Grid>
-                <Grid item>
-                    <FormControl className={classes.formControl}>
-                        <TextField label="Mark (%)" type="number" id={"mark " + course.name}
-                        onChange={this.updateMark} onKeyDown={this.onKeyPress}/>
-                    </FormControl>
-                </Grid>
-                <Grid item>
-                    <FormControl className={classes.formControl}>
-                        <TextField label="Weight (%)" type="number" id={"weight " + course.name}
-                        onChange={this.updateWeight} onKeyDown={this.onKeyPress}/>
-                    </FormControl>
-                </Grid>
-                <Grid item>
-                    <Fab size="small" onClick={this.submitMark} 
-                    style={{
-                        transform: "scale(0.8)",
-                        margin: "5px",
-                    }}> 
-                        <AddIcon /> 
-                    </Fab> 
-                </Grid>
-            </Grid>
-        )
-    }
+	const stateProps = {
+		type,
+		setType,
+		mark,
+		setMark,
+		weight,
+		setWeight,
+		dispatch,
+		course,
+	};
 
-    onKeyPress = (e) => {
-        if (e.keyCode === 13) {
-            return this.submitMark(e);
-        }
-    }
+	return (
+		<Grid
+			container
+			spacing={2}
+			direction="row"
+			alignItems="center"
+			justify="space-around"
+			className={classes.addMarkForm}>
+			<Grid item>
+				<FormControl className={classes.formControl}>
+					<TextField
+						label="Mark Type"
+						type="text"
+						id={'mark-type ' + course.name}
+						onChange={(e) => setType(e.target.value)}
+						onKeyPress={(e) => submitForm(e, stateProps)}
+					/>
+				</FormControl>
+			</Grid>
+			<Grid item>
+				<FormControl className={classes.formControl}>
+					<TextField
+						label="Mark (%)"
+						type="number"
+						id={'mark ' + course.name}
+						onChange={(e) => setMark(e.target.value)}
+						onKeyPress={(e) => submitForm(e, stateProps)}
+					/>
+				</FormControl>
+			</Grid>
+			<Grid item>
+				<FormControl className={classes.formControl}>
+					<TextField
+						label="Weight (%)"
+						type="number"
+						id={'weight ' + course.name}
+						onChange={(e) => setWeight(e.target.value)}
+						onKeyPress={(e) => submitForm(e, stateProps)}
+					/>
+				</FormControl>
+			</Grid>
+			<Grid item>
+				<Fab
+					size="small"
+					onClick={(e) => submitForm(e, stateProps)}
+					style={{
+						transform: 'scale(0.8)',
+						margin: '5px',
+					}}>
+					<AddIcon />
+				</Fab>
+			</Grid>
+		</Grid>
+	);
+};
 
-    updateMarkType = (e) => {
-        this.setState({ type: e.target.value});
-    }
+const submitForm = (e, stateProps) => {
+	const {
+		type,
+		setType,
+		mark,
+		setMark,
+		weight,
+		setWeight,
+		dispatch,
+		course,
+	} = stateProps;
 
-    updateMark = (e) => {
-        this.setState({ mark : e.target.value});
-    }
+	// If clicked or pressed enter => Submit
+	if (e.charCode === 13 || e.charCode === undefined) {
+		// check if mark, weight < 100 and > 0
+		// if we even have enough weight to distribute
 
-    updateWeight = (e) => {
-        this.setState({ weight: e.target.value});
-    }
+        console.log("WE GET HERE!")
 
-    submitMark = (e) => {
-        let {course} = this.props;
-        console.log("Child", course.marks, this.state.mark, this.state.weight);
-        e.preventDefault();
-        if (this.state.mark !== 0 && this.state.weight !== 0) {
-            course.marks.push([this.state.type, this.state.mark, this.state.weight]);
-            this.props.updateMarksFn(course);
-        }
-        this.setState({ type: "Test", mark: 0, weight: 0});
-        document.getElementById("mark-type " + course.name).value = "";
-        document.getElementById("mark " + course.name).value = "";
-        document.getElementById("weight " + course.name).value = "";
-    }
+		let isValid = true;
 
-}
+		if (0 > mark && mark >= 100 && 0 >= weight && weight > 100) {
+			isValid = false;
+		}
 
-AddMark.propTypes = {
-    classes: PropTypes.object.isRequired,
-}
+		let totalWeight = 0;
+		for (let i = 0; i < course.marks.length; i++) {
+			totalWeight += course.marks[i].weight;
+		}
 
-export default withStyles(styles)(AddMark);
+		if (totalWeight >= 100) {
+			isValid = false;
+		}
+
+		e.preventDefault();
+		if (isValid) {
+			course.marks.push({ type, mark, weight });
+			dispatch(addMark({ course }));
+		} else {
+			console.log('SOMETHING IS WRONG!');
+		}
+
+		// Resetting
+		document.getElementById('mark ' + course.name).value = '';
+		document.getElementById('mark-type ' + course.name).value = '';
+		document.getElementById('weight ' + course.name).value = '';
+		setType('test');
+		setMark(0);
+		setWeight(0);
+	}
+};
+// class AddMark extends Component {
+
+// 	submitMark = (e) => {
+// 		let { course } = this.props;
+// 		console.log('Child', course.marks, this.state.mark, this.state.weight);
+// 		e.preventDefault();
+// 		if (this.state.mark !== 0 && this.state.weight !== 0) {
+// 			course.marks.push([
+// 				this.state.type,
+// 				this.state.mark,
+// 				this.state.weight,
+// 			]);
+// 			this.props.updateMarksFn(course);
+// 		}
+// 		this.setState({ type: 'Test', mark: 0, weight: 0 });
+// 		document.getElementById('mark-type ' + course.name).value = '';
+// 		document.getElementById('mark ' + course.name).value = '';
+// 		document.getElementById('weight ' + course.name).value = '';
+// 	};
+// }
+
+export default AddMark;

@@ -1,7 +1,26 @@
-// <Courses> is a lit of <Course> objects
-// where <Course> has keys, name and marks
-// name is a unique id of a <Course>
-// marks is a list of all the marks of a <Course>
+/*
+<courses> is a list of <course> objects
+where <course> has keys: name and marks
+    name is a unique id of a <course> (str)
+    marks is a list of all the mark objects in a <course> (list)
+    where mark has keys: type, mark, and weight
+        type: is the name of said assessment (str)
+        mark: is the mark obtained in said assessment (int)
+        weight: is the weight of said assessment (int)
+
+Example:
+    courses: [
+    {
+        name: "Course 1",
+        marks: [
+            {type: "test", mark: 80, weight: 40},
+            {type: "a1", mark:40, weight:15},
+            ...
+        ]
+    },
+    ...
+]
+*/
 
 const getlocalCourses = () => {
 	const savedCourses = localStorage.getItem('courses');
@@ -23,7 +42,7 @@ export default function calcReducers(state=initialState, action) {
         case 'DELETE-COURSE':
             return state;
         case 'ADD-MARK':
-            return state;
+            return {courses: replaceCourse(state,action.payload)};
         case 'DELETE-MARK':
             return state;
         default:
@@ -34,3 +53,17 @@ export default function calcReducers(state=initialState, action) {
 const saveData = (courses) => {
 	localStorage.setItem('courses', JSON.stringify(courses));
 };
+
+const replaceCourse = (state, course) => {
+    console.log(state.courses);
+    const newCourses = state.courses.map(_course => {
+        if(_course.name === course.name) {
+            return course;
+        }
+        return _course;
+    })
+
+    saveData(newCourses);
+    return newCourses;
+
+}
