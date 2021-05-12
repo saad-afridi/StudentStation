@@ -22,8 +22,6 @@ export const CourseList = () => {
 	const classes = useStyles();
 	const { courses } = useSelector((state) => state.calcState);
 
-    console.log("SHOWING COURSES WHEN SOMETHNG HAPENNES", courses);
-
 	return (
 		<Grid
 			container
@@ -31,8 +29,7 @@ export const CourseList = () => {
 			direction="row"
 			alignItems="flex-start"
 			justify="space-around"
-			className={classes.coursesContainer}
-		>
+			className={classes.coursesContainer}>
 			{courses.map((_value, _index) => {
 				return <CourseItem course={_value} key={_index} />;
 			})}

@@ -1,8 +1,8 @@
 /*
 <courses> is a list of <course> objects
 where <course> has keys: name and marks
-    name is a unique id of a <course> (str)
-    marks is a list of all the mark objects in a <course> (list)
+    name: is a unique id of a <course> (str)
+    marks: is a list of all the mark objects in a <course> (list)
     where mark has keys: type, mark, and weight
         type: is the name of said assessment (str)
         mark: is the mark obtained in said assessment (int)
@@ -40,7 +40,7 @@ export default function calcReducers(state = initialState, action) {
 			saveData([...state.courses, action.payload]);
 			return { courses: [...state.courses, action.payload] };
 		case 'DELETE-COURSE':
-			return state;
+			return { courses: deleteCourse(state, action.payload) };
 		case 'ADD-MARK':
 			return { courses: replaceCourse(state, action.payload) };
 		case 'DELETE-MARK':
@@ -66,3 +66,11 @@ const replaceCourse = (state, course) => {
 	saveData(newCourses);
 	return newCourses;
 };
+
+const deleteCourse = (state, course) => {
+    const newCourses = state.courses.filter(function(value) {
+        return value.name !== course.name;
+    })
+    saveData(newCourses);
+	return newCourses;
+}

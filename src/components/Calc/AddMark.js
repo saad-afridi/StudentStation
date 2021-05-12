@@ -117,7 +117,7 @@ const submitForm = (e, stateProps) => {
 		// check if mark, weight < 100 and > 0
 		// if we even have enough weight to distribute
 
-        console.log("WE GET HERE!")
+		console.log('WE GET HERE!');
 
 		let isValid = true;
 
@@ -151,25 +151,5 @@ const submitForm = (e, stateProps) => {
 		setWeight(0);
 	}
 };
-// class AddMark extends Component {
-
-// 	submitMark = (e) => {
-// 		let { course } = this.props;
-// 		console.log('Child', course.marks, this.state.mark, this.state.weight);
-// 		e.preventDefault();
-// 		if (this.state.mark !== 0 && this.state.weight !== 0) {
-// 			course.marks.push([
-// 				this.state.type,
-// 				this.state.mark,
-// 				this.state.weight,
-// 			]);
-// 			this.props.updateMarksFn(course);
-// 		}
-// 		this.setState({ type: 'Test', mark: 0, weight: 0 });
-// 		document.getElementById('mark-type ' + course.name).value = '';
-// 		document.getElementById('mark ' + course.name).value = '';
-// 		document.getElementById('weight ' + course.name).value = '';
-// 	};
-// }
 
 export default AddMark;
