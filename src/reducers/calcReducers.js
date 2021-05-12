@@ -34,20 +34,20 @@ const initialState = {
 	courses: getlocalCourses(),
 };
 
-export default function calcReducers(state=initialState, action) {
-    switch(action.type) {
-        case 'ADD-COURSE':
-            saveData([...state.courses, action.payload]);
-            return {courses: [...state.courses, action.payload]}
-        case 'DELETE-COURSE':
-            return state;
-        case 'ADD-MARK':
-            return {courses: replaceCourse(state,action.payload)};
-        case 'DELETE-MARK':
-            return state;
-        default:
-            return state;
-    }
+export default function calcReducers(state = initialState, action) {
+	switch (action.type) {
+		case 'ADD-COURSE':
+			saveData([...state.courses, action.payload]);
+			return { courses: [...state.courses, action.payload] };
+		case 'DELETE-COURSE':
+			return state;
+		case 'ADD-MARK':
+			return { courses: replaceCourse(state, action.payload) };
+		case 'DELETE-MARK':
+			return { courses: replaceCourse(state, action.payload) };
+		default:
+			return state;
+	}
 }
 
 const saveData = (courses) => {
@@ -55,15 +55,14 @@ const saveData = (courses) => {
 };
 
 const replaceCourse = (state, course) => {
-    console.log(state.courses);
-    const newCourses = state.courses.map(_course => {
-        if(_course.name === course.name) {
-            return course;
-        }
-        return _course;
-    })
+	console.log(state.courses);
+	const newCourses = state.courses.map((_course) => {
+		if (_course.name === course.name) {
+			return course;
+		}
+		return _course;
+	});
 
-    saveData(newCourses);
-    return newCourses;
-
-}
+	saveData(newCourses);
+	return newCourses;
+};
