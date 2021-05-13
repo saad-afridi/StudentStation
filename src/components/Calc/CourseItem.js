@@ -5,13 +5,14 @@ import AddMark from './AddMark';
 import MarkList from './MarkList';
 
 // Material UI Components
-import { Grid, Typography, Paper, Fab } from '@material-ui/core';
+import { Grid, Typography, Paper, IconButton } from '@material-ui/core';
 
 // Material UI Icons
-import DeleteIcon from '@material-ui/icons/Clear';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 // Theme and Styling
 import { makeStyles } from '@material-ui/core/styles';
+import { red } from '@material-ui/core/colors'
 
 // Redux
 import { delCourse } from '../../actions/calcActions';
@@ -38,15 +39,12 @@ export const CourseItem = (props) => {
 						{course.name}
 					</Typography>
 				</Grid>
-				<Grid item>
-					<Fab
-						size="small"
-						onClick={(e) => deleteCourse(e, dispatch, course)}
-						style={{
-							transform: 'scale(0.8)',
-						}}>
-						<DeleteIcon />
-					</Fab>
+				<Grid item style={{color: red[500]}}>
+                    <IconButton style={{color: red[500]}} 
+                    onClick={(e) => deleteCourse(e, dispatch, course)}
+                    >
+                        <DeleteIcon />
+                    </IconButton>
 				</Grid>
 			</Grid>
 
