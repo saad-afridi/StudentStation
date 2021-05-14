@@ -25,10 +25,7 @@ import { delMark } from '../../actions/calcActions';
 const useStyles = makeStyles((theme) => ({
 	markList: {},
 	tableContainer: {
-		backgroundColor:
-			theme.palette.type === 'dark'
-				? theme.palette.background.default
-				: theme.palette.background.default,
+		backgroundColor: theme.palette.background.default,
 		padding: '2px',
 	},
 	tableRow: {
