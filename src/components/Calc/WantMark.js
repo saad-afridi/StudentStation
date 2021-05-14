@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 const useStyles = makeStyles({
 	root: {
         margin: "10px",
+        width: "100%",
     },
 });
 
@@ -31,6 +32,7 @@ export const WantMark = (props) => {
 			justify="space-around"
 			spacing={1}
 			alignItems="center"
+            fullWidth={true}
 			className={classes.root}>
 			<Grid item>
 				<TextField

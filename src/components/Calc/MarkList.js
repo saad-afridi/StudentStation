@@ -22,15 +22,21 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
 import { delMark } from '../../actions/calcActions';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	markList: {},
-    tableContainer: {
-        backgroundColor: theme.palette.secondary.light,
-        padding: "5px",
-    },
-    tableRow: {
-        border: "2px black solid", 
-    }
+	tableContainer: {
+		backgroundColor:
+			theme.palette.type === 'dark'
+				? theme.palette.secondary.dark
+				: theme.palette.secondary.light,
+		padding: '2px',
+		border: '2px black solid',
+	},
+	tableRow: {
+		border: '2px black solid',
+		backgroundColor: theme.palette.secondary.main,
+        color: "white",
+	},
 }));
 
 export const MarkList = (props) => {

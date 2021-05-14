@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
 		padding: 'auto',
 		backgroundColor: theme.palette.secondary.light,
 	},
+    title: {
+        // backgroundColor: theme.palette.primary.light,
+    }
 }));
 
 export const CourseItem = (props) => {
@@ -35,8 +38,8 @@ export const CourseItem = (props) => {
 
 	return (
 		<Grid item component={Paper} className={classes.course}>
-			<Grid container alignItems="center" justify="space-between">
-				<Grid item>
+			<Grid container alignItems="center" justify="space-between" className={classes.title}>
+				<Grid item >
 					<Typography variant="h5" align="left">
 						{course.name}
 					</Typography>
