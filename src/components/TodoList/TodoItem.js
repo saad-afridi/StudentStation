@@ -17,7 +17,9 @@ import { delTodo, toggleTodo } from '../../actions/todoActions.js';
 const useStyles = makeStyles((theme) => ({
 	root: {
 		margin: '10px 0px 10px 0px',
-		backgroundColor: theme.palette.secondary.main,
+		backgroundColor: theme.palette.type === "dark" 
+                        ? theme.palette.secondary.main
+                        : theme.palette.secondary.light,
 		paddingRight: '5px',
 		borderRadius: '5px',
 	},

@@ -24,7 +24,9 @@ const useStyles = makeStyles((theme) => ({
 	course: {
 		margin: '5px',
 		padding: 'auto',
-		backgroundColor: theme.palette.secondary.light,
+		backgroundColor: theme.palette.type === "dark"
+                        ? theme.palette.secondary.light
+                        : theme.palette.secondary.main,
 	},
     title: {
         // backgroundColor: theme.palette.primary.light,

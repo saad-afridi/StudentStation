@@ -38,14 +38,14 @@ const styles = (theme) => ({
 const themeLight = createMuiTheme({
 	palette: {
 		primary: {
-			main: indigo[400],
+			main: indigo[500],
 		},
 		secondary: {
 			main: grey[300],
 		},
 		type: 'light',
 		background: {
-			default: grey[100],
+			default: grey[200],
 		},
 	},
 });

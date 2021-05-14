@@ -27,15 +27,15 @@ const useStyles = makeStyles((theme) => ({
 	tableContainer: {
 		backgroundColor:
 			theme.palette.type === 'dark'
-				? theme.palette.secondary.dark
-				: theme.palette.secondary.light,
+				? theme.palette.background.default
+				: theme.palette.background.default,
 		padding: '2px',
-		border: '2px black solid',
 	},
 	tableRow: {
-		border: '2px black solid',
-		backgroundColor: theme.palette.secondary.main,
-        color: "white",
+		backgroundColor: 
+            theme.palette.type === "dark" 
+            ? theme.palette.secondary.dark
+            : theme.palette.secondary.light,
 	},
 }));
 

@@ -7,8 +7,12 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
 	statContainer: {
 		padding: '10px',
-        color: theme.palette.primary.main,
-        backgroundColor: theme.palette.secondary.main,
+        color: theme.palette.type === "dark" 
+            ? theme.palette.primary.main
+            : theme.palette.background.default,
+        backgroundColor: theme.palette.type === "dark" 
+            ? theme.palette.background.default
+            : theme.palette.primary.main,
         width: "125px",
 	},
 	stat: {},
