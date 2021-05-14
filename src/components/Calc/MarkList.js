@@ -22,9 +22,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
 import { delMark } from '../../actions/calcActions';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
 	markList: {},
-});
+    tableContainer: {
+        backgroundColor: theme.palette.secondary.light,
+        padding: "5px",
+    },
+    tableRow: {
+        border: "2px black solid", 
+    }
+}));
 
 export const MarkList = (props) => {
 	const classes = useStyles();
@@ -32,10 +39,10 @@ export const MarkList = (props) => {
 	const dispatch = useDispatch();
 
 	return (
-		<TableContainer component={Paper}>
+		<TableContainer component={Paper} className={classes.tableContainer}>
 			<Table className={classes.markList}>
 				<TableHead>
-					<TableRow>
+					<TableRow className={classes.Row}>
 						<TableCell>Mark Type</TableCell>
 						<TableCell align="right">Mark (%)</TableCell>
 						<TableCell align="right">Weight (%)</TableCell>
@@ -44,7 +51,7 @@ export const MarkList = (props) => {
 				</TableHead>
 				<TableBody>
 					{course.marks.map((row, index) => (
-						<TableRow key={index}>
+						<TableRow key={index} className={classes.tableRow}>
 							<TableCell component="th" scope="row">
 								{row.type}
 							</TableCell>

@@ -117,27 +117,31 @@ const submitForm = (e, stateProps) => {
 		// check if mark, weight < 100 and > 0
 		// if we even have enough weight to distribute
 
-		console.log('WE GET HERE!');
+		console.log('WE GET HERE!', typeof mark, weight);
 
 		let isValid = true;
 
-		if (0 > mark && mark >= 100 && 0 >= weight && weight > 100) {
+		if (mark < 0 && mark >= 100 && 0 >= weight && weight > 100) {
 			isValid = false;
 		}
 
 		let totalWeight = 0;
 		for (let i = 0; i < course.marks.length; i++) {
-			totalWeight += course.marks[i].weight;
+			totalWeight += Number(course.marks[i].weight);
 		}
 
-		if (totalWeight >= 100) {
+		if (totalWeight + Number(weight) > 100) {
 			isValid = false;
 		}
 
 		e.preventDefault();
 		if (isValid) {
-			course.marks.push({ type, mark, weight });
-			dispatch(addMark({ course }));
+			course.marks.push({
+				type,
+				mark: Number(mark),
+				weight: Number(weight),
+			});
+			dispatch(addMark(course));
 		} else {
 			console.log('SOMETHING IS WRONG!');
 		}

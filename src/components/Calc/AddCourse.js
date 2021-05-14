@@ -76,7 +76,7 @@ const submitForm = (e, stateProps) => {
         }
 
 		e.preventDefault();
-        if (isValid) dispatch(addCourse({ name: text, marks: [] })); 
+        if (isValid) dispatch(addCourse({ want: 80, name: text, marks: [] })); 
 		document.getElementById('add-course').value = '';
 		setText('');
 	}

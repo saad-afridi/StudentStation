@@ -3,6 +3,8 @@ import React from 'react';
 // Calc Components
 import AddMark from './AddMark';
 import MarkList from './MarkList';
+import WantMark from './WantMark';
+import CourseStats from './CourseStats';
 
 // Material UI Components
 import { Grid, Typography, Paper, IconButton } from '@material-ui/core';
@@ -51,6 +53,8 @@ export const CourseItem = (props) => {
 			<hr />
 			<AddMark course={course} />
 			{course.marks.length > 0 ? <MarkList course={course} /> : ''}
+            <WantMark course={course}/>
+            {course.marks.length > 0 ? <CourseStats course={course} /> : ''}
 		</Grid>
 	);
 };

@@ -13,3 +13,7 @@ export const addMark = (course) => {
 export const delMark = (course) => {
 	return { type: 'DELETE-MARK', payload: course };
 };
+
+export const changeWantedMark = (course) => {
+    return { type: 'CHANGE-WANTED-MARK', payload: course};
+}

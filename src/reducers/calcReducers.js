@@ -1,6 +1,8 @@
 /*
 <courses> is a list of <course> objects
-where <course> has keys: name and marks
+where <course> has keys: name, marks, and want
+    want: is a number representing how much they want to end up
+        with (num)
     name: is a unique id of a <course> (str)
     marks: is a list of all the mark objects in a <course> (list)
     where mark has keys: type, mark, and weight
@@ -11,6 +13,7 @@ where <course> has keys: name and marks
 Example:
     courses: [
     {
+        want: 80,
         name: "Course 1",
         marks: [
             {type: "test", mark: 80, weight: 40},
@@ -45,6 +48,8 @@ export default function calcReducers(state = initialState, action) {
 			return { courses: replaceCourse(state, action.payload) };
 		case 'DELETE-MARK':
 			return { courses: replaceCourse(state, action.payload) };
+        case 'CHANGE-WANTED-MARK':
+			return { courses: replaceCourse(state, action.payload) };
 		default:
 			return state;
 	}
@@ -55,7 +60,6 @@ const saveData = (courses) => {
 };
 
 const replaceCourse = (state, course) => {
-	console.log(state.courses);
 	const newCourses = state.courses.map((_course) => {
 		if (_course.name === course.name) {
 			return course;
@@ -65,7 +69,7 @@ const replaceCourse = (state, course) => {
 
 	saveData(newCourses);
 	return newCourses;
-};
+}; 
 
 const deleteCourse = (state, course) => {
     const newCourses = state.courses.filter(function(value) {
@@ -73,4 +77,4 @@ const deleteCourse = (state, course) => {
     })
     saveData(newCourses);
 	return newCourses;
-}
+};
