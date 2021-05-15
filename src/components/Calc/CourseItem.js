@@ -25,12 +25,9 @@ const useStyles = makeStyles((theme) => ({
 		margin: '5px',
 		padding: 'auto',
 		backgroundColor: theme.palette.type === "dark"
-                        ? theme.palette.secondary.light
-                        : theme.palette.secondary.main,
+                        ? theme.palette.elevated[1]
+                        : theme.palette.elevated[1],
 	},
-    title: {
-        // backgroundColor: theme.palette.primary.light,
-    }
 }));
 
 export const CourseItem = (props) => {

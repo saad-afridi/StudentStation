@@ -25,14 +25,15 @@ import { delMark } from '../../actions/calcActions';
 const useStyles = makeStyles((theme) => ({
 	markList: {},
 	tableContainer: {
-		backgroundColor: theme.palette.background.default,
-		padding: '2px',
+		backgroundColor: theme.palette.type === "dark"
+                        ? theme.palette.elevated[2]
+                        : theme.palette.background.default,
+        margin: "15px 0px",
 	},
 	tableRow: {
-		backgroundColor: 
-            theme.palette.type === "dark" 
-            ? theme.palette.secondary.dark
-            : theme.palette.secondary.light,
+		backgroundColor: theme.palette.type === "dark"
+                        ? theme.palette.elevated[3]
+                        : theme.palette.elevated[1],
 	},
 }));
 
@@ -42,7 +43,7 @@ export const MarkList = (props) => {
 	const dispatch = useDispatch();
 
 	return (
-		<TableContainer component={Paper} className={classes.tableContainer}>
+		<TableContainer  component={Paper} className={classes.tableContainer}>
 			<Table className={classes.markList}>
 				<TableHead>
 					<TableRow className={classes.Row}>

@@ -15,6 +15,9 @@ const useStyles = makeStyles({
         margin: "10px",
         width: "100%",
     },
+    textForm: {
+        width: "100%",
+    }
 });
 
 export const WantMark = (props) => {
@@ -36,15 +39,17 @@ export const WantMark = (props) => {
 			className={classes.root}>
 			<Grid item>
 				<TextField
-                    variant="outlined"
+                    className={classes.textForm}
+                    variant="filled"
 					label="Want (%)"
 					type="number"
 					id={'want ' + course.name}
 					defaultValue={course.want}
 					onChange={(e) => setWant(e.target.value)}
-					onSubmit={(e) => submitForm(e, stateProps)}
                     onKeyPress={(e) => submitForm(e, stateProps)}
-				/>
+				> 
+                
+                </TextField>
 			</Grid>
 		</Grid>
 	);

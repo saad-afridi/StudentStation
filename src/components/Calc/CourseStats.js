@@ -4,7 +4,7 @@ import React from 'react';
 import StatsBox from './StatsBox';
 
 // Material UI Components
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 // Theme and Styling
 import { makeStyles } from '@material-ui/core/styles';

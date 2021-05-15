@@ -48,7 +48,7 @@ export default function calcReducers(state = initialState, action) {
 			return { courses: replaceCourse(state, action.payload) };
 		case 'DELETE-MARK':
 			return { courses: replaceCourse(state, action.payload) };
-        case 'CHANGE-WANTED-MARK':
+		case 'CHANGE-WANTED-MARK':
 			return { courses: replaceCourse(state, action.payload) };
 		default:
 			return state;
@@ -69,12 +69,12 @@ const replaceCourse = (state, course) => {
 
 	saveData(newCourses);
 	return newCourses;
-}; 
+};
 
 const deleteCourse = (state, course) => {
-    const newCourses = state.courses.filter(function(value) {
-        return value.name !== course.name;
-    })
-    saveData(newCourses);
+	const newCourses = state.courses.filter(function (value) {
+		return value.name !== course.name;
+	});
+	saveData(newCourses);
 	return newCourses;
 };

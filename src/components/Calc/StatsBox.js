@@ -7,12 +7,19 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
 	statContainer: {
 		padding: '10px',
-        backgroundColor: theme.palette.background.default,
-        width: "125px",
+		backgroundColor: theme.palette.type === "dark" 
+                        ? theme.palette.elevated[2] 
+                        : theme.palette.primary.main,
+		width: '125px',
 	},
 	stat: {
-        color: theme.palette.primary.main,
-    },
+		color: theme.palette.type === "dark" 
+        ? theme.palette.secondary.main
+        : theme.palette.background.default,
+	},
+    header: {
+        color: theme.palette.type === "dark" ? "#FFFFFFCC" : "#FFFFFFCC",
+    }
 }));
 
 export const StatsBox = (props) => {
@@ -25,7 +32,7 @@ export const StatsBox = (props) => {
 			direction="column"
 			alignItems="center"
 			className={classes.statContainer}>
-			<Grid item>
+			<Grid item className={classes.header}>
 				<Typography variant="subtitle1" align="center">
 					{heading}
 				</Typography>
@@ -34,8 +41,7 @@ export const StatsBox = (props) => {
 				<Typography
 					variant="h4"
 					align="center"
-					className={classes.stat}
-					>
+					className={classes.stat}>
 					{stat}
 				</Typography>
 			</Grid>

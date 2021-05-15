@@ -14,12 +14,16 @@ const styles = theme => ({
         { 
             if(props.pomOn && props.session % 2 === 0) {
                 if(theme.palette.type === "light") {
-                    return theme.palette.secondary.dark;
+                    return theme.palette.elevated[3];
                 } else {
-                    return theme.palette.secondary.light;
+                    return theme.palette.primary.dark;
                 }
-            } else {
+            } 
+            else if(theme.palette.type === "light" ) {
                 return theme.palette.primary.main;
+            }            
+            else {
+                return theme.palette.text.primary;
             }
         }
     }

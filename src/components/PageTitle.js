@@ -11,9 +11,15 @@ const useStyles = makeStyles((theme) => ({
 		margin: '80px 0px 30px 0px',
 		color:
 			theme.palette.type === 'dark'
-				? theme.palette.primary.light
+				? ''
 				: theme.palette.primary.main,
 	},
+    icon : {
+        color:
+            theme.palette.type === 'dark'
+            ? theme.palette.secondary.main
+            : theme.palette.primary.main,
+    }
 }));
 
 export const PageTitle = (props) => {
@@ -28,7 +34,7 @@ export const PageTitle = (props) => {
 			justify="center"
 			alignItems="center"
 			className={classes.titleContainer}>
-			<Grid item>{icon}</Grid>
+			<Grid item className={classes.icon}>{icon}</Grid>
 			<Grid item>
 				<Typography
 					variant="h3"

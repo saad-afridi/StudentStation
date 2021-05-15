@@ -89,6 +89,7 @@ export const AddMark = (props) => {
 				<Fab
 					size="small"
 					onClick={(e) => submitForm(e, stateProps)}
+                    color="primary"
 					style={{
 						transform: 'scale(0.8)',
 						margin: '5px',

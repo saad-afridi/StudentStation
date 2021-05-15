@@ -25,15 +25,14 @@ import CalculatorPage from './pages/Calculator';
 // Theme and Styling
 import { withStyles, ThemeProvider } from '@material-ui/styles';
 import PropTypes from 'prop-types';
-import { teal, grey, blueGrey, indigo } from '@material-ui/core/colors';
+import {
+	teal,
+	grey,
+	blueGrey,
+	indigo,
+} from '@material-ui/core/colors';
 import { createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-
-const styles = (theme) => ({
-	title: {
-		flexGrow: 1,
-	},
-});
 
 const themeLight = createMuiTheme({
 	palette: {
@@ -41,11 +40,16 @@ const themeLight = createMuiTheme({
 			main: indigo[500],
 		},
 		secondary: {
-			main: grey[300],
+			main: indigo[500],
 		},
 		type: 'light',
 		background: {
 			default: grey[200],
+		},
+		elevated: {
+			1: grey[300],
+			2: grey[400],
+			3: grey[500],
 		},
 	},
 });
@@ -53,15 +57,34 @@ const themeLight = createMuiTheme({
 const themeDark = createMuiTheme({
 	palette: {
 		primary: {
-			main: teal['A400'],
+			main: "#8bbee9",
+			contrastText: grey[900],
 		},
 		secondary: {
-			main: blueGrey[800],
+			main: teal['A400'],
 		},
 		type: 'dark',
 		background: {
-			default: '#11141f',
+			default: '#070e1aFF',
 		},
+		elevated: {
+			1: blueGrey[900],
+			2: blueGrey[800],
+			3: blueGrey[700],
+		},
+		text: {
+			primary: '#FFFFFFCC',
+		},
+	},
+});
+
+const styles = (darkMode) => ({
+	title: {
+		flexGrow: 1,
+	},
+	appBar: {
+		color: '#FFFFFFCC',
+		backgroundColor: '#11141f',
 	},
 });
 
@@ -108,30 +131,58 @@ class App extends React.Component {
 	}
 
 	render() {
+		const { darkMode } = this.state;
 		const { classes } = this.props;
 		return (
 			<div className="App">
-				<ThemeProvider
-					theme={this.state.darkMode ? themeDark : themeLight}
-				>
+				<ThemeProvider theme={darkMode ? themeDark : themeLight}>
 					<link
 						rel="stylesheet"
 						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
 					/>
 					<CssBaseline />
-					<AppBar>
+					<AppBar
+						color={!darkMode ? 'primary' : ''}
+						className={darkMode ? classes.appBar : ''}>
 						<Toolbar>
 							<Typography variant="h4" className={classes.title}>
 								Student Station
 							</Typography>
 							<Tabs
 								value={this.state.selectedTab}
-								onChange={this.changeTabs}
-							>
-								<Tab label="Home" icon={<HomeIcon />} />
-								<Tab label="Todo List" icon={<ListIcon />} />
-								<Tab label="Timer" icon={<AccessAlarmIcon />} />
-								<Tab label="Calculator" icon={<FaceIcon />} />
+								onChange={this.changeTabs}>
+								<Tab
+									label="Home"
+									icon={
+										<HomeIcon
+											color={darkMode ? 'secondary' : ''}
+										/>
+									}
+								/>
+								<Tab
+									label="Todo List"
+									icon={
+										<ListIcon
+											color={darkMode ? 'secondary' : ''}
+										/>
+									}
+								/>
+								<Tab
+									label="Timer"
+									icon={
+										<AccessAlarmIcon
+											color={darkMode ? 'secondary' : ''}
+										/>
+									}
+								/>
+								<Tab
+									label="Calculator"
+									icon={
+										<FaceIcon
+											color={darkMode ? 'secondary' : ''}
+										/>
+									}
+								/>
 							</Tabs>
 							<IconButton onClick={this.changeThemes}>
 								<Brightness4Icon />
@@ -153,8 +204,7 @@ class App extends React.Component {
 							pomOn={this.state.pomOn}
 							session={this.state.session}
 							paused={this.state.paused}
-							pom={this.state.pom}
-						></TimerPage>
+							pom={this.state.pom}></TimerPage>
 					)}
 
 					{this.state.selectedTab === 3 && <CalculatorPage />}
