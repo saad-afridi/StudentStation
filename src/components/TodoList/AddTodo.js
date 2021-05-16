@@ -10,7 +10,7 @@ import { Grid, TextField, Fab } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
-	infoBox: {
+	addTodoForm: {
 		marginBottom: '35px',
 	},
 });
@@ -29,7 +29,7 @@ export const AddTodo = () => {
 			container
 			spacing={1}
 			direction="row"
-			className={classes.root}
+			className={classes.addTodoForm}
 			justify="space-between"
 			alignItems="center"
 		>

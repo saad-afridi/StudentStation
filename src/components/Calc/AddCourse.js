@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addCourse } from '../../actions/calcActions';
 
 const useStyles = makeStyles({
-	infoBox: {
+	root: {
 		marginBottom: '35px',
 	},
 });

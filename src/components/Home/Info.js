@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, GridList, GridListTile} from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -22,33 +22,49 @@ const Info = (props) => {
 	const { img, text, subtext } = props;
 
 	return (
-		<Grid
-			container
-			spacing={1}
-			direction="row"
-			justify="space-around"
-			alignItems="center"
-			className={classes.infoBox}>
-			<Grid item className={classes.picture}>
-				<Box
-					width="356px"
-					height="356px"
-					border={3}
-					borderColor="background.default">
-					{img}
-				</Box>
-			</Grid>
-            <Grid item>
-                <Grid container direction="column" spacing={4} justify="flex-start" alignItems="flex-start">
+        <GridList cols={2} cellWidth={180}>
+            <GridListTile>
+                {img}
+            </GridListTile>
+            <GridListTile>
+                <Grid container direction="column">
                     <Grid item>
                         <Typography variant="h2">{text}</Typography>
                     </Grid>
-                    <Grid item>
-                        <Typography variant="h5">{subtext} </Typography>
-                    </Grid>
-			    </Grid>
-            </Grid>
-		</Grid>
+		 			<Grid item wrap="nowrap" xs zeroMinWidth>
+		 				<Typography variant="h5">{subtext} </Typography>
+		 			</Grid>
+                </Grid>
+
+            </GridListTile>
+        </GridList>
+		// <Grid
+		// 	container
+		// 	spacing={1}
+		// 	direction="row"
+		// 	justify="space-evenly"
+		// 	alignItems="center"
+		// 	className={classes.infoBox}>
+		// 	<Grid item className={classes.picture}>
+		// 		{img}
+		// 	</Grid>
+		// 	<Grid item>
+		// 		<Grid 
+        //             wrap="nowrap"
+		// 			container
+		// 			direction="column"
+		// 			spacing={4}
+		// 			justify="center"
+		// 			alignItems="stretch">
+		// 			<Grid item>
+		// 				<Typography variant="h2">{text}</Typography>
+		// 			</Grid>
+		// 			<Grid item wrap="nowrap" xs zeroMinWidth>
+		// 				<Typography variant="h5">{subtext} </Typography>
+		// 			</Grid>
+		// 		</Grid>
+		// 	</Grid>
+		// </Grid>
 	);
 };
 
