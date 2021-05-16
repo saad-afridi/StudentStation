@@ -10,7 +10,7 @@ import { Grid, TextField, Fab } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
-	root: {
+	infoBox: {
 		marginBottom: '35px',
 	},
 });

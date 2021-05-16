@@ -16,7 +16,6 @@ const useStyles = makeStyles({
         width: "100%",
     },
     textForm: {
-        width: "100%",
     }
 });
 
@@ -60,6 +59,9 @@ const submitForm = (e, stateProps) => {
         return;
     }
 	const { want, dispatch, course } = stateProps;
+    if ( want > 100 || want < 0) {
+        return ;
+    }
 	e.preventDefault();
 	course.want = want;
 	dispatch(changeWantedMark(course));

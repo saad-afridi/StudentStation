@@ -10,7 +10,7 @@ import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
-	root: {},
+	infoBox: {},
 });
 
 export const CourseStats = (props) => {

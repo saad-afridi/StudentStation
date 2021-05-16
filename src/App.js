@@ -8,6 +8,7 @@ import {
 	Tabs,
 	Tab,
 	IconButton,
+    Container
 } from '@material-ui/core';
 
 // Material UI Icons
@@ -21,6 +22,7 @@ import FaceIcon from '@material-ui/icons/Face';
 import ToDoPage from './pages/Todo';
 import TimerPage from './pages/Timer';
 import CalculatorPage from './pages/Calculator';
+import HomePage from './pages/Home';
 
 // Theme and Styling
 import { withStyles, ThemeProvider } from '@material-ui/styles';
@@ -37,10 +39,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 const themeLight = createMuiTheme({
 	palette: {
 		primary: {
-			main: indigo[500],
+			main: indigo[400],
 		},
 		secondary: {
-			main: indigo[500],
+			main: indigo[400],
 		},
 		type: 'light',
 		background: {
@@ -65,7 +67,7 @@ const themeDark = createMuiTheme({
 		},
 		type: 'dark',
 		background: {
-			default: '#070e1aFF',
+			default: '#070e1a',
 		},
 		elevated: {
 			1: blueGrey[900],
@@ -78,13 +80,13 @@ const themeDark = createMuiTheme({
 	},
 });
 
-const styles = (darkMode) => ({
+const styles = () => ({
 	title: {
 		flexGrow: 1,
 	},
 	appBar: {
 		color: '#FFFFFFCC',
-		backgroundColor: '#11141f',
+		backgroundColor: '#0f1d36',
 	},
 });
 
@@ -134,7 +136,7 @@ class App extends React.Component {
 		const { darkMode } = this.state;
 		const { classes } = this.props;
 		return (
-			<div className="App">
+			<Container className="App">
 				<ThemeProvider theme={darkMode ? themeDark : themeLight}>
 					<link
 						rel="stylesheet"
@@ -189,6 +191,9 @@ class App extends React.Component {
 							</IconButton>
 						</Toolbar>
 					</AppBar>
+                    
+                    {this.state.selectedTab === 0 && <HomePage />}
+
 					{this.state.selectedTab === 1 && <ToDoPage />}
 
 					{this.state.selectedTab === 2 && (
@@ -209,7 +214,7 @@ class App extends React.Component {
 
 					{this.state.selectedTab === 3 && <CalculatorPage />}
 				</ThemeProvider>
-			</div>
+			</Container>
 		);
 	}
 

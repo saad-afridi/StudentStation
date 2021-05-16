@@ -28,7 +28,7 @@ const styles = (theme) => ({
 				: theme.palette.primary.main,
 	},
 	controlButtons: {
-		margin: '20px 0px 20px 0px',
+		margin: '30px 0px 60px 0px',
 	},
 });
 
