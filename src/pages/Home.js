@@ -32,12 +32,6 @@ const HomePage = () => {
 			<Typography variant="h1" color="secondary">
 				<Typical
 					steps={[
-						'Time',
-						1000,
-						'Time To',
-						500,
-						'Time To Play',
-						500,
 						'Time To Play Games?',
 						1000,
 						'Time To Work.',
