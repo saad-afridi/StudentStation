@@ -10,6 +10,7 @@ Improvement Ideas:
 - Add Sections to Todos for better organization rather than just a list
 - Clear up the UI For Timer, specifically the pomodoro section
 - Add Instructions on how to use the tools on the home page
+- Create a Logo and Add it to AppBar and Tab
 
 Code Improvements:
 - Move all state management of Timer in App to Redux (reducers, actions, dispatchers)
