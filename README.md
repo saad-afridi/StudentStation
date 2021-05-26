@@ -9,7 +9,3 @@ A responsive web single-page-application (SPA) that contains essential tools for
 ## Demo
 
 Website live at: [http://student-station.surge.sh/](http://student-station.surge.sh/)
-
-## Road Map
-
--   Connect to a Backend
