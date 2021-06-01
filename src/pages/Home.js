@@ -1,15 +1,16 @@
 import React from 'react';
 
-import { Container, Typography, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
+// import { Container, Typography } from '@material-ui/core'
 
-import Typical from 'react-typical';
+// import Typical from 'react-typical';
 
-import PageTitle from '../components/PageTitle';
-import Info from '../components/Home/Info';
+// import PageTitle from '../components/PageTitle';
+// import Info from '../components/Home/Info';
 
-import HomeIcon from '@material-ui/icons/Home';
+// import HomeIcon from '@material-ui/icons/Home';
 
-import changeThemeGif from '../assets/changetheme.gif';
+// import changeThemeGif from '../assets/changetheme.gif';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -29,7 +30,7 @@ const HomePage = () => {
 			className={classes.animation}
 			justify="center"
 			alignItems="center">
-			<Typography variant="h1" color="secondary">
+			{/* <Typography variant="h1" color="secondary">
 				<Typical
 					steps={[
 						'Time To Play Games?',
@@ -38,7 +39,7 @@ const HomePage = () => {
 					]}
 					loop={1}
 				/>
-			</Typography>
+			</Typography> */}
 			{/*
 			<Info
 				img={

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Grid, Typography, GridList, GridListTile} from '@material-ui/core';
+import { Grid, Typography, GridList, GridListTile } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -22,22 +22,19 @@ const Info = (props) => {
 	const { img, text, subtext } = props;
 
 	return (
-        <GridList cols={2} cellWidth={180}>
-            <GridListTile>
-                {img}
-            </GridListTile>
-            <GridListTile>
-                <Grid container direction="column">
-                    <Grid item>
-                        <Typography variant="h2">{text}</Typography>
-                    </Grid>
-		 			<Grid item wrap="nowrap" xs zeroMinWidth>
-		 				<Typography variant="h5">{subtext} </Typography>
-		 			</Grid>
-                </Grid>
-
-            </GridListTile>
-        </GridList>
+		<GridList cols={2} cellWidth={180} className={classes.infoBox}>
+			<GridListTile>{img}</GridListTile>
+			<GridListTile>
+				<Grid container direction="column">
+					<Grid item>
+						<Typography variant="h2">{text}</Typography>
+					</Grid>
+					<Grid item wrap="nowrap" xs zeroMinWidth>
+						<Typography variant="h5">{subtext} </Typography>
+					</Grid>
+				</Grid>
+			</GridListTile>
+		</GridList>
 		// <Grid
 		// 	container
 		// 	spacing={1}
@@ -49,8 +46,8 @@ const Info = (props) => {
 		// 		{img}
 		// 	</Grid>
 		// 	<Grid item>
-		// 		<Grid 
-        //             wrap="nowrap"
+		// 		<Grid
+		//             wrap="nowrap"
 		// 			container
 		// 			direction="column"
 		// 			spacing={4}
