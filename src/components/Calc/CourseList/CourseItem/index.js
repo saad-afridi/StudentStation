@@ -14,19 +14,20 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 // Theme and Styling
 import { makeStyles } from '@material-ui/core/styles';
-import { red } from '@material-ui/core/colors'
+import { red } from '@material-ui/core/colors';
 
 // Redux
-import { delCourse } from '../../actions/calcActions';
+import { delCourse } from '../../../../actions/calcActions';
 import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
 	course: {
 		margin: '5px',
 		padding: 'auto',
-		backgroundColor: theme.palette.type === "dark"
-                        ? theme.palette.elevated[1]
-                        : theme.palette.elevated[1],
+		backgroundColor:
+			theme.palette.type === 'dark'
+				? theme.palette.elevated[1]
+				: theme.palette.elevated[1],
 	},
 }));
 
@@ -37,26 +38,30 @@ export const CourseItem = (props) => {
 
 	return (
 		<Grid item component={Paper} className={classes.course}>
-			<Grid container alignItems="center" justify="space-between" className={classes.title}>
-				<Grid item >
+			<Grid
+				container
+				alignItems="center"
+				justify="space-between"
+				className={classes.title}>
+				<Grid item>
 					<Typography variant="h5" align="left">
 						{course.name}
 					</Typography>
 				</Grid>
-				<Grid item style={{color: red[500]}}>
-                    <IconButton style={{color: red[500]}} 
-                    onClick={(e) => deleteCourse(e, dispatch, course)}
-                    >
-                        <DeleteIcon />
-                    </IconButton>
+				<Grid item style={{ color: red[500] }}>
+					<IconButton
+						style={{ color: red[500] }}
+						onClick={(e) => deleteCourse(e, dispatch, course)}>
+						<DeleteIcon />
+					</IconButton>
 				</Grid>
 			</Grid>
 
 			<hr />
 			<AddMark course={course} />
 			{course.marks.length > 0 ? <MarkList course={course} /> : ''}
-            <WantMark course={course}/>
-            {course.marks.length > 0 ? <CourseStats course={course} /> : ''}
+			<WantMark course={course} />
+			{course.marks.length > 0 ? <CourseStats course={course} /> : ''}
 		</Grid>
 	);
 };

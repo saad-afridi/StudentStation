@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // Redux
 import { useDispatch } from 'react-redux';
-import { addMark } from '../../actions/calcActions';
+import { addMark } from '../../../../actions/calcActions';
 
 const useStyles = makeStyles({
 	addMarkForm: {

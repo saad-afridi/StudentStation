@@ -1,8 +1,8 @@
 import React from 'react';
 
 // Todo Components
-import TodoList from '../components/TodoList/TodoList';
-import AddTodo from '../components/TodoList/AddTodo';
+import TodoList from '../components/Todo/TodoList';
+import AddTodo from '../components/Todo/AddTodo';
 import PageTitle from '../components/PageTitle';
 
 // Material UI Components

@@ -7,7 +7,7 @@ import { Grid, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 // Redux
-import { changeWantedMark } from '../../actions/calcActions';
+import { changeWantedMark } from '../../../../actions/calcActions';
 import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles({
