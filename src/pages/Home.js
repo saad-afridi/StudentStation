@@ -1,6 +1,7 @@
 import React from 'react';
+import Typist from 'react-typist'
 
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 // import { Container, Typography } from '@material-ui/core'
 
 // import Typical from 'react-typical';
@@ -14,6 +15,14 @@ import { Grid } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
 
+const doneCursor = {
+    show: true,
+    blink: true,
+    element: '|',
+    hideWhenDone: true,
+    hideWhenDoneDelay: 0,
+}
+
 const useStyles = makeStyles((theme) => ({
 	animation: {
 		margin: '100px 0px',
@@ -26,31 +35,29 @@ const HomePage = () => {
 
 	return (
 		<Grid
+            direction="column"
 			container
 			className={classes.animation}
 			justify="center"
 			alignItems="center">
-			{/* <Typography variant="h1" color="secondary">
-				<Typical
-					steps={[
-						'Time To Play Games?',
-						1000,
-						'Time To Work.',
-					]}
-					loop={1}
-				/>
-			</Typography> */}
-			{/*
-			<Info
-				img={
-					<img
-						src={changeThemeGif}
-						alt="Changing Theme Gif"
-					/>
-				}
-				text="Change Themes"
-                subtext="Choose to display from one of the two options i.e. Light/Dark."
-			/> */}
+
+                <Grid item>
+                    <Typography variant="h1" color="secondary">
+                        <Typist cursor={doneCursor} avgTypingDelay={100}>
+                            Dear Me,
+                            <Typist.Delay ms={500} />
+                            <br />
+                            Please Work and Study.
+                            <Typist.Delay ms={500} />
+                            <br />
+                            <br />
+                            Sincerely,
+                            <Typist.Delay ms={200} />
+                            <br />
+                            My Future :)
+                        </Typist>
+                    </Typography>
+                </Grid>      
 		</Grid>
 	);
 };
