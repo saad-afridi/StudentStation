@@ -22,20 +22,18 @@ export const CourseStats = (props) => {
 	let currentTotalMarks = 0;
 
 	for (let i = 0; i < marks.length; i++) {
-		currentTotalMarks +=
-			marks[i].mark * ((marks[i].weight) / 100);
+		currentTotalMarks += marks[i].mark * (marks[i].weight / 100);
 		totalWeight += marks[i].weight;
 	}
 
 	need = ((want - currentTotalMarks) / (100 - totalWeight)) * 100;
-    console.log(typeof(need), need);
-    let showNeed = true;
-    if (need <= 100 && need > 0) {
-        need = String(need.toFixed(1));
-    }
-    else if (need > 100 || 100 - totalWeight <= 0 || need <= 0) {
-        showNeed = false;
-    }
+	console.log(typeof need, need);
+	let showNeed = true;
+	if (need <= 100 && need > 0) {
+		need = String(need.toFixed(1));
+	} else if (need > 100 || 100 - totalWeight <= 0 || need <= 0) {
+		showNeed = false;
+	}
 
 	return (
 		<>
@@ -54,16 +52,14 @@ export const CourseStats = (props) => {
 						)}
 					/>
 				</Grid>
-				
-                
-                <Grid item>
-                    <StatsBox
-                        heading={showNeed ? 'You Need %' : 'Impossible' }
-                        stat={showNeed ? need: 0}
-                    />
-                </Grid>
-                
-				
+
+				<Grid item>
+					<StatsBox
+						heading={showNeed ? 'You Need %' : 'Impossible'}
+						stat={showNeed ? need : 0}
+					/>
+				</Grid>
+
 				<Grid item>
 					<StatsBox
 						heading={'Course Left %'}
