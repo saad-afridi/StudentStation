@@ -47,7 +47,9 @@ const HomePage = () => {
                             Dear Me,
                             <Typist.Delay ms={500} />
                             <br />
-                            Please Work and Study.
+                            Time to Play Games?
+                            <Typist.Backspace count = {19} delay={200} />
+                            Time to Work.
                             <Typist.Delay ms={500} />
                             <br />
                             <br />
