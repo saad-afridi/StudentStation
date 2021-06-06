@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Material UI Components
-import {Grid, FormControl, InputLabel, Select, MenuItem, Button} from '@material-ui/core';
+import {Grid, FormControl, InputLabel, Select, MenuItem, Button, Typography} from '@material-ui/core';
 
 // Material UI Icons
 import InputIcon from '@material-ui/icons/Input';
@@ -11,6 +11,10 @@ import { withStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 
 const styles = theme => ({
+    root: {
+        backgroundColor: theme.palette.elevated[1],
+        margin: "30px 0px",
+    },
     formControl: {
         margin: theme.spacing(2),
         fullWidth: true,
@@ -60,7 +64,11 @@ class SetPomodoro extends React.Component {
         }
 
         return (
-            
+            <>
+            <Typography variant="h3" color="secondary">
+                Pomodoro
+            </Typography>
+            <hr />
             <Grid container spacing={2} direction="row" justify="center" alignItems="center"
             className={classes.root}>
                 <Grid item>
@@ -108,10 +116,11 @@ class SetPomodoro extends React.Component {
                 <Grid item>
                     <Button variant="contained" color="primary" size="large" 
                     onClick={this.submitPom} endIcon={<InputIcon />}> 
-                    Pomodoro  
+                    Start  
                     </Button>
                 </Grid>
             </Grid>
+            </>
         )
     }
 
