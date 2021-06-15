@@ -18,5 +18,5 @@
 
 -   ~Move all state management of Timer in App to Redux (reducers, actions, dispatchers)~
 -   ~Clean up the file structures (no heirarchy in components)~
--   Use React-Router for url manipulation
+-   Use React-Router for URL manipulation
 -   Connect the app to a Backend rather than storing everything locally
