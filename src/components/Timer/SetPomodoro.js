@@ -65,7 +65,7 @@ class SetPomodoro extends React.Component {
 
         return (
             <>
-            <Typography variant="h3" color="secondary">
+            <Typography variant="h3" color="primary">
                 Pomodoro
             </Typography>
             <hr />

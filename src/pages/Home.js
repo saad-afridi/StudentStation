@@ -56,7 +56,7 @@ const HomePage = () => {
                             Sincerely,
                             <Typist.Delay ms={200} />
                             <br />
-                            My Future :)
+                            Myself :)
                         </Typist>
                     </Typography>
                 </Grid>      

@@ -151,6 +151,8 @@ class App extends React.Component {
 								Student Station
 							</Typography>
 							<Tabs
+                                variant="scrollable"
+                                scrollButtons="auto"
 								value={this.state.selectedTab}
 								onChange={this.changeTabs}>
 								<Tab

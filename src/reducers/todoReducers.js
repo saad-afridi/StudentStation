@@ -4,7 +4,8 @@
 const getLocalTodos = () => {
 	const localTodos = localStorage.getItem('todos');
 	if (localTodos) {
-		return JSON.parse(localTodos);
+		const savedTodos = JSON.parse(localTodos);
+		return savedTodos;
 	}
 	return [];
 };

@@ -50,6 +50,7 @@ export const CourseStats = (props) => {
 						stat={String(
 							((currentTotalMarks / totalWeight) * 100).toFixed(1)
 						)}
+                        isImp={false}
 					/>
 				</Grid>
 
@@ -57,6 +58,7 @@ export const CourseStats = (props) => {
 					<StatsBox
 						heading={showNeed ? 'You Need %' : 'Impossible'}
 						stat={showNeed ? need : 0}
+                        isImp={!showNeed}
 					/>
 				</Grid>
 
@@ -64,12 +66,14 @@ export const CourseStats = (props) => {
 					<StatsBox
 						heading={'Course Left %'}
 						stat={String((100 - totalWeight).toFixed(1))}
+                        isImp={false}
 					/>
 				</Grid>
 				<Grid item>
 					<StatsBox
 						heading={'Obtained %'}
 						stat={String(currentTotalMarks.toFixed(1))}
+                        isImp={false}
 					/>
 				</Grid>
 			</Grid>
