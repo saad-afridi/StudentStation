@@ -42,7 +42,7 @@ const HomePage = () => {
 			alignItems="center">
 
                 <Grid item>
-                    <Typography variant="h1" color="secondary">
+                    <Typography variant="h1" color="primary">
                         <Typist cursor={doneCursor} avgTypingDelay={100}>
                             Dear Me,
                             <Typist.Delay ms={500} />

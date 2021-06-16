@@ -8,7 +8,7 @@ import {
 	Tabs,
 	Tab,
 	IconButton,
-    Container
+	Container,
 } from '@material-ui/core';
 
 // Material UI Icons
@@ -27,22 +27,17 @@ import HomePage from './pages/Home';
 // Theme and Styling
 import { withStyles, ThemeProvider } from '@material-ui/styles';
 import PropTypes from 'prop-types';
-import {
-	teal,
-	grey,
-	blueGrey,
-	indigo,
-} from '@material-ui/core/colors';
+import { teal, grey, blueGrey, indigo, pink } from '@material-ui/core/colors';
 import { createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 const themeLight = createMuiTheme({
 	palette: {
 		primary: {
-			main: indigo[400],
+			main: indigo[500],
 		},
 		secondary: {
-			main: indigo[400],
+			main: pink[500],
 		},
 		type: 'light',
 		background: {
@@ -59,7 +54,7 @@ const themeLight = createMuiTheme({
 const themeDark = createMuiTheme({
 	palette: {
 		primary: {
-			main: "#8bbee9",
+			main: '#8bbee9',
 			contrastText: grey[900],
 		},
 		secondary: {
@@ -151,8 +146,8 @@ class App extends React.Component {
 								Student Station
 							</Typography>
 							<Tabs
-                                variant="scrollable"
-                                scrollButtons="auto"
+								variant="scrollable"
+								scrollButtons="auto"
 								value={this.state.selectedTab}
 								onChange={this.changeTabs}>
 								<Tab
@@ -193,8 +188,8 @@ class App extends React.Component {
 							</IconButton>
 						</Toolbar>
 					</AppBar>
-                    
-                    {this.state.selectedTab === 0 && <HomePage />}
+
+					{this.state.selectedTab === 0 && <HomePage />}
 
 					{this.state.selectedTab === 1 && <ToDoPage />}
 

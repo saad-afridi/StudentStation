@@ -12,10 +12,7 @@ const useStyles = makeStyles((theme) => ({
 		color: theme.palette.type === 'dark' ? '' : theme.palette.primary.main,
 	},
 	icon: {
-		color:
-			theme.palette.type === 'dark'
-				? theme.palette.secondary.main
-				: theme.palette.primary.main,
+		color: theme.palette.secondary.main
 	},
 }));
 
