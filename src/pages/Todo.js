@@ -15,7 +15,7 @@ export default function ToDoPage() {
 	return (
 		<Container className="TodoContainer">
 			<PageTitle
-				text={'What To Do?'}
+				text={'Tasks To Do'}
 				icon={<ListIcon style={{ transform: 'scale(2.0)' }} />}
 			/>
 			<AddTodo />

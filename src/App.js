@@ -49,11 +49,12 @@ const themeLight = createMuiTheme({
 			3: grey[500],
 		},
 	},
-    typography: {
-        fontFamily: [
-            'Lora',
-        ].join(',')
-    }
+	typography: {
+		h3: {
+			fontFamily: ['Syne'],
+		},
+		fontFamily: ['Roboto'],
+	},
 });
 
 const themeDark = createMuiTheme({
@@ -77,6 +78,12 @@ const themeDark = createMuiTheme({
 		text: {
 			primary: '#FFFFFFCC',
 		},
+	},
+	typography: {
+		h3: {
+			fontFamily: ['Syne'],
+		},
+		fontFamily: ['Roboto'],
 	},
 });
 
@@ -138,17 +145,20 @@ class App extends React.Component {
 		return (
 			<Container className="App">
 				<ThemeProvider theme={darkMode ? themeDark : themeLight}>
-					{/* <link
+					<link
 						rel="stylesheet"
 						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-					/> */}
-                    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet" />
+					/>
+					<link
+						href="https://fonts.googleapis.com/css2?family=Syne&display=swap"
+						rel="stylesheet"
+					/>
 					<CssBaseline />
 					<AppBar
 						color={!darkMode ? 'primary' : ''}
 						className={darkMode ? classes.appBar : ''}>
 						<Toolbar>
-							<Typography variant="h4" className={classes.title}>
+							<Typography variant="h3" className={classes.title}>
 								Student Station
 							</Typography>
 							<Tabs
