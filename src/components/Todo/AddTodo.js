@@ -32,11 +32,11 @@ export const AddTodo = () => {
 	const classes = useStyles();
 
 	const [text, setText] = React.useState('');
-	const [prior, setPrior] = React.useState('low');
+	// const [prior, setPrior] = React.useState('low');
 	const { todos } = useSelector((state) => state.todoListState);
 	const dispatch = useDispatch();
 
-	const stateProps = { text, setText, prior, setPrior, dispatch, todos };
+	const stateProps = { text, setText, dispatch, todos };
 
 	return (
 		<Grid
@@ -59,7 +59,7 @@ export const AddTodo = () => {
 					onChange={(e) => setText(e.target.value)}
 					onKeyPress={(e) => submitForm(e, stateProps)}></TextField>
 			</Grid>
-			<Grid item >
+			{/* <Grid item >
                 <FormControl className={classes.priorForm}>
                     <InputLabel id="set-priority-task">Priority</InputLabel>
                     <Select
@@ -74,7 +74,7 @@ export const AddTodo = () => {
                     </Select>
                 </FormControl>
 				
-			</Grid>
+			</Grid> */}
 			<Grid item>
 				<Fab color="primary" onClick={(e) => submitForm(e, stateProps)}>
 					<AddIcon />
@@ -85,7 +85,7 @@ export const AddTodo = () => {
 };
 
 const submitForm = (e, stateProps) => {
-	const { text, setText, dispatch, todos, prior, setPrior } = stateProps;
+	const { text, setText, dispatch, todos } = stateProps;
 
 	// If clicked or pressed enter => Submit
 	if (e.charCode === 13 || e.charCode === undefined) {
@@ -101,10 +101,10 @@ const submitForm = (e, stateProps) => {
 		}
 
 		e.preventDefault();
-		if (isFormValid) dispatch(addTodo({ text, priority: prior, completed: false }));
+		if (isFormValid) dispatch(addTodo({ text, completed: false }));
 		document.getElementById('add-task-input').value = '';
 		setText('');
-        setPrior('low');
+        // setPrior('low');
 	}
 };
 

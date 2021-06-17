@@ -49,6 +49,11 @@ const themeLight = createMuiTheme({
 			3: grey[500],
 		},
 	},
+    typography: {
+        fontFamily: [
+            'Lora',
+        ].join(',')
+    }
 });
 
 const themeDark = createMuiTheme({
@@ -133,10 +138,11 @@ class App extends React.Component {
 		return (
 			<Container className="App">
 				<ThemeProvider theme={darkMode ? themeDark : themeLight}>
-					<link
+					{/* <link
 						rel="stylesheet"
 						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-					/>
+					/> */}
+                    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet" />
 					<CssBaseline />
 					<AppBar
 						color={!darkMode ? 'primary' : ''}

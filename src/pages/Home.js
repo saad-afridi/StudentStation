@@ -48,8 +48,8 @@ const HomePage = () => {
                             <Typist.Delay ms={500} />
                             <br />
                             Time to Play Games?
-                            <Typist.Backspace count = {19} delay={200} />
-                            Time to Work.
+                            <Typist.Backspace count = {11} delay={200} />
+                            Work.
                             <Typist.Delay ms={500} />
                             <br />
                             <br />

@@ -9,7 +9,7 @@ import PageTitle from '../components/PageTitle';
 import { Container } from '@material-ui/core';
 
 // Material UI Icons
-import ListIcon from '@material-ui/icons/List';
+import ListIcon from '@material-ui/icons/ListAlt';
 
 export default function ToDoPage() {
 	return (
