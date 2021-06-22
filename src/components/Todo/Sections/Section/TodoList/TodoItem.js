@@ -51,7 +51,7 @@ export const TodoItem = (props) => {
 					style={{ color: green[400] }}
 				></Checkbox>
 			</Grid>
-			<Grid item xs={6} sm={8} md={9} align="left">
+			<Grid item xs={6} sm={8} md={10} align="left">
 				<Typography
 					variant="h5"
 					component="div"

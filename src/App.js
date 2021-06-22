@@ -9,6 +9,8 @@ import {
 	Tab,
 	IconButton,
 	Container,
+    Hidden,
+    withWidth
 } from '@material-ui/core';
 
 // Material UI Icons
@@ -95,6 +97,12 @@ const styles = () => ({
 		color: '#FFFFFFCC',
 		backgroundColor: '#0f1d36',
 	},
+    appBarTabs : {
+        marginRight: "auto",
+    },
+    changeThemeButton: {
+        marginLeft: "auto",
+    }
 });
 
 class App extends React.Component {
@@ -158,10 +166,13 @@ class App extends React.Component {
 						color={!darkMode ? 'primary' : 'default'}
 						className={darkMode ? classes.appBar : ''}>
 						<Toolbar>
-							<Typography variant="h3" className={classes.title}>
-								Student Station
-							</Typography>
+                            <Hidden only={['sm', 'xs']}>
+                                <Typography variant="h3" className={classes.title}>
+                                    Student Station
+                                </Typography>
+                            </Hidden>
 							<Tabs
+                                className={classes.appBarTabs}
 								variant="scrollable"
 								scrollButtons="auto"
 								value={this.state.selectedTab}
@@ -199,7 +210,7 @@ class App extends React.Component {
 									}
 								/>
 							</Tabs>
-							<IconButton onClick={this.changeThemes}>
+							<IconButton className={classes.changeThemeButton} onClick={this.changeThemes}>
 								<Brightness4Icon />
 							</IconButton>
 						</Toolbar>
@@ -389,6 +400,7 @@ class App extends React.Component {
 
 App.propTypes = {
 	classes: PropTypes.object.isRequired,
+    width: PropTypes.oneOf(['lg', 'md', 'sm', 'xl', 'xs']).isRequired,
 };
 
-export default withStyles(styles)(App);
+export default withWidth()(withStyles(styles)(App));
