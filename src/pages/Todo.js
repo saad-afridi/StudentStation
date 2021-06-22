@@ -2,7 +2,6 @@ import React from 'react';
 
 // Todo Components
 import Sections from '../components/Todo/Sections';
-import AddTodo from '../components/Todo/AddTodo';
 import PageTitle from '../components/PageTitle';
 import AddTasksAndSections from '../components/Todo/AddTasksAndSections';
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoItem from './TodoItem';
+import { Grid } from '@material-ui/core';
 
 export const TodoList = (props) => {
 	const { todos } = props;
@@ -14,19 +15,15 @@ export const TodoList = (props) => {
 	});
 
 	return (
-		<>
-			<div className="CompletedContainer">
-				{notcompleted.map((_todo, _index) => {
-					return <TodoItem key={_index} todo={_todo}></TodoItem>;
-				})}
-			</div>
+		<Grid container direction="column" justify="center" alignItem="center">
+            {notcompleted.map((_todo, _index) => {
+                return <TodoItem key={_index} todo={_todo}></TodoItem>;
+            })}
 			{completed.length > 0 ? <hr></hr> : ''}
-			<div className="NotCompletedContainer">
-				{completed.map((_todo, _index) => {
-					return <TodoItem key={_index} todo={_todo}></TodoItem>;
-				})}
-			</div>
-		</>
+            {completed.map((_todo, _index) => {
+                return <TodoItem key={_index} todo={_todo}></TodoItem>;
+            })}
+		</Grid>
 	);
 };
 

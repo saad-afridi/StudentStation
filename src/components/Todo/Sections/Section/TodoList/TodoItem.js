@@ -16,8 +16,8 @@ import { delTodo, toggleTodo } from '../../../../../actions/todoActions.js';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		margin: '10px 0px 10px 0px',
-		backgroundColor: theme.palette.elevated[1],
+		margin: '10px -5px',
+		backgroundColor: theme.palette.type === 'dark' ? theme.palette.elevated[2] : theme.palette.elevated[1],
 		paddingRight: '5px',
 		borderRadius: '5px',
 	},
@@ -42,6 +42,7 @@ export const TodoItem = (props) => {
 			justify="space-between"
 			alignItems="center"
 			className={classes.root}
+            fullWidth
 		>
 			<Grid item>
 				<Checkbox
@@ -50,7 +51,7 @@ export const TodoItem = (props) => {
 					style={{ color: green[400] }}
 				></Checkbox>
 			</Grid>
-			<Grid item xs={6} sm={8} md={10} align="left">
+			<Grid item xs={6} sm={8} md={9} align="left">
 				<Typography
 					variant="h5"
 					component="div"
