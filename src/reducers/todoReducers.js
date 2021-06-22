@@ -70,14 +70,13 @@ const addTodo = (state, payload) => {
 		tasks: [
 			{
 				text: payload.text,
-				completed: payload.complete,
+				completed: payload.completed,
 				priority: payload.priority,
 			},
 			...state.sections[payload.section].tasks
 		]
 	};
     state.sections[payload.section] = newSection;
-    console.log(state);
     return state.sections;
 };
 

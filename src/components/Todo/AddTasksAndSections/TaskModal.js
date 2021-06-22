@@ -75,15 +75,14 @@ export const TaskModal = () => {
 				<Grid item className={classes.contentForm}>
 					<TextField
 						label="Task Content"
-                        id='set-task-input'
+                        id="add-task-content-input"
 						multiline
 						error={hasError}
 						helperText={helpText}
-						placeholder="for e.g. finish my math assignment"
+						placeholder="for e.g. Finish my math assignment"
 						autoFocus
 						onChange={(e) => setText(e.target.value)}
 						onKeyPress={(e) => submitForm(e, stateProps)}
-						fullWidth
 					/>
 				</Grid>
 				<Grid
@@ -163,7 +162,8 @@ const submitForm = (e, stateProps) => {
 			return;
 		}
 		for (let i = 0; i < sections[section].tasks.length; i++) {
-			if (sections[section].tasks[i] === text) {
+            console.log(sections[section].tasks[i]);
+			if (sections[section].tasks[i].text === text) {
 				setError(true);
 				setHelpText('Task Already Exists');
 				return;
@@ -171,7 +171,7 @@ const submitForm = (e, stateProps) => {
 		}
 		e.preventDefault();
 		dispatch(addTodo({ text, priority: prior, completed: false, section }));
-		document.getElementById('add-task-input').value = '';
+		document.getElementById('add-task-content-input').value = '';
 		setText('');
 	}
 	setError(false);
