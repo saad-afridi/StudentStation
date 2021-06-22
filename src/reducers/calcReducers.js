@@ -11,6 +11,7 @@ where <course> has keys: name, marks, and want
         weight: is the weight of said assessment (int)
 
 Example:
+[
     courses: [
     {
         want: 80,

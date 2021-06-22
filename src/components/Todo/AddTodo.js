@@ -9,14 +9,9 @@ import {
 	Grid,
 	TextField,
 	Fab,
-	FormControl,
-	Select,
-    MenuItem,
-    InputLabel
 } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { green, red, blue } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
 	addTodoForm: {

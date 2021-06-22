@@ -71,7 +71,7 @@ class TimerPage extends React.Component {
 						<Button
 							size="large"
                             color="secondary"
-							variant="outlined"
+							variant={paused ? "contained" : "outlined"}
 							onClick={this.togglePause}
 							disabled={alarm === -2}>
 							{paused ? 'Play' : 'Pause'}

@@ -18,3 +18,17 @@ export const toggleTodo = (todo) => {
 		payload: todo,
 	};
 };
+
+export const addSection = (sectionName) => {
+    return {
+        type: 'ADD-SECTION',
+        payload: sectionName
+    }
+}
+
+export const delSection = (sectionName) => {
+    return {
+        type: 'DELETE-SECTION',
+        payload: sectionName
+    }
+}

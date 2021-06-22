@@ -4,6 +4,7 @@ import React from 'react';
 import TodoList from '../components/Todo/TodoList';
 import AddTodo from '../components/Todo/AddTodo';
 import PageTitle from '../components/PageTitle';
+import AddTasksAndSections from '../components/Todo/AddTasksAndSections';
 
 // Material UI Components
 import { Container } from '@material-ui/core';
@@ -18,6 +19,7 @@ export default function ToDoPage() {
 				text={'Tasks To Do'}
 				icon={<ListIcon style={{ transform: 'scale(2.0)' }} />}
 			/>
+            <AddTasksAndSections />
 			<AddTodo />
 			<TodoList />
 		</Container>

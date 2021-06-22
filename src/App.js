@@ -155,7 +155,7 @@ class App extends React.Component {
 					/>
 					<CssBaseline />
 					<AppBar
-						color={!darkMode ? 'primary' : ''}
+						color={!darkMode ? 'primary' : 'default'}
 						className={darkMode ? classes.appBar : ''}>
 						<Toolbar>
 							<Typography variant="h3" className={classes.title}>

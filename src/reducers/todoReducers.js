@@ -1,6 +1,30 @@
 // <todos> is a list of <todo> obj that have
 // attributes text, completed
 
+/*
+An example of the state is:
+[
+    section1: [
+        {
+            text: 'Finish Homework'
+            completed: false
+        },
+        {
+            text: 'Eat Dinner'
+            completed: true
+        }
+    ],
+    section2: [
+        {
+            text: 'Workout 30 mins everyday'
+            completed: false
+        }
+    ],
+    ...
+]
+
+*/
+
 const getLocalTodos = () => {
 	const localTodos = localStorage.getItem('todos');
 	if (localTodos) {
@@ -11,14 +35,23 @@ const getLocalTodos = () => {
 };
 
 const initialState = {
+	sections: [{ name: 'Daily', tasks: [] }],
 	todos: getLocalTodos(),
 };
 
 export default function todoReducers(state = initialState, action) {
 	switch (action.type) {
+		case 'ADD-SECTION':
+			return {
+				...state,
+				sections: [action.payload, ...state.sections],
+			};
+
+		case 'DELETE-SECTION':
+			return state;
+
 		case 'ADD-TODO':
-			saveData([action.payload, ...state.todos]);
-			return { todos: [action.payload, ...state.todos] };
+			return { ...state, sections: addTodo(state, action.payload) };
 
 		case 'DELETE-TODO':
 			return { todos: delTodo(state, action.payload) };
@@ -30,6 +63,23 @@ export default function todoReducers(state = initialState, action) {
 			return state;
 	}
 }
+
+const addTodo = (state, payload) => {
+	const newSection = {
+		name: state.sections[payload.section].name,
+		tasks: [
+			{
+				text: payload.text,
+				completed: payload.complete,
+				priority: payload.priority,
+			},
+			...state.sections[payload.section].tasks
+		]
+	};
+    state.sections[payload.section] = newSection;
+    console.log(state);
+    return state.sections;
+};
 
 const delTodo = (state, todo) => {
 	const newTodos = state.todos.filter(function (value) {
