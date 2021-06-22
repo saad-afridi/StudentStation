@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Todo Components
-import TodoList from '../components/Todo/TodoList';
+import Sections from '../components/Todo/Sections';
 import AddTodo from '../components/Todo/AddTodo';
 import PageTitle from '../components/PageTitle';
 import AddTasksAndSections from '../components/Todo/AddTasksAndSections';
@@ -20,8 +20,7 @@ export default function ToDoPage() {
 				icon={<ListIcon style={{ transform: 'scale(2.0)' }} />}
 			/>
             <AddTasksAndSections />
-			<AddTodo />
-			<TodoList />
+			<Sections />
 		</Container>
 	);
 }

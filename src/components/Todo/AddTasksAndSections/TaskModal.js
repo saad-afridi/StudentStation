@@ -75,7 +75,7 @@ export const TaskModal = () => {
 				<Grid item className={classes.contentForm}>
 					<TextField
 						label="Task Content"
-                        id="add-task-content-input"
+						id="add-task-content-input"
 						multiline
 						error={hasError}
 						helperText={helpText}
@@ -162,7 +162,6 @@ const submitForm = (e, stateProps) => {
 			return;
 		}
 		for (let i = 0; i < sections[section].tasks.length; i++) {
-            console.log(sections[section].tasks[i]);
 			if (sections[section].tasks[i].text === text) {
 				setError(true);
 				setHelpText('Task Already Exists');

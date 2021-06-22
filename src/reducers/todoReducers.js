@@ -44,7 +44,7 @@ export default function todoReducers(state = initialState, action) {
 		case 'ADD-SECTION':
 			return {
 				...state,
-				sections: [action.payload, ...state.sections],
+				sections: [...state.sections, action.payload],
 			};
 
 		case 'DELETE-SECTION':

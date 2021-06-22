@@ -12,7 +12,7 @@ import { green, red } from '@material-ui/core/colors';
 
 // Redux
 import { useDispatch } from 'react-redux';
-import { delTodo, toggleTodo } from '../../../actions/todoActions.js';
+import { delTodo, toggleTodo } from '../../../../../actions/todoActions.js';
 
 const useStyles = makeStyles((theme) => ({
 	root: {

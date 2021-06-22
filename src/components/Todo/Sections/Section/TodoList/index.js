@@ -1,10 +1,9 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 
-import { useSelector } from 'react-redux';
-
-export const TodoList = () => {
-	const { todos } = useSelector((state) => state.todoListState);
+export const TodoList = (props) => {
+	const { todos } = props;
+    console.log(props);
 
 	const completed = todos.filter(function (value) {
 		return value.completed === true;
