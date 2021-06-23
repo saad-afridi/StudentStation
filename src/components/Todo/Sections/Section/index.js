@@ -45,11 +45,11 @@ export const Section = (props) => {
 			<Accordion className={classes.section}>
 				<AccordionSummary expandIcon={<ExpandMoreIcon />}>
 					<Typography variant="h4" className={classes.sectionHeader}>
-						{name.toUpperCase()}
+						{name}
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-					<TodoList sectionName={name} todos={tasks} />
+					{ tasks.length > 0 ? <TodoList sectionName={name} todos={tasks} /> : <Typography variant="h6"> So lonely ...</Typography> }
 				</AccordionDetails>
 			</Accordion>
 		</Container>

@@ -7,7 +7,6 @@ import {
 	Checkbox,
 	IconButton,
 	Button,
-    Avatar
 } from '@material-ui/core';
 
 // Material UI Icons

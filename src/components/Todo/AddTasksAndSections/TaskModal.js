@@ -77,6 +77,7 @@ export const TaskModal = () => {
 				</Grid>
 				<Grid item>
 					<TextField
+                        variant="filled"
                         fullWidth
                         className={classes.contentForm}
 						label="Task Content"
@@ -138,7 +139,7 @@ export const TaskModal = () => {
 						variant="contained"
 						color="primary"
 						onClick={(e) => submitForm(e, stateProps)}>
-						Submit
+						Create
 					</Button>
 				</Grid>
 			</Grid>

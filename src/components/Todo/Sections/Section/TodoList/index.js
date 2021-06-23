@@ -1,6 +1,13 @@
 import React from 'react';
 import TodoItem from './TodoItem';
-import { Grid, Divider } from '@material-ui/core';
+import { Grid, Divider, makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+    divider : {
+        backgroundColor: theme.palette.type === 'dark' ? "white" : "black",
+        margin: "10px 30px"
+    }
+}));
 
 function sortItemsByPriority(items) {
 	const highPrior = items.filter((item) => item.priority === 'high');
@@ -10,6 +17,7 @@ function sortItemsByPriority(items) {
 }
 
 export const TodoList = (props) => {
+    const classes = useStyles();
 	const { todos, sectionName } = props;
 
 	const tasks = sortItemsByPriority(todos);
@@ -31,7 +39,7 @@ export const TodoList = (props) => {
 						sectionName={sectionName}></TodoItem>
 				);
 			})}
-			{completed.length > 0 ? <Divider /> : ''}
+			{completed.length > 0 && notcompleted.length > 0 ? <Grid item><Divider variant="middle" className={classes.divider} /></Grid> : ''}
 			{completed.map((_todo, _index) => {
 				return (
 					<TodoItem

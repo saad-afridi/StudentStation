@@ -8,6 +8,7 @@ import { Grid, Button, Modal } from '@material-ui/core';
 
 // Material UI Icons
 import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -37,22 +38,36 @@ const AddTasksAndSections = () => {
 					onClick={() => setOpen1(true)}>
 					Add Task
 				</Button>
-				<Modal style={{display:'flex', alignItems:'center', justifyContent:'center'}} open={open1} onClose={() => setOpen1(false)}>
-                    <TaskModal />
-                </Modal>
+				<Modal
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+					open={open1}
+					onClose={() => setOpen1(false)}>
+					<TaskModal />
+				</Modal>
 			</Grid>
 			<Grid item className={classes.addSection}>
 				<Button
 					variant="contained"
 					size="large"
-					startIcon={<AddIcon />}
+					startIcon={<EditIcon />}
 					color="secondary"
 					onClick={() => setOpen2(true)}>
-					Add Section
+					Add/Remove Section
 				</Button>
-				<Modal style={{display:'flex', alignItems:'center', justifyContent:'center'}} open={open2} onClose={() => setOpen2(false)}>
-                    <SectionModal />
-                </Modal>
+				<Modal
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+					open={open2}
+					onClose={() => setOpen2(false)}>
+					<SectionModal />
+				</Modal>
 			</Grid>
 		</Grid>
 	);

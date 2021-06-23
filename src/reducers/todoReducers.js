@@ -1,26 +1,25 @@
-// <todos> is a list of <todo> obj that have
-// attributes text, completed
-
 /*
 An example of the state is:
-sections : [
-    {
-        name: 'Section1'
-        tasks : [
-            {
-                text: 'Eat Detergent!'
-                completed: false
-                priority: 'high'
-            },
-            ...
-        ]
-    },
-    {
-        name: 'Section2'
-        tasks : []
-    },
-    ...
-]
+{
+    sections : [
+        {
+            name: 'Section1'
+            tasks : [
+                {
+                    text: 'Eat Detergent!'
+                    completed: false
+                    priority: 'high'
+                },
+                ...
+            ]
+        },
+        {
+            name: 'Section2'
+            tasks : []
+        },
+        ...
+    ]
+}
 */
 
 const getLocalTodos = () => {
@@ -35,7 +34,7 @@ const getLocalTodos = () => {
 const initialState = {
 	sections: [
 		{
-			name: 'Daily',
+			name: 'DAILY',
 			tasks: [
 				{
 					text: 'Task 1 - Low Priority',
@@ -43,9 +42,9 @@ const initialState = {
 					completed: false,
 				},
 				{
-					text: 'Task 2 - High Priority - Completed',
+					text: 'Task 2 - High Priority',
 					priority: 'high',
-					completed: true,
+					completed: false,
 				},
 			],
 		},
@@ -58,7 +57,12 @@ export default function todoReducers(state = initialState, action) {
 			return { sections: [...state.sections, action.payload] };
 
 		case 'DELETE-SECTION':
-			return state;
+            console.log(action.payload, state.sections)
+			return {
+				sections: state.sections.filter(
+					(section) => section.name !== action.payload.name
+				),
+			};
 
 		case 'ADD-TODO':
 			return { sections: addTodo(state, action.payload) };
@@ -102,7 +106,6 @@ const delTodo = (state, payload) => {
 	const newTasks = chosenSection.tasks.filter(
 		(task) => task.text !== payload.text
 	);
-	console.log(chosenSection, newTasks);
 	chosenSection.tasks = newTasks;
 	state.sections[i] = chosenSection;
 	return state.sections;
@@ -126,7 +129,6 @@ const toggleTodo = (state, payload) => {
 		}
 		return _task;
 	});
-	console.log(chosenSection, newTasks);
 	chosenSection.tasks = newTasks;
 	state.sections[i] = chosenSection;
 	return state.sections;
