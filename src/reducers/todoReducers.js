@@ -57,7 +57,7 @@ export default function todoReducers(state = initialState, action) {
 			return { sections: [...state.sections, action.payload] };
 
 		case 'DELETE-SECTION':
-            console.log(action.payload, state.sections)
+			console.log(action.payload, state.sections);
 			return {
 				sections: state.sections.filter(
 					(section) => section.name !== action.payload.name
@@ -66,6 +66,9 @@ export default function todoReducers(state = initialState, action) {
 
 		case 'ADD-TODO':
 			return { sections: addTodo(state, action.payload) };
+
+		case 'EDIT-TODO':
+			return { sections: editTodo(state, action.payload) };
 
 		case 'DELETE-TODO':
 			return { sections: delTodo(state, action.payload) };
@@ -94,33 +97,34 @@ const addTodo = (state, payload) => {
 	return state.sections;
 };
 
-const delTodo = (state, payload) => {
-	let chosenSection, i;
-	console.log(state, payload);
-	for (i = 0; i < state.sections.length; i++) {
-		if (state.sections[i].name === payload.sectionName) {
-			chosenSection = state.sections[i];
+const editTodo = (state, payload) => {
+	const newTask = {
+		text: payload.text,
+		completed: payload.completed,
+		priority: payload.priority,
+	};
+	const allSectionTasks = state.sections[payload.section].tasks;
+	for (let i = 0; i < allSectionTasks.length; i++) {
+		if (allSectionTasks[i].text === payload.originalTodo.text) {
+			allSectionTasks[i] = newTask;
 			break;
 		}
 	}
-	const newTasks = chosenSection.tasks.filter(
-		(task) => task.text !== payload.text
-	);
-	chosenSection.tasks = newTasks;
-	state.sections[i] = chosenSection;
+	return state.sections;
+};
+
+const delTodo = (state, payload) => {
+	state.sections[payload.section].tasks = state.sections[
+		payload.section
+	].tasks.filter((task) => task.text !== payload.text);
 	return state.sections;
 };
 
 const toggleTodo = (state, payload) => {
-	let chosenSection, i;
 	console.log(state, payload);
-	for (i = 0; i < state.sections.length; i++) {
-		if (state.sections[i].name === payload.sectionName) {
-			chosenSection = state.sections[i];
-			break;
-		}
-	}
-	const newTasks = chosenSection.tasks.map((_task) => {
+	state.sections[payload.section].tasks = state.sections[
+		payload.section
+	].tasks.map((_task) => {
 		if (_task.text === payload.text) {
 			return {
 				..._task,
@@ -129,8 +133,7 @@ const toggleTodo = (state, payload) => {
 		}
 		return _task;
 	});
-	chosenSection.tasks = newTasks;
-	state.sections[i] = chosenSection;
+	console.log(state);
 	return state.sections;
 };
 

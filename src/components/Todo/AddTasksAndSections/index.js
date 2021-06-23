@@ -56,7 +56,7 @@ const AddTasksAndSections = () => {
 					startIcon={<EditIcon />}
 					color="secondary"
 					onClick={() => setOpen2(true)}>
-					Add/Remove Section
+					Modify Section
 				</Button>
 				<Modal
 					style={{

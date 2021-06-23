@@ -38,7 +38,9 @@ const useStyles = makeStyles((theme) => ({
 
 export const Section = (props) => {
 	const classes = useStyles();
-	const { name, tasks } = props;
+	const { name, tasks, section } = props;
+
+    console.log("TODOLIST", tasks);
 
 	return (
 		<Container className={classes.root}>
@@ -49,7 +51,7 @@ export const Section = (props) => {
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-					{ tasks.length > 0 ? <TodoList sectionName={name} todos={tasks} /> : <Typography variant="h6"> So lonely ...</Typography> }
+					{ tasks.length > 0 ? <TodoList section={section} todos={tasks} /> : <Typography variant="h6"> So lonely ...</Typography> }
 				</AccordionDetails>
 			</Accordion>
 		</Container>

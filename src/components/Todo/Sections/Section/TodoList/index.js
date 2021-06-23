@@ -3,10 +3,10 @@ import TodoItem from './TodoItem';
 import { Grid, Divider, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-    divider : {
-        backgroundColor: theme.palette.type === 'dark' ? "white" : "black",
-        margin: "10px 30px"
-    }
+	divider: {
+		backgroundColor: theme.palette.type === 'dark' ? 'white' : 'black',
+		margin: '10px 30px',
+	},
 }));
 
 function sortItemsByPriority(items) {
@@ -17,8 +17,8 @@ function sortItemsByPriority(items) {
 }
 
 export const TodoList = (props) => {
-    const classes = useStyles();
-	const { todos, sectionName } = props;
+	const classes = useStyles();
+	const { todos, section } = props;
 
 	const tasks = sortItemsByPriority(todos);
 	const completed = tasks.filter(function (value) {
@@ -36,16 +36,22 @@ export const TodoList = (props) => {
 					<TodoItem
 						key={_index}
 						todo={_todo}
-						sectionName={sectionName}></TodoItem>
+						section={section}></TodoItem>
 				);
 			})}
-			{completed.length > 0 && notcompleted.length > 0 ? <Grid item><Divider variant="middle" className={classes.divider} /></Grid> : ''}
+			{completed.length > 0 && notcompleted.length > 0 ? (
+				<Grid item>
+					<Divider variant="middle" className={classes.divider} />
+				</Grid>
+			) : (
+				''
+			)}
 			{completed.map((_todo, _index) => {
 				return (
 					<TodoItem
 						key={_index}
 						todo={_todo}
-						sectionName={sectionName}></TodoItem>
+						section={section}></TodoItem>
 				);
 			})}
 		</Grid>

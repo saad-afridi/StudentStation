@@ -10,7 +10,7 @@ export const Sections = () => {
 		<div>
 			{sections.map((_value, _ind) => {
 				return (
-					<Section key={_ind} name={_value.name} tasks={_value.tasks}></Section>
+					<Section key={_ind} name={_value.name} tasks={_value.tasks} section={_ind} ></Section>
 				);
 			})}
 		</div>

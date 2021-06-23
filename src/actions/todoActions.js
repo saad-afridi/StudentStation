@@ -6,7 +6,15 @@ export const addTodo = (payload) => {
 	};
 };
 
-// payload: { text: str, completed: bool, priority: str, sectionName: str }
+// payload: { originalTodo: {text, completed, priority}, text: str, completed: bool, priority: str, section: int }
+export const editTodo = (payload) => {
+    return {
+        type: 'EDIT-TODO',
+        payload
+    }
+}
+
+// payload: { text: str, completed: bool, priority: str, section: int }
 export const delTodo = (payload) => {
 	return {
 		type: 'DELETE-TODO',
@@ -14,7 +22,7 @@ export const delTodo = (payload) => {
 	};
 };
 
-// payload: { text: str, completed: bool, priority: str, sectionName: str }
+// payload: { text: str, completed: bool, priority: str, section: int }
 export const toggleTodo = (payload) => {
 	return {
 		type: 'TOGGLE-TODO',

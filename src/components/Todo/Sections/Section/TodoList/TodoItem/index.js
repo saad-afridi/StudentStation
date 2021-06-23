@@ -1,5 +1,8 @@
 import React from 'react';
 
+// Custom components
+import EditTodoModal from './EditTodoModal.js';
+
 // Material UI components
 import {
 	Grid,
@@ -7,6 +10,7 @@ import {
 	Checkbox,
 	IconButton,
 	Button,
+	Modal,
 } from '@material-ui/core';
 
 // Material UI Icons
@@ -19,7 +23,7 @@ import { green, red, yellow } from '@material-ui/core/colors';
 
 // Redux
 import { useDispatch } from 'react-redux';
-import { delTodo, toggleTodo } from '../../../../../actions/todoActions.js';
+import { delTodo, toggleTodo } from '../../../../../../actions/todoActions.js';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -37,23 +41,28 @@ const useStyles = makeStyles((theme) => ({
 		textDecoration: (props) =>
 			!props.todo.completed ? '' : 'line-through',
 	},
-    editIcon : {
-        color: theme.palette.type === 'dark' ? yellow[400] : yellow[700]
-    },
+	editIcon: {
+		color: theme.palette.type === 'dark' ? yellow[400] : yellow[700],
+	},
 	priorBox: {
-        color: (props) => 
-        props.todo.priority === 'high'
-        ? theme.palette.type === 'dark' ? theme.palette.secondary.light : theme.palette.secondary.main
-        : props.todo.priority === 'med'
-            ? theme.palette.primary.light
-            : theme.palette.primary.dark,
-        backgroundColor: theme.palette.type === 'dark' ? "black" : "white",
-    },
+		color: (props) =>
+			props.todo.priority === 'high'
+				? theme.palette.type === 'dark'
+					? theme.palette.secondary.light
+					: theme.palette.secondary.main
+				: props.todo.priority === 'med'
+				? theme.palette.primary.light
+				: theme.palette.primary.dark,
+		backgroundColor: theme.palette.type === 'dark' ? 'black' : 'white',
+	},
 }));
 
 export const TodoItem = (props) => {
 	const classes = useStyles(props);
-	const { todo, sectionName } = props;
+	const { todo, section } = props;
+
+	const [open, setOpen] = React.useState(false);
+
 	const dispatch = useDispatch();
 
 	return (
@@ -68,7 +77,9 @@ export const TodoItem = (props) => {
 			<Grid item>
 				<Checkbox
 					checked={todo.completed ? true : false}
-					onChange={() => dispatch(toggleTodo({ ...todo, sectionName }))}
+					onChange={() =>
+						dispatch(toggleTodo({ ...todo, section }))
+					}
 					style={{ color: green[400] }}></Checkbox>
 			</Grid>
 			<Grid item xs={6} sm={8} md={9} align="left">
@@ -80,21 +91,39 @@ export const TodoItem = (props) => {
 				</Typography>
 			</Grid>
 			<Grid item>
-				<Button disableElevation size="small" variant="outlined" className={classes.priorBox} disabled={todo.completed}>
+				<Button
+					disableElevation
+					size="small"
+					variant="outlined"
+					className={classes.priorBox}
+					disabled={todo.completed}>
 					{todo.completed ? 'Done' : todo.priority}
 				</Button>
 			</Grid>
 			<Grid item>
-				<IconButton variant="outlined" className={classes.editIcon}>
+                <Button variant="contained" color="primary" onClick={() => setOpen(true)}>
+                  Something Edit
+                </Button>
+				<IconButton variant="outlined" className={classes.editIcon} onCLick={() => setOpen(true)}>
 					<EditIcon />
 				</IconButton>
+				<Modal
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+					open={open}
+					onClose={() => setOpen(false)}>
+					<EditTodoModal todo={todo} section={section} />
+				</Modal>
 			</Grid>
 
 			<Grid item style={{ justifyContent: 'flex-end' }}>
 				<IconButton
 					variant="outlined"
 					style={{ color: red[400] }}
-					onClick={() => dispatch(delTodo({ ...todo, sectionName }))}>
+					onClick={() => dispatch(delTodo({ ...todo, section }))}>
 					<DeleteIcon />
 				</IconButton>
 			</Grid>
