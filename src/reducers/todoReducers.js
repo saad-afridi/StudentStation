@@ -33,7 +33,23 @@ const getLocalTodos = () => {
 };
 
 const initialState = {
-	sections: [{ name: 'Daily', tasks: [] }],
+	sections: [
+		{
+			name: 'Daily',
+			tasks: [
+				{
+					text: 'Task 1 - Low Priority',
+					priority: 'low',
+					completed: false,
+				},
+				{
+					text: 'Task 2 - High Priority - Completed',
+					priority: 'high',
+					completed: true,
+				},
+			],
+		},
+	],
 };
 
 export default function todoReducers(state = initialState, action) {
@@ -76,7 +92,7 @@ const addTodo = (state, payload) => {
 
 const delTodo = (state, payload) => {
 	let chosenSection, i;
-    console.log(state, payload);
+	console.log(state, payload);
 	for (i = 0; i < state.sections.length; i++) {
 		if (state.sections[i].name === payload.sectionName) {
 			chosenSection = state.sections[i];
@@ -86,30 +102,30 @@ const delTodo = (state, payload) => {
 	const newTasks = chosenSection.tasks.filter(
 		(task) => task.text !== payload.text
 	);
-    console.log(chosenSection, newTasks);
+	console.log(chosenSection, newTasks);
 	chosenSection.tasks = newTasks;
 	state.sections[i] = chosenSection;
 	return state.sections;
 };
 
 const toggleTodo = (state, payload) => {
-    let chosenSection, i;
-    console.log(state, payload);
+	let chosenSection, i;
+	console.log(state, payload);
 	for (i = 0; i < state.sections.length; i++) {
 		if (state.sections[i].name === payload.sectionName) {
 			chosenSection = state.sections[i];
 			break;
 		}
 	}
-    const newTasks = chosenSection.tasks.map((_task) => {
-        if (_task.text === payload.text) {
-            return {
-                ..._task,
-                completed : !_task.completed
-            }
-        }
-        return _task;
-    })
+	const newTasks = chosenSection.tasks.map((_task) => {
+		if (_task.text === payload.text) {
+			return {
+				..._task,
+				completed: !_task.completed,
+			};
+		}
+		return _task;
+	});
 	console.log(chosenSection, newTasks);
 	chosenSection.tasks = newTasks;
 	state.sections[i] = chosenSection;

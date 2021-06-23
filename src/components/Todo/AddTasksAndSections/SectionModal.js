@@ -90,7 +90,7 @@ const submitForm = (e, stateProps) => {
             return;
         }
 		for (let i = 0; i < sections.length; i++) {
-			if (sections[i].name === text) {
+			if (sections[i].name.toUpperCase() === text.toUpperCase()) {
                 setError(true)
                 setHelpText("Section Already Exists")
                 return;

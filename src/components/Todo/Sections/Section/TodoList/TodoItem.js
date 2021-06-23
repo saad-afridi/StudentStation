@@ -7,6 +7,7 @@ import {
 	Checkbox,
 	IconButton,
 	Button,
+    Avatar
 } from '@material-ui/core';
 
 // Material UI Icons
@@ -41,13 +42,13 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.type === 'dark' ? yellow[400] : yellow[700]
     },
 	priorBox: {
-        backgroundColor: (props) => 
+        color: (props) => 
         props.todo.priority === 'high'
         ? theme.palette.type === 'dark' ? theme.palette.secondary.light : theme.palette.secondary.main
         : props.todo.priority === 'med'
             ? theme.palette.primary.light
             : theme.palette.primary.dark,
-        color: theme.palette.type === 'dark' ? "black" : "white",
+        backgroundColor: theme.palette.type === 'dark' ? "black" : "white",
     },
 }));
 
@@ -79,10 +80,9 @@ export const TodoItem = (props) => {
 					{todo.text}
 				</Typography>
 			</Grid>
-
 			<Grid item>
-				<Button variant="text" className={classes.priorBox} disabled={todo.completed}>
-					{todo.priority}
+				<Button disableElevation size="small" variant="outlined" className={classes.priorBox} disabled={todo.completed}>
+					{todo.completed ? 'Done' : todo.priority}
 				</Button>
 			</Grid>
 			<Grid item>
