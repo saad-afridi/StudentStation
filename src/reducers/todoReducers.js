@@ -23,16 +23,12 @@ An example of the state is:
 */
 
 const getLocalTodos = () => {
-	const localTodos = localStorage.getItem('todos');
+	const localTodos = localStorage.getItem('todoData');
 	if (localTodos) {
 		const savedTodos = JSON.parse(localTodos);
 		return savedTodos;
 	}
-	return [];
-};
-
-const initialState = {
-	sections: [
+	return [
 		{
 			name: 'DAILY',
 			tasks: [
@@ -48,21 +44,27 @@ const initialState = {
 				},
 			],
 		},
-	],
+	]
+};
+
+const initialState = {
+	sections: getLocalTodos(),
 };
 
 export default function todoReducers(state = initialState, action) {
+	let newSections;
 	switch (action.type) {
 		case 'ADD-SECTION':
-			return { sections: [...state.sections, action.payload] };
+			newSections = [...state.sections, action.payload];
+			saveData(newSections);
+			return { sections: newSections };
 
 		case 'DELETE-SECTION':
-			console.log(action.payload, state.sections);
-			return {
-				sections: state.sections.filter(
-					(section) => section.name !== action.payload.name
-				),
-			};
+			newSections = state.sections.filter(
+				(section) => section.name !== action.payload.name
+			);
+			saveData(newSections);
+			return { sections: newSections };
 
 		case 'ADD-TODO':
 			return { sections: addTodo(state, action.payload) };
@@ -94,6 +96,7 @@ const addTodo = (state, payload) => {
 		],
 	};
 	state.sections[payload.section] = newSection;
+	saveData(state.sections);
 	return state.sections;
 };
 
@@ -110,6 +113,7 @@ const editTodo = (state, payload) => {
 			break;
 		}
 	}
+	saveData(state.sections);
 	return state.sections;
 };
 
@@ -117,11 +121,11 @@ const delTodo = (state, payload) => {
 	state.sections[payload.section].tasks = state.sections[
 		payload.section
 	].tasks.filter((task) => task.text !== payload.text);
+	saveData(state.sections);
 	return state.sections;
 };
 
 const toggleTodo = (state, payload) => {
-	console.log(state, payload);
 	state.sections[payload.section].tasks = state.sections[
 		payload.section
 	].tasks.map((_task) => {
@@ -133,10 +137,10 @@ const toggleTodo = (state, payload) => {
 		}
 		return _task;
 	});
-	console.log(state);
+	saveData(state.sections);
 	return state.sections;
 };
 
 const saveData = (todos) => {
-	localStorage.setItem('todos', JSON.stringify(todos));
+	localStorage.setItem('todoData', JSON.stringify(todos));
 };
