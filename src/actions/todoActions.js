@@ -1,21 +1,21 @@
-export const addTodo = (todo) => {
+export const addTodo = (payload) => {
 	return {
 		type: 'ADD-TODO',
-		payload: todo,
+		payload
 	};
 };
 
-export const delTodo = (todo) => {
+export const delTodo = (payload) => {
 	return {
 		type: 'DELETE-TODO',
-		payload: todo,
+		payload
 	};
 };
 
-export const toggleTodo = (todo) => {
+export const toggleTodo = (payload) => {
 	return {
 		type: 'TOGGLE-TODO',
-		payload: todo,
+		payload
 	};
 };
 

@@ -22,7 +22,6 @@ const useStyles = makeStyles({
 		padding: '20px',
 	},
 	priorForm: {
-		fullWidth: true,
 		minWidth: 120,
 	},
 });

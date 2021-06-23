@@ -23,32 +23,33 @@ const useStyles = makeStyles((theme) => ({
 		margin: '50px 0px',
 	},
 	section: {
-		backgroundColor: theme.palette.type === 'dark'
-                        ? theme.palette.elevated[1]
-                        : theme.palette.background,
+		backgroundColor:
+			theme.palette.type === 'dark'
+				? theme.palette.elevated[1]
+				: theme.palette.elevated[1],
 	},
-    sectionHeader: {
-        color: theme.palette.type === 'dark'
-        ? theme.palette.primary.main
-        : theme.palette.primary.main,
-    },
+	sectionHeader: {
+		color:
+			theme.palette.type === 'dark'
+				? theme.palette.primary.main
+				: theme.palette.primary.main,
+	},
 }));
 
 export const Section = (props) => {
 	const classes = useStyles();
 	const { name, tasks } = props;
-	console.log(name, tasks);
 
 	return (
 		<Container className={classes.root}>
 			<Accordion className={classes.section}>
-				<AccordionSummary expandIcon={<ExpandMoreIcon/> }>
-					<Typography variant="h3" className={classes.sectionHeader}>
+				<AccordionSummary expandIcon={<ExpandMoreIcon />}>
+					<Typography variant="h4" className={classes.sectionHeader}>
 						{name.toUpperCase()}
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-					<TodoList todos={tasks} />
+					<TodoList sectionName={name} todos={tasks} />
 				</AccordionDetails>
 			</Accordion>
 		</Container>

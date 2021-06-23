@@ -3,26 +3,24 @@
 
 /*
 An example of the state is:
-[
-    section1: [
-        {
-            text: 'Finish Homework'
-            completed: false
-        },
-        {
-            text: 'Eat Dinner'
-            completed: true
-        }
-    ],
-    section2: [
-        {
-            text: 'Workout 30 mins everyday'
-            completed: false
-        }
-    ],
+sections : [
+    {
+        name: 'Section1'
+        tasks : [
+            {
+                text: 'Eat Detergent!'
+                completed: false
+                priority: 'high'
+            },
+            ...
+        ]
+    },
+    {
+        name: 'Section2'
+        tasks : []
+    },
     ...
 ]
-
 */
 
 const getLocalTodos = () => {
@@ -36,28 +34,24 @@ const getLocalTodos = () => {
 
 const initialState = {
 	sections: [{ name: 'Daily', tasks: [] }],
-	todos: getLocalTodos(),
 };
 
 export default function todoReducers(state = initialState, action) {
 	switch (action.type) {
 		case 'ADD-SECTION':
-			return {
-				...state,
-				sections: [...state.sections, action.payload],
-			};
+			return { sections: [...state.sections, action.payload] };
 
 		case 'DELETE-SECTION':
 			return state;
 
 		case 'ADD-TODO':
-			return { ...state, sections: addTodo(state, action.payload) };
+			return { sections: addTodo(state, action.payload) };
 
 		case 'DELETE-TODO':
-			return { todos: delTodo(state, action.payload) };
+			return { sections: delTodo(state, action.payload) };
 
 		case 'TOGGLE-TODO':
-			return { todos: toggleTodo(state, action.payload) };
+			return { sections: toggleTodo(state, action.payload) };
 
 		default:
 			return state;
@@ -73,33 +67,53 @@ const addTodo = (state, payload) => {
 				completed: payload.completed,
 				priority: payload.priority,
 			},
-			...state.sections[payload.section].tasks
-		]
+			...state.sections[payload.section].tasks,
+		],
 	};
-    state.sections[payload.section] = newSection;
-    return state.sections;
+	state.sections[payload.section] = newSection;
+	return state.sections;
 };
 
-const delTodo = (state, todo) => {
-	const newTodos = state.todos.filter(function (value) {
-		return value.text !== todo.text;
-	});
-	saveData(newTodos);
-	return newTodos;
-};
-
-const toggleTodo = (state, todo) => {
-	const newTodos = state.todos.map((_todo) => {
-		if (todo === _todo) {
-			return {
-				..._todo,
-				completed: !todo.completed,
-			};
+const delTodo = (state, payload) => {
+	let chosenSection, i;
+    console.log(state, payload);
+	for (i = 0; i < state.sections.length; i++) {
+		if (state.sections[i].name === payload.sectionName) {
+			chosenSection = state.sections[i];
+			break;
 		}
-		return _todo;
-	});
-	saveData(newTodos);
-	return newTodos;
+	}
+	const newTasks = chosenSection.tasks.filter(
+		(task) => task.text !== payload.text
+	);
+    console.log(chosenSection, newTasks);
+	chosenSection.tasks = newTasks;
+	state.sections[i] = chosenSection;
+	return state.sections;
+};
+
+const toggleTodo = (state, payload) => {
+    let chosenSection, i;
+    console.log(state, payload);
+	for (i = 0; i < state.sections.length; i++) {
+		if (state.sections[i].name === payload.sectionName) {
+			chosenSection = state.sections[i];
+			break;
+		}
+	}
+    const newTasks = chosenSection.tasks.map((_task) => {
+        if (_task.text === payload.text) {
+            return {
+                ..._task,
+                completed : !_task.completed
+            }
+        }
+        return _task;
+    })
+	console.log(chosenSection, newTasks);
+	chosenSection.tasks = newTasks;
+	state.sections[i] = chosenSection;
+	return state.sections;
 };
 
 const saveData = (todos) => {

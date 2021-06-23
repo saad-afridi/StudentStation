@@ -23,16 +23,19 @@ import { addTodo } from '../../../actions/todoActions';
 const useStyles = makeStyles({
 	paperForm: {
 		position: 'absolute',
-		padding: '20px 50px',
+		padding: '20px 10px',
 	},
 	priorForm: {
-		minWidth: 100,
+		minWidth: 80,
+        margin: "20px"
 	},
 	sectForm: {
-		minWidth: 200,
+		minWidth: 150,
+        margin: "20px"
 	},
 	contentForm: {
 		minwidth: 400,
+        margin: "20px 0px"
 	},
 });
 
@@ -66,20 +69,22 @@ export const TaskModal = () => {
 			<Grid
 				container
 				direction="column"
-				justify="center"
-				alignItems="center"
+				justify="flex-start"
+				alignItems="stretch"
 				spacing={4}>
 				<Grid item>
 					<Typography variant="h3"> Add Task </Typography>
 				</Grid>
-				<Grid item className={classes.contentForm}>
+				<Grid item>
 					<TextField
+                        fullWidth
+                        className={classes.contentForm}
 						label="Task Content"
 						id="add-task-content-input"
 						multiline
 						error={hasError}
 						helperText={helpText}
-						placeholder="for e.g. Finish my math assignment"
+						placeholder="for e.g. Finish Assignment"
 						autoFocus
 						onChange={(e) => setText(e.target.value)}
 						onKeyPress={(e) => submitForm(e, stateProps)}
@@ -128,7 +133,7 @@ export const TaskModal = () => {
 						</FormControl>
 					</Grid>
 				</Grid>
-				<Grid item>
+				<Grid item alignItems="center" justify="center">
 					<Button
 						variant="contained"
 						color="primary"
