@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 	},
 	priorForm: {
 		minWidth: 80,
-		margin: '20px',
+		margin: '0px',
 	},
 	contentForm: {
 		minwidth: 400,
@@ -66,13 +66,13 @@ const EditTodoModal = (props) => {
 			<Grid
 				container
 				direction="column"
-				justify="flex-start"
+				justify="center"
 				alignItems="stretch"
 				spacing={4}>
-				<Grid item>
-					<Typography variant="h3"> Add Task </Typography>
+				<Grid item style={{minWidth: "400px"}}>
+					<Typography variant="h3">Edit Task</Typography>
 				</Grid>
-				<Grid item>
+				<Grid item >
 					<TextField
 						variant="filled"
 						fullWidth
@@ -134,7 +134,7 @@ const submitForm = (e, stateProps) => {
 			return;
 		}
 		for (let i = 0; i < sections[section].tasks.length; i++) {
-			if (sections[section].tasks[i].text === text) {
+			if (sections[section].tasks[i].text === text && todo.text !== text) {
 				setError(true);
 				setHelpText('Task Already Exists');
 				return;

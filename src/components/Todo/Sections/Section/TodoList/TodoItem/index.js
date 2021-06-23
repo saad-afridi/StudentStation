@@ -11,6 +11,7 @@ import {
 	IconButton,
 	Button,
 	Modal,
+    Dialog
 } from '@material-ui/core';
 
 // Material UI Icons
@@ -101,12 +102,11 @@ export const TodoItem = (props) => {
 				</Button>
 			</Grid>
 			<Grid item>
-                <Button variant="contained" color="primary" onClick={() => setOpen(true)}>
-                  Something Edit
-                </Button>
-				<IconButton variant="outlined" className={classes.editIcon} onCLick={() => setOpen(true)}>
-					<EditIcon />
-				</IconButton>
+                <div onClick={() => setOpen(true)}>
+                    <IconButton variant="outlined" className={classes.editIcon}>
+                        <EditIcon />
+                    </IconButton>
+                </div>
 				<Modal
 					style={{
 						display: 'flex',
