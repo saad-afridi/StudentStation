@@ -4,7 +4,7 @@ import React from 'react';
 import SetTimer from '../components/Timer/SetTimer';
 import ShowTime from '../components/Timer/ShowTime';
 import SetPomodoro from '../components/Timer/SetPomodoro';
-import PageTitle from '../components/PageTitle';
+import PageTitle from '../components/Utils/PageTitle';
 
 // Material UI Components
 import { Container, Grid, Button, LinearProgress } from '@material-ui/core';

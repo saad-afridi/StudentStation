@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Calc Components
-import PageTitle from '../components/PageTitle';
+import PageTitle from '../components/Utils/PageTitle';
 import AddCourse from '../components/Calc/AddCourse';
 import CourseList from '../components/Calc/CourseList';
 

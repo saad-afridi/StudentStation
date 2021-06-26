@@ -2,7 +2,7 @@ import React from 'react';
 
 // Todo Components
 import Sections from '../components/Todo/Sections';
-import PageTitle from '../components/PageTitle';
+import PageTitle from '../components/Utils/PageTitle';
 import AddTasksAndSections from '../components/Todo/AddTasksAndSections';
 
 // Material UI Components

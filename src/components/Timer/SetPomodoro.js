@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Material UI Components
-import {Grid, FormControl, InputLabel, Select, MenuItem, Button, Typography} from '@material-ui/core';
+import {Grid, FormControl, InputLabel, Select, MenuItem, Button, Typography, Container} from '@material-ui/core';
 
 // Material UI Icons
 import InputIcon from '@material-ui/icons/Input';
@@ -64,7 +64,7 @@ class SetPomodoro extends React.Component {
         }
 
         return (
-            <>
+            <Container>
             <Typography variant="h3" color="primary">
                 Pomodoro
             </Typography>
@@ -120,7 +120,7 @@ class SetPomodoro extends React.Component {
                     </Button>
                 </Grid>
             </Grid>
-            </>
+            </Container>
         )
     }
 

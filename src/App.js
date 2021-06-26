@@ -70,12 +70,12 @@ const themeDark = createMuiTheme({
 		},
 		type: 'dark',
 		background: {
-			default: '#070e1a',
+			default: '#14121f',
 		},
 		elevated: {
-			1: blueGrey[900],
-			2: blueGrey[800],
-			3: blueGrey[700],
+			1: "#283140",
+			2: "#3c4960",
+			3: "#43526c",
 		},
 		text: {
 			primary: '#FFFFFFCC',
@@ -95,7 +95,7 @@ const styles = () => ({
 	},
 	appBar: {
 		color: '#FFFFFFCC',
-		backgroundColor: '#0f1d36',
+		backgroundColor: '#2d3748',
 	},
     appBarTabs : {
         marginRight: "auto",

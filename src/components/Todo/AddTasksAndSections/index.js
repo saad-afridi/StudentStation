@@ -26,7 +26,7 @@ const AddTasksAndSections = () => {
 		<Grid
 			container
 			direction="row"
-			justify="space-evenly"
+			justify="center"
 			alignItems="center"
 			spacing={3}>
 			<Grid item className={classes.addTask}>
@@ -51,10 +51,10 @@ const AddTasksAndSections = () => {
 			</Grid>
 			<Grid item className={classes.addSection}>
 				<Button
-					variant="contained"
+					variant="outlined"
 					size="large"
 					startIcon={<EditIcon />}
-					color="secondary"
+					color="primary"
 					onClick={() => setOpen2(true)}>
 					Modify Section
 				</Button>
