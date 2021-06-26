@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 	markList: {},
 	tableContainer: {
 		backgroundColor: theme.palette.type === "dark"
-                        ? theme.palette.elevated[2]
+                        ? theme.palette.elevated[1]
                         : theme.palette.background.default,
         margin: "15px 0px",
 	},

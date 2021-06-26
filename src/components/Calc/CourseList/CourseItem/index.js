@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 		padding: 'auto',
 		backgroundColor:
 			theme.palette.type === 'dark'
-				? theme.palette.elevated[1]
+				? theme.palette.elevated[2]
 				: theme.palette.elevated[1],
 	},
 }));

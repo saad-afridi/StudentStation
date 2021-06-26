@@ -27,11 +27,18 @@ export const CourseStats = (props) => {
 	}
 
 	need = ((want - currentTotalMarks) / (100 - totalWeight)) * 100;
-	let showNeed = true;
-	if (need <= 100 && need > 0) {
+
+	let showNeed = false;
+	let change = '';
+
+	// If need can be attained
+	if (need <= 100 && need >= 0 && totalWeight <= 100) {
 		need = String(need.toFixed(1));
-	} else if (need > 100 || 100 - totalWeight <= 0 || need <= 0) {
-		showNeed = false;
+		showNeed = true;
+	} else if (need < 0) {
+		change = 'L';
+	} else if (need > 100) {
+		change = 'H';
 	}
 
 	return (
@@ -49,15 +56,17 @@ export const CourseStats = (props) => {
 						stat={String(
 							((currentTotalMarks / totalWeight) * 100).toFixed(1)
 						)}
-                        isImp={false}
+						isImp={false}
+						change={change}
 					/>
 				</Grid>
 
 				<Grid item>
 					<StatsBox
 						heading={showNeed ? 'You Need %' : 'Impossible'}
-						stat={showNeed ? need : "-"}
-                        isImp={!showNeed}
+						stat={showNeed ? need : '-'}
+						isImp={!showNeed}
+						change={change}
 					/>
 				</Grid>
 
@@ -65,14 +74,16 @@ export const CourseStats = (props) => {
 					<StatsBox
 						heading={'Course Left %'}
 						stat={String((100 - totalWeight).toFixed(1))}
-                        isImp={false}
+						isImp={false}
+						change={change}
 					/>
 				</Grid>
 				<Grid item>
 					<StatsBox
 						heading={'Obtained %'}
 						stat={String(currentTotalMarks.toFixed(1))}
-                        isImp={false}
+						isImp={false}
+						change={change}
 					/>
 				</Grid>
 			</Grid>

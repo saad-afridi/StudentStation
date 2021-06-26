@@ -7,7 +7,7 @@ import { Grid, Typography, Paper, TextField, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
 
-import { Delete, Add } from '@material-ui/icons'
+import { Delete, Add } from '@material-ui/icons';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,16 +18,16 @@ const useStyles = makeStyles((theme) => ({
 		position: 'absolute',
 		padding: '20px 10px',
 	},
-    buttonGroup: {
-        margin: "10px -5px"
-    },
-    delButton : {
-        color: theme.palette.type === 'dark' ? "black" : "white",
-        backgroundColor: theme.palette.type === 'dark' ? red[300] : red[600]
-    },
-    contentForm: {
+	buttonGroup: {
+		margin: '10px -5px',
+	},
+	delButton: {
+		color: theme.palette.type === 'dark' ? 'black' : 'white',
+		backgroundColor: theme.palette.type === 'dark' ? red[300] : red[600],
+	},
+	contentForm: {
 		minwidth: 400,
-        margin: "20px 0px"
+		margin: '20px 0px',
 	},
 }));
 
@@ -65,10 +65,10 @@ export const SectionModal = () => {
 				</Grid>
 				<Grid item>
 					<TextField
-                        autoFocus
-                        variant="filled"
-                        className={classes.contentForm}
-                        fullWidth
+						autoFocus
+						variant="filled"
+						className={classes.contentForm}
+						fullWidth
 						label="Section Name"
 						id="add-section-input"
 						error={hasError}
@@ -89,8 +89,7 @@ export const SectionModal = () => {
 							variant="contained"
 							color="primary"
 							onClick={(e) => submitForm(e, stateProps, 'add')}
-                            startIcon={<Add />}
-                            >
+							startIcon={<Add />}>
 							Add
 						</Button>
 					</Grid>
@@ -99,8 +98,7 @@ export const SectionModal = () => {
 							variant="contained"
 							className={classes.delButton}
 							onClick={(e) => submitForm(e, stateProps, 'del')}
-                            startIcon={<Delete />}
-                            >
+							startIcon={<Delete />}>
 							Delete
 						</Button>
 					</Grid>

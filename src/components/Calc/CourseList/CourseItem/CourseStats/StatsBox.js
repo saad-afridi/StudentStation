@@ -1,40 +1,46 @@
 import React from 'react';
 
-import { Grid, Card, Typography } from '@material-ui/core';
+import { Grid, Card, Typography, Icon } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { red } from '@material-ui/core/colors'
+import { red } from '@material-ui/core/colors';
+
+import More from '@material-ui/icons/ExpandLess';
+import Less from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles((theme) => ({
 	statContainer: {
 		padding: '10px',
-		backgroundColor: theme.palette.type === "dark" 
-                        ? theme.palette.elevated[2] 
-                        : theme.palette.primary.main,
+		backgroundColor:
+			theme.palette.type === 'dark'
+				? theme.palette.elevated[1]
+				: theme.palette.primary.main,
 		width: '125px',
 	},
-    impContainer: {
-        padding: '10px',
-		backgroundColor: theme.palette.type === "dark" 
-                        ? theme.palette.background
-                        : theme.palette.primary.dark,
+	impContainer: {
+		padding: '10px',
+		backgroundColor:
+			theme.palette.type === 'dark'
+				? theme.palette.elevated[3]
+				: theme.palette.primary.dark,
 		width: '125px',
-    },
+	},
 	stat: {
-		color: theme.palette.type === "dark" 
-        ? theme.palette.secondary.main
-        : theme.palette.background.default,
+		color:
+			theme.palette.type === 'dark'
+				? theme.palette.secondary.main
+				: theme.palette.background.default,
 	},
-    impStat: {
-        color: red[400],
-    },
-    header: {
-        color: "#FFFFFFCC",
-    }
+	impStat: {
+		color: red[400],
+	},
+	header: {
+		color: '#FFFFFFCC',
+	},
 }));
 
 export const StatsBox = (props) => {
-	const { heading, stat, isImp } = props;
+	const { heading, stat, isImp, change } = props;
 	const classes = useStyles();
 	return (
 		<Grid
@@ -49,12 +55,22 @@ export const StatsBox = (props) => {
 				</Typography>
 			</Grid>
 			<Grid item>
-				<Typography
-					variant="h4"
-					align="center"
-					className={isImp ? classes.impStat : classes.stat}>
-					{stat}
-				</Typography>
+				{!isImp ? (
+					<Typography
+						variant="h4"
+						align="center"
+						className={classes.stat}>
+						{stat}
+					</Typography>
+				) : (
+					<Icon size="medium">
+						{change === 'H' ? (
+							<Less className={classes.impStat} />
+						) : (
+							<More className={classes.impStat} />
+						)}
+					</Icon>
+				)}
 			</Grid>
 		</Grid>
 	);

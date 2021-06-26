@@ -11,7 +11,6 @@ import {
 	IconButton,
 	Button,
 	Modal,
-    Dialog
 } from '@material-ui/core';
 
 // Material UI Icons
@@ -78,12 +77,10 @@ export const TodoItem = (props) => {
 			<Grid item>
 				<Checkbox
 					checked={todo.completed ? true : false}
-					onChange={() =>
-						dispatch(toggleTodo({ ...todo, section }))
-					}
+					onChange={() => dispatch(toggleTodo({ ...todo, section }))}
 					style={{ color: green[400] }}></Checkbox>
 			</Grid>
-			<Grid item xs={6} sm={8} md={9} align="left">
+			<Grid item xs={4} sm={6} md={8} lg={9} align="left">
 				<Typography
 					variant="h5"
 					component="div"
@@ -102,11 +99,11 @@ export const TodoItem = (props) => {
 				</Button>
 			</Grid>
 			<Grid item>
-                <div onClick={() => setOpen(true)}>
-                    <IconButton variant="outlined" className={classes.editIcon}>
-                        <EditIcon />
-                    </IconButton>
-                </div>
+				<div onClick={() => setOpen(true)}>
+					<IconButton variant="outlined" className={classes.editIcon}>
+						<EditIcon />
+					</IconButton>
+				</div>
 				<Modal
 					style={{
 						display: 'flex',

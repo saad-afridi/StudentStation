@@ -9,8 +9,8 @@ import {
 	Tab,
 	IconButton,
 	Container,
-    Hidden,
-    withWidth
+	Hidden,
+	withWidth,
 } from '@material-ui/core';
 
 // Material UI Icons
@@ -29,7 +29,7 @@ import HomePage from './pages/Home';
 // Theme and Styling
 import { withStyles, ThemeProvider } from '@material-ui/styles';
 import PropTypes from 'prop-types';
-import { teal, grey, blueGrey, indigo, pink } from '@material-ui/core/colors';
+import { teal, grey, indigo, pink } from '@material-ui/core/colors';
 import { createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -73,9 +73,9 @@ const themeDark = createMuiTheme({
 			default: '#14121f',
 		},
 		elevated: {
-			1: "#283140",
-			2: "#3c4960",
-			3: "#43526c",
+			1: '#283140',
+			2: '#3c4960',
+			3: '#43526c',
 		},
 		text: {
 			primary: '#FFFFFFCC',
@@ -97,12 +97,12 @@ const styles = () => ({
 		color: '#FFFFFFCC',
 		backgroundColor: '#2d3748',
 	},
-    appBarTabs : {
-        marginRight: "auto",
-    },
-    changeThemeButton: {
-        marginLeft: "auto",
-    }
+	appBarTabs: {
+		marginRight: 'auto',
+	},
+	changeThemeButton: {
+		marginLeft: 'auto',
+	},
 });
 
 class App extends React.Component {
@@ -135,7 +135,6 @@ class App extends React.Component {
 			this.setState({ darkMode: savedTheme });
 		}
 		const pom = localStorage.getItem('pom-settings');
-		console.log(pom);
 		if (pom) {
 			const savedPom = JSON.parse(pom);
 			this.setState({ pom: savedPom });
@@ -166,13 +165,15 @@ class App extends React.Component {
 						color={!darkMode ? 'primary' : 'default'}
 						className={darkMode ? classes.appBar : ''}>
 						<Toolbar>
-                            <Hidden only={['sm', 'xs']}>
-                                <Typography variant="h3" className={classes.title}>
-                                    Student Station
-                                </Typography>
-                            </Hidden>
+							<Hidden only={['sm', 'xs']}>
+								<Typography
+									variant="h3"
+									className={classes.title}>
+									Student Station
+								</Typography>
+							</Hidden>
 							<Tabs
-                                className={classes.appBarTabs}
+								className={classes.appBarTabs}
 								variant="scrollable"
 								scrollButtons="auto"
 								value={this.state.selectedTab}
@@ -210,7 +211,9 @@ class App extends React.Component {
 									}
 								/>
 							</Tabs>
-							<IconButton className={classes.changeThemeButton} onClick={this.changeThemes}>
+							<IconButton
+								className={classes.changeThemeButton}
+								onClick={this.changeThemes}>
 								<Brightness4Icon />
 							</IconButton>
 						</Toolbar>
@@ -263,7 +266,6 @@ class App extends React.Component {
 		}
 		this.setState({ alarm: (n1 * 60 + n2) * 60 });
 		this.setState({ paused: false, pomOn: false });
-		console.log(this.state.alarm);
 	};
 
 	// Check if Alarm is over or not
@@ -279,7 +281,6 @@ class App extends React.Component {
 			this.setState({ alarm: -2 });
 		} else {
 			this.setState({ alarm: this.state.alarm - 1 });
-			console.log('not yet');
 		}
 	};
 
@@ -324,7 +325,6 @@ class App extends React.Component {
 
 		// Pomodoro Timer ended
 		if (this.state.alarm === -1) {
-			console.log(this.state.session);
 			// Work Ended -> Short break or Long
 			if (this.state.session % 2 === 1) {
 				if (this.state.session === 7) {
@@ -361,7 +361,6 @@ class App extends React.Component {
 
 	// Skipping to next Session
 	nextSession = () => {
-		console.log(this.state.session);
 		// Work -> Long Break
 		if (this.state.session === 7) {
 			this.setState({
@@ -400,7 +399,7 @@ class App extends React.Component {
 
 App.propTypes = {
 	classes: PropTypes.object.isRequired,
-    width: PropTypes.oneOf(['lg', 'md', 'sm', 'xl', 'xs']).isRequired,
+	width: PropTypes.oneOf(['lg', 'md', 'sm', 'xl', 'xs']).isRequired,
 };
 
 export default withWidth()(withStyles(styles)(App));

@@ -20,7 +20,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { addTodo } from '../../../actions/todoActions';
 
-
 const useStyles = makeStyles({
 	paperForm: {
 		position: 'absolute',
@@ -28,15 +27,15 @@ const useStyles = makeStyles({
 	},
 	priorForm: {
 		minWidth: 80,
-        margin: "20px"
+		margin: '20px',
 	},
 	sectForm: {
 		minWidth: 150,
-        margin: "20px"
+		margin: '20px',
 	},
 	contentForm: {
 		minwidth: 400,
-        margin: "20px 0px"
+		margin: '20px 0px',
 	},
 });
 
@@ -78,9 +77,9 @@ export const TaskModal = () => {
 				</Grid>
 				<Grid item>
 					<TextField
-                        variant="filled"
-                        fullWidth
-                        className={classes.contentForm}
+						variant="filled"
+						fullWidth
+						className={classes.contentForm}
 						label="Task Content"
 						id="add-task-content-input"
 						multiline
