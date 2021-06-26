@@ -59,11 +59,12 @@ const submitForm = (e, stateProps) => {
         return;
     }
 	const { want, dispatch, course } = stateProps;
+    console.log(typeof(want), want)
     if ( want > 100 || want < 0) {
         return ;
     }
 	e.preventDefault();
-	course.want = want;
+	course.want = parseInt(want);
 	dispatch(changeWantedMark(course));
 };
 

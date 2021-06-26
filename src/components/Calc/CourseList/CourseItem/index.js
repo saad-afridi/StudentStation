@@ -60,7 +60,7 @@ export const CourseItem = (props) => {
 			<hr />
 			<AddMark course={course} />
 			{course.marks.length > 0 ? <MarkList course={course} /> : ''}
-			<WantMark course={course} />
+			{course.marks.length > 0 ? <WantMark course={course} /> : ''}
 			{course.marks.length > 0 ? <CourseStats course={course} /> : ''}
 		</Grid>
 	);

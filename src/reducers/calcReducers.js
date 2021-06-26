@@ -31,7 +31,50 @@ const getlocalCourses = () => {
 	if (savedCourses) {
 		return JSON.parse(savedCourses);
 	}
-	return [];
+	return [
+        {
+            want: 40,
+            name: "Example Course 1 - Impossible Mark",
+            marks: [
+                {
+                    type: "Assignment 3",
+                    mark: 90,
+                    weight: 10
+                },
+                {
+                    type: "Midterm",
+                    mark: 95,
+                    weight: 40
+                }
+            ]
+        },
+        {
+            want: 80,
+            name: "Example Course 2 - Possible Mark",
+            marks: [
+                {
+                    type: "Test 1",
+                    mark: 100,
+                    weight: 15
+                },
+                {
+                    type: "Test 2",
+                    mark: 90,
+                    weight: 15
+                },
+                {
+                    type: "Tutorial Quizzes",
+                    mark: 100,
+                    weight: 10
+                },
+                {
+                    type: "Assignment 1",
+                    mark: 87.7,
+                    weight: 10
+                }
+            ]
+        }
+    ];
 };
 
 const initialState = {

@@ -69,7 +69,7 @@ const EditTodoModal = (props) => {
 				justify="center"
 				alignItems="stretch"
 				spacing={4}>
-				<Grid item style={{minWidth: "400px"}}>
+				<Grid item style={{minWidth: "400px v"}}>
 					<Typography variant="h3">Edit Task</Typography>
 				</Grid>
 				<Grid item >

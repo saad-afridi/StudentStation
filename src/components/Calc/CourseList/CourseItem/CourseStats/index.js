@@ -27,7 +27,6 @@ export const CourseStats = (props) => {
 	}
 
 	need = ((want - currentTotalMarks) / (100 - totalWeight)) * 100;
-	console.log(typeof need, need);
 	let showNeed = true;
 	if (need <= 100 && need > 0) {
 		need = String(need.toFixed(1));
@@ -57,7 +56,7 @@ export const CourseStats = (props) => {
 				<Grid item>
 					<StatsBox
 						heading={showNeed ? 'You Need %' : 'Impossible'}
-						stat={showNeed ? need : 0}
+						stat={showNeed ? need : "-"}
                         isImp={!showNeed}
 					/>
 				</Grid>
