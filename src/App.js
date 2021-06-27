@@ -95,7 +95,7 @@ const styles = () => ({
 	},
 	appBar: {
 		color: '#FFFFFFCC',
-		backgroundColor: '#2d3748',
+		backgroundColor: '#2d3048',
 	},
 	appBarTabs: {
 		marginRight: 'auto',

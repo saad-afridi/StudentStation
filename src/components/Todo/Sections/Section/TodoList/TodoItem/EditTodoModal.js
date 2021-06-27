@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // MUI Components
 import {
@@ -6,10 +7,6 @@ import {
 	Grid,
 	Paper,
 	Typography,
-	MenuItem,
-	Select,
-	FormControl,
-	InputLabel,
 	Button,
 } from '@material-ui/core';
 
@@ -37,10 +34,9 @@ const useStyles = makeStyles({
 
 const EditTodoModal = (props) => {
 	const classes = useStyles();
-	const { todo, section } = props;
+	const { todo, section, onClose } = props;
 
 	const [text, setText] = React.useState(todo.text);
-	const [prior, setPrior] = React.useState(todo.priority);
 
 	// Error handling
 	const [hasError, setError] = React.useState(false);
@@ -53,12 +49,12 @@ const EditTodoModal = (props) => {
 	const stateProps = {
 		todo,
 		text,
-		prior,
 		section,
 		setError,
 		setHelpText,
 		dispatch,
 		sections,
+		onClose,
 	};
 
 	return (
@@ -69,10 +65,10 @@ const EditTodoModal = (props) => {
 				justify="center"
 				alignItems="stretch"
 				spacing={4}>
-				<Grid item style={{minWidth: "400px v"}}>
-					<Typography variant="h3">Edit Task</Typography>
+				<Grid item style={{ minWidth: '400px v' }}>
+					<Typography variant="h3">Edit Task Content</Typography>
 				</Grid>
-				<Grid item >
+				<Grid item>
 					<TextField
 						variant="filled"
 						fullWidth
@@ -87,20 +83,6 @@ const EditTodoModal = (props) => {
 						onChange={(e) => setText(e.target.value)}
 						onKeyPress={(e) => submitForm(e, stateProps)}
 					/>
-				</Grid>
-				<Grid item>
-					<FormControl className={classes.priorForm}>
-						<InputLabel id="set-priority-task">Priority</InputLabel>
-						<Select
-							id="set-priority"
-							defaultValue={'low'}
-							value={prior}
-							onChange={(e) => setPrior(e.target.value)}>
-							<MenuItem value={'low'}>Low</MenuItem>
-							<MenuItem value={'med'}>Medium</MenuItem>
-							<MenuItem value={'high'}>High</MenuItem>
-						</Select>
-					</FormControl>
 				</Grid>
 				<Grid item alignItems="center" justify="center">
 					<Button
@@ -119,12 +101,12 @@ const submitForm = (e, stateProps) => {
 	const {
 		todo,
 		text,
-		prior,
 		section,
 		setError,
 		setHelpText,
 		dispatch,
 		sections,
+		onClose,
 	} = stateProps;
 
 	if (e.charCode === undefined) {
@@ -134,7 +116,10 @@ const submitForm = (e, stateProps) => {
 			return;
 		}
 		for (let i = 0; i < sections[section].tasks.length; i++) {
-			if (sections[section].tasks[i].text === text && todo.text !== text) {
+			if (
+				sections[section].tasks[i].text === text &&
+				todo.text !== text
+			) {
 				setError(true);
 				setHelpText('Task Already Exists');
 				return;
@@ -143,16 +128,23 @@ const submitForm = (e, stateProps) => {
 		e.preventDefault();
 		dispatch(
 			editTodo({
-                originalTodo: todo,
+				originalTodo: todo,
 				text,
-				priority: prior,
+				priority: todo.priority,
 				completed: todo.completed,
 				section,
 			})
 		);
+		onClose();
 	}
 	setError(false);
 	setHelpText('');
+};
+
+EditTodoModal.propTypes = {
+	onClose: PropTypes.func.isRequired,
+	todo: PropTypes.object.isRequired,
+	section: PropTypes.number.isRequired,
 };
 
 export default EditTodoModal;

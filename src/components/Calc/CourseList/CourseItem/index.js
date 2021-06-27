@@ -24,10 +24,7 @@ const useStyles = makeStyles((theme) => ({
 	course: {
 		margin: '5px',
 		padding: 'auto',
-		backgroundColor:
-			theme.palette.type === 'dark'
-				? theme.palette.elevated[2]
-				: theme.palette.elevated[1],
+		backgroundColor: theme.palette.elevated[1],
 	},
 }));
 

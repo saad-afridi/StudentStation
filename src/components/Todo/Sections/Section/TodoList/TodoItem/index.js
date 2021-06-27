@@ -23,7 +23,11 @@ import { green, red, yellow } from '@material-ui/core/colors';
 
 // Redux
 import { useDispatch } from 'react-redux';
-import { delTodo, toggleTodo } from '../../../../../../actions/todoActions.js';
+import {
+	delTodo,
+	toggleTodo,
+	editTodo,
+} from '../../../../../../actions/todoActions.js';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -63,7 +67,13 @@ export const TodoItem = (props) => {
 
 	const [open, setOpen] = React.useState(false);
 
+	const handleCloseModal = () => {
+		setOpen(false);
+	};
+
 	const dispatch = useDispatch();
+
+	const stateProps = { todo, section, dispatch };
 
 	return (
 		<Grid
@@ -94,7 +104,8 @@ export const TodoItem = (props) => {
 					size="small"
 					variant="outlined"
 					className={classes.priorBox}
-					disabled={todo.completed}>
+					disabled={todo.completed}
+					onClick={() => togglePriority(stateProps)}>
 					{todo.completed ? 'Done' : todo.priority}
 				</Button>
 			</Grid>
@@ -111,8 +122,12 @@ export const TodoItem = (props) => {
 						justifyContent: 'center',
 					}}
 					open={open}
-					onClose={() => setOpen(false)}>
-					<EditTodoModal todo={todo} section={section} />
+					onClose={handleCloseModal}>
+					<EditTodoModal
+						todo={todo}
+						section={section}
+						onClose={handleCloseModal}
+					/>
 				</Modal>
 			</Grid>
 
@@ -126,6 +141,30 @@ export const TodoItem = (props) => {
 			</Grid>
 		</Grid>
 	);
+};
+
+const togglePriorityUtil = (prior) => {
+	if (prior === 'low') {
+		return 'med';
+	} else if (prior === 'med') {
+		return 'high';
+	}
+	return 'low';
+};
+
+const togglePriority = (stateProps) => {
+	const { todo, section, dispatch } = stateProps;
+
+	dispatch(
+		editTodo({
+			originalTodo: todo,
+            text: todo.text,
+			section,
+			priority: togglePriorityUtil(todo.priority),
+			completed: todo.completed,
+		})
+	);
+	return;
 };
 
 export default TodoItem;

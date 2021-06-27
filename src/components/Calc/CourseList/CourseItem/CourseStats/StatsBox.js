@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 		padding: '10px',
 		backgroundColor:
 			theme.palette.type === 'dark'
-				? theme.palette.elevated[1]
+				? theme.palette.elevated[2]
 				: theme.palette.primary.main,
 		width: '125px',
 	},
