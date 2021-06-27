@@ -11,9 +11,11 @@ import {
 	InputLabel,
 	Select,
 	Button,
+	Snackbar,
 } from '@material-ui/core';
 
 // Theme and Styling
+import { green } from '@material-ui/core/colors'
 import { makeStyles } from '@material-ui/core/styles';
 
 // Redux
@@ -45,9 +47,21 @@ export const TaskModal = () => {
 	const [section, setSection] = React.useState(0);
 	const [prior, setPrior] = React.useState('low');
 
-	// Error handling
+	// Error handling | Feedback
 	const [hasError, setError] = React.useState(false);
 	const [helpText, setHelpText] = React.useState('');
+	const [open, setOpen] = React.useState(false);
+
+	const handleClick = () => {
+		setOpen(true);
+	};
+
+	const handleClose = (event, reason) => {
+		if (reason === 'clickaway') {
+			return;
+		}
+		setOpen(false);
+	};
 
 	// Redux
 	const { sections } = useSelector((state) => state.todoListState);
@@ -62,6 +76,7 @@ export const TaskModal = () => {
 		prior,
 		dispatch,
 		sections,
+        handleClick,
 	};
 
 	return (
@@ -141,6 +156,16 @@ export const TaskModal = () => {
 						onClick={(e) => submitForm(e, stateProps)}>
 						Create
 					</Button>
+                    <Snackbar
+                        anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                        }}
+                        open={open}
+                        autoHideDuration={1000}
+                        onClose={handleClose}
+                        message="Task Created!"
+                    />
 				</Grid>
 			</Grid>
 		</Paper>
@@ -157,6 +182,7 @@ const submitForm = (e, stateProps) => {
 		prior,
 		dispatch,
 		sections,
+        handleClick
 	} = stateProps;
 
 	// If clicked or pressed enter => Submit
@@ -178,6 +204,7 @@ const submitForm = (e, stateProps) => {
 		dispatch(addTodo({ text, priority: prior, completed: false, section }));
 		document.getElementById('add-task-content-input').value = '';
 		setText('');
+        handleClick();
 	}
 	setError(false);
 	setHelpText('');

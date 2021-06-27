@@ -31,9 +31,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export const SectionModal = () => {
+export const SectionModal = (props) => {
 	const classes = useStyles();
 	const [text, setText] = React.useState('');
+    const { onClose } = props;
 
 	// Error handling
 	const [hasError, setError] = React.useState(false);
@@ -50,6 +51,7 @@ export const SectionModal = () => {
 		setHelpText,
 		dispatch,
 		sections,
+        onClose
 	};
 
 	return (
@@ -109,7 +111,7 @@ export const SectionModal = () => {
 };
 
 const submitForm = (e, stateProps, intent) => {
-	const { text, setText, setError, setHelpText, dispatch, sections } =
+	const { text, setText, setError, setHelpText, dispatch, sections, onClose } =
 		stateProps;
 
 	// If clicked or pressed enter => Submit
@@ -121,6 +123,7 @@ const submitForm = (e, stateProps, intent) => {
 			dispatch(delSection({ name: upperText }));
 			document.getElementById('add-section-input').value = '';
 			setText('');
+            onClose();
 			return;
 		}
 
@@ -141,6 +144,7 @@ const submitForm = (e, stateProps, intent) => {
 		dispatch(addSection({ name: upperText, tasks: [] }));
 		document.getElementById('add-section-input').value = '';
 		setText('');
+        onClose();
 	}
 	setError(false);
 	setHelpText('');

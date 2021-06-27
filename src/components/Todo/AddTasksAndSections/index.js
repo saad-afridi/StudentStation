@@ -66,7 +66,7 @@ const AddTasksAndSections = () => {
 					}}
 					open={open2}
 					onClose={() => setOpen2(false)}>
-					<SectionModal />
+					<SectionModal onClose={() => setOpen2(false)} />
 				</Modal>
 			</Grid>
 		</Grid>
