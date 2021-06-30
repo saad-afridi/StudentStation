@@ -33,6 +33,10 @@ import { teal, grey, indigo, pink } from '@material-ui/core/colors';
 import { createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
+// Sounds
+import alertSimple from './assets/sounds/alert_simple.wav'
+import notifSimple from './assets/sounds/notification_simple-02.wav'
+
 const themeLight = createMuiTheme({
 	palette: {
 		primary: {
@@ -105,6 +109,9 @@ const styles = () => ({
 	},
 });
 
+const alertAudio = new Audio(alertSimple);
+const notifAudio = new Audio(notifSimple);
+
 class App extends React.Component {
 	constructor() {
 		super();
@@ -150,6 +157,7 @@ class App extends React.Component {
 	render() {
 		const { darkMode } = this.state;
 		const { classes } = this.props;
+
 		return (
 			<Container className="App">
 				<ThemeProvider theme={darkMode ? themeDark : themeLight}>
@@ -281,6 +289,7 @@ class App extends React.Component {
 		} else if (this.state.alarm === -2) {
 			return;
 		} else if (this.state.alarm === -1) {
+            alertAudio.play()
 			alert("Time's Up!");
 			this.setState({ alarm: -2 });
 		} else {
@@ -367,6 +376,7 @@ class App extends React.Component {
 
 	// Skipping to next Session
 	nextSession = () => {
+        notifAudio.play()
 		// Work -> Long Break
 		if (this.state.session === 7) {
 			this.setState({
