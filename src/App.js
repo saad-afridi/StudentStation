@@ -95,7 +95,7 @@ const styles = () => ({
 	},
 	appBar: {
 		color: '#FFFFFFCC',
-		backgroundColor: '#2d3048',
+		backgroundColor: '#2d3748',
 	},
 	appBarTabs: {
 		marginRight: 'auto',
@@ -118,6 +118,7 @@ class App extends React.Component {
 			pomOn: false,
 			pom: [25, 5, 30],
 			session: 0,
+            totalTime: 0
 		};
 		this.setAlarmTime = this.setAlarmTime.bind(this);
 	}
@@ -232,11 +233,14 @@ class App extends React.Component {
 							checkPomFn={this.checkPom}
 							skipSessionFn={this.nextSession}
 							checkProgressFn={this.calculateProgress}
+                            resetTotalTimeFn={this.resetTotalTime}
 							alarm={this.state.alarm}
 							pomOn={this.state.pomOn}
 							session={this.state.session}
 							paused={this.state.paused}
-							pom={this.state.pom}></TimerPage>
+							pom={this.state.pom}
+                            totalTime={this.state.totalTime}
+                            ></TimerPage>
 					)}
 
 					{this.state.selectedTab === 3 && <CalculatorPage />}
@@ -280,6 +284,7 @@ class App extends React.Component {
 			alert("Time's Up!");
 			this.setState({ alarm: -2 });
 		} else {
+            this.setState({ totalTime: this.state.totalTime + 1});
 			this.setState({ alarm: this.state.alarm - 1 });
 		}
 	};
@@ -355,6 +360,7 @@ class App extends React.Component {
 				this.setState({ alarm: this.state.pom[0], session: 1 });
 			}
 		} else {
+            this.setState({ totalTime: this.state.totalTime + 1});
 			this.setState({ alarm: this.state.alarm - 1 });
 		}
 	};
@@ -395,6 +401,10 @@ class App extends React.Component {
 		}
 		return (this.state.session / 8) * 100;
 	};
+
+    resetTotalTime = () => {
+        this.setState({ totalTime: 0 })
+    }
 }
 
 App.propTypes = {

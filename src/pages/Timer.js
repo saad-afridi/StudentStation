@@ -5,6 +5,7 @@ import SetTimer from '../components/Timer/SetTimer';
 import ShowTime from '../components/Timer/ShowTime';
 import SetPomodoro from '../components/Timer/SetPomodoro';
 import PageTitle from '../components/Utils/PageTitle';
+import ShowTotalTime from '../components/Timer/ShowTotalTime';
 
 // Material UI Components
 import { Container, Grid, Button, LinearProgress } from '@material-ui/core';
@@ -35,7 +36,7 @@ const styles = (theme) => ({
 class TimerPage extends React.Component {
 	render() {
 		const { classes } = this.props;
-		const { alarm, session, pomOn, paused, pom } = this.props;
+		const { alarm, session, pomOn, paused, pom, totalTime } = this.props;
 		return (
 			<Container className="TimerContainer">
 				<PageTitle
@@ -63,7 +64,7 @@ class TimerPage extends React.Component {
 
 				<Grid
 					container
-					spacing={2}
+					spacing={3}
 					justify="center"
 					alignItems="center"
 					className={classes.controlButtons}>
@@ -88,8 +89,10 @@ class TimerPage extends React.Component {
 							Skip <SkipNextIcon />
 						</Button>
 					</Grid>
+                    <Grid item>
+                        <ShowTotalTime totalTime={totalTime} resetTotalTimeFn={this.resetTotalTime} />
+                    </Grid>
 				</Grid>
-
 				<SetTimer setAlarmFn={this.setAlarmTime}></SetTimer>
 				<SetPomodoro getPomFn={this.getPom} pom={pom}></SetPomodoro>
 			</Container>
@@ -130,6 +133,11 @@ class TimerPage extends React.Component {
 	calculateProgress = () => {
 		return this.props.checkProgressFn();
 	};
+
+    // Reset Total Timer
+    resetTotalTime = () => {
+        return this.props.resetTotalTimeFn();
+    }
 }
 
 TimerPage.propTypes = {

@@ -15,7 +15,6 @@ import {
 } from '@material-ui/core';
 
 // Theme and Styling
-import { green } from '@material-ui/core/colors'
 import { makeStyles } from '@material-ui/core/styles';
 
 // Redux
