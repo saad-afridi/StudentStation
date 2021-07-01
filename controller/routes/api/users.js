@@ -1,13 +1,20 @@
 const router = require('express').Router();
-let User = require('../../../models/user.model');
+const User = require('../../../models/user.model');
 
-router.route('/').get((req, res) => {
+// @route GET api/users/get-users
+// @desc Get All Users
+// @access Private
+router.get('/get-users', (req, res) => {
+	console.log('Some tihng happened!');
 	User.find()
 		.then((users) => res.json(users))
 		.catch((err) => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add').post((req, res) => {
+// @route POST api/users/register
+// @desc Add new User
+// @access Public
+router.post('/register', (req, res) => {
 	const username = req.body.username;
 	const newUser = new User({ username });
 
