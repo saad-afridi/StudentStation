@@ -82,8 +82,7 @@ export const TodoItem = (props) => {
 			direction="row"
 			justify="space-between"
 			alignItems="center"
-			className={classes.root}
-			fullWidth>
+			className={classes.root}>
 			<Grid item>
 				<Checkbox
 					checked={todo.completed ? true : false}
@@ -158,7 +157,7 @@ const togglePriority = (stateProps) => {
 	dispatch(
 		editTodo({
 			originalTodo: todo,
-            text: todo.text,
+			text: todo.text,
 			section,
 			priority: togglePriorityUtil(todo.priority),
 			completed: todo.completed,

@@ -78,7 +78,7 @@ class SetPomodoro extends React.Component {
                             {
                                 minArr.map((_value) => {
                                     return(
-                                        <MenuItem value={_value}> {String(_value) + " mins"}</MenuItem>
+                                        <MenuItem key={_value} value={_value}> {String(_value) + " mins"}</MenuItem>
                                     )
                                 })
                             }
@@ -92,7 +92,7 @@ class SetPomodoro extends React.Component {
                             {
                                 minArr.map((_value) => {
                                     return(
-                                        <MenuItem value={_value}> {String(_value) + " mins"}</MenuItem>
+                                        <MenuItem key={_value} value={_value}> {String(_value) + " mins"}</MenuItem>
                                     )
                                 })
                             }
@@ -106,7 +106,7 @@ class SetPomodoro extends React.Component {
                             {
                                 minArr.map((_value, i) => {
                                     return(
-                                        <MenuItem value={_value}> {String(_value) + " mins"}</MenuItem>
+                                        <MenuItem key={_value} value={_value}> {String(_value) + " mins"}</MenuItem>
                                     )
                                 })
                             }

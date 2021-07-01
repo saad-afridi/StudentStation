@@ -24,7 +24,7 @@ const ShowTotalTime = (props) => {
 	return (
 		<Grid
 			container
-			direction="row "
+			direction="row"
 			justify="center"
 			alignItems="center"
 			spacing={2}
