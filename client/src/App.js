@@ -191,7 +191,7 @@ class App extends React.Component {
 									label="Home"
 									icon={
 										<HomeIcon
-											color={darkMode ? 'secondary' : ''}
+											color={darkMode ? 'secondary' : 'inherit'}
 										/>
 									}
 								/>
@@ -199,7 +199,7 @@ class App extends React.Component {
 									label="Todo List"
 									icon={
 										<ListIcon
-											color={darkMode ? 'secondary' : ''}
+											color={darkMode ? 'secondary' : 'inherit'}
 										/>
 									}
 								/>
@@ -207,7 +207,7 @@ class App extends React.Component {
 									label="Timer"
 									icon={
 										<AccessAlarmIcon
-											color={darkMode ? 'secondary' : ''}
+											color={darkMode ? 'secondary' : 'inherit'}
 										/>
 									}
 								/>
@@ -215,7 +215,7 @@ class App extends React.Component {
 									label="Calculator"
 									icon={
 										<FaceIcon
-											color={darkMode ? 'secondary' : ''}
+											color={darkMode ? 'secondary' : 'inherit'}
 										/>
 									}
 								/>

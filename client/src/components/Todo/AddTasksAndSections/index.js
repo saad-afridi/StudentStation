@@ -21,8 +21,6 @@ const AddTasksAndSections = () => {
 	const classes = useStyles();
 	const [open1, setOpen1] = React.useState(false);
 	const [open2, setOpen2] = React.useState(false);
-    const ref1 = React.createRef();
-    const ref2 = React.createRef();
 
 	return (
 		<Grid
@@ -48,7 +46,7 @@ const AddTasksAndSections = () => {
 					}}
 					open={open1}
 					onClose={() => setOpen1(false)}>
-					<TaskModal ref={ref1} />
+					<TaskModal />
 				</Modal>
 			</Grid>
 			<Grid item className={classes.addSection}>
@@ -68,7 +66,7 @@ const AddTasksAndSections = () => {
 					}}
 					open={open2}
 					onClose={() => setOpen2(false)}>
-					<SectionModal ref={ref2} onClose={() => setOpen2(false)} />
+					<SectionModal onClose={() => setOpen2(false)} />
 				</Modal>
 			</Grid>
 		</Grid>

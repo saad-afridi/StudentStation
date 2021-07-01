@@ -75,7 +75,7 @@ export const TaskModal = () => {
 		prior,
 		dispatch,
 		sections,
-        handleClick,
+		handleClick,
 	};
 
 	return (
@@ -155,16 +155,16 @@ export const TaskModal = () => {
 						onClick={(e) => submitForm(e, stateProps)}>
 						Create
 					</Button>
-                    <Snackbar
-                        anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'left',
-                        }}
-                        open={open}
-                        autoHideDuration={1000}
-                        onClose={handleClose}
-                        message="Task Created!"
-                    />
+					<Snackbar
+						anchorOrigin={{
+							vertical: 'bottom',
+							horizontal: 'left',
+						}}
+						open={open}
+						autoHideDuration={1000}
+						onClose={handleClose}
+						message="Task Created!"
+					/>
 				</Grid>
 			</Grid>
 		</Paper>
@@ -181,7 +181,7 @@ const submitForm = (e, stateProps) => {
 		prior,
 		dispatch,
 		sections,
-        handleClick
+		handleClick,
 	} = stateProps;
 
 	// If clicked or pressed enter => Submit
@@ -203,7 +203,7 @@ const submitForm = (e, stateProps) => {
 		dispatch(addTodo({ text, priority: prior, completed: false, section }));
 		document.getElementById('add-task-content-input').value = '';
 		setText('');
-        handleClick();
+		handleClick();
 	}
 	setError(false);
 	setHelpText('');

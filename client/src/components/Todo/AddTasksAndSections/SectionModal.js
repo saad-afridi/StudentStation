@@ -55,7 +55,7 @@ export const SectionModal = (props) => {
 	};
 
 	return (
-		<Paper className={classes.paperForm}>
+		<Paper component="div" className={classes.paperForm}>
 			<Grid
 				container
 				direction="column"
