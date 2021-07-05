@@ -9,8 +9,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Express middleware
-app.use(cors());
-app.use(express.json);
+app.use(express.json())
 
 // Db Config and connect
 const db = process.env.MONGO_ATLAS_URI;

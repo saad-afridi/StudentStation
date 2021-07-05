@@ -5,7 +5,6 @@ const User = require('../../../models/user.model');
 // @desc Get All Users
 // @access Private
 router.get('/get-users', (req, res) => {
-	console.log('Some tihng happened!');
 	User.find()
 		.then((users) => res.json(users))
 		.catch((err) => res.status(400).json('Error: ' + err));
@@ -15,7 +14,8 @@ router.get('/get-users', (req, res) => {
 // @desc Add new User
 // @access Public
 router.post('/register', (req, res) => {
-	const username = req.body.username;
+	console.log(req.body);
+	const { username } = req.body;
 	const newUser = new User({ username });
 
 	newUser
@@ -24,4 +24,19 @@ router.post('/register', (req, res) => {
 		.catch((err) => res.status(400).json('Error: ' + err));
 });
 
+// @route @GET api/users/login
+// @desc Login User
+// @access Public
+router.get('/login', (req, res) => {
+	const { username } = req.body;
+
+	User.findOne({ username })
+		.then((user) => {
+			if (!user) {
+				return res.status(400).json('Username does not exist');
+			}
+			return res.json('User Logged In Sucessfully!');
+		})
+		.catch((err) => res.status(400).json('Error: ' + err));
+});
 module.exports = router;
