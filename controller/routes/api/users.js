@@ -15,8 +15,8 @@ router.get('/get-users', (req, res) => {
 // @access Public
 router.post('/register', (req, res) => {
 	console.log(req.body);
-	const { username } = req.body;
-	const newUser = new User({ username });
+	const { username, password } = req.body;
+	const newUser = new User({ username, password });
 
 	newUser
 		.save()
@@ -28,13 +28,15 @@ router.post('/register', (req, res) => {
 // @desc Login User
 // @access Public
 router.get('/login', (req, res) => {
-	const { username } = req.body;
+	const { username, password } = req.body;
 
 	User.findOne({ username })
 		.then((user) => {
 			if (!user) {
 				return res.status(400).json('Username does not exist');
-			}
+			} else if (user.password != password) {
+                return res.status(400).json('Password is incorrect');
+            }
 			return res.json('User Logged In Sucessfully!');
 		})
 		.catch((err) => res.status(400).json('Error: ' + err));
