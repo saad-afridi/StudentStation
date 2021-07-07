@@ -5,5 +5,4 @@ export const authLogin = (userData, history) => (dispatch) => {
 	axios
 		.post('/api/users/login', userData)
 		.then((res) => history.push('/login'));
-    
 };
