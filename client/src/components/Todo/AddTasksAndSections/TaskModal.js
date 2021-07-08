@@ -83,7 +83,7 @@ export const TaskModal = () => {
 			<Grid
 				container
 				direction="column"
-				justify="flex-start"
+				justifyContent="flex-start"
 				alignItems="stretch"
 				spacing={4}>
 				<Grid item>
@@ -108,7 +108,7 @@ export const TaskModal = () => {
 				<Grid
 					container
 					direction="row"
-					justify="space-around"
+					justifyContent="space-around"
 					spacing={2}>
 					<Grid item>
 						<FormControl className={classes.priorForm}>
@@ -148,7 +148,7 @@ export const TaskModal = () => {
 						</FormControl>
 					</Grid>
 				</Grid>
-				<Grid item alignItems="center" justify="center">
+				<Grid item alignItems="center" justifyContent="center">
 					<Button
 						variant="contained"
 						color="primary"

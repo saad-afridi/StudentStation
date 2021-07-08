@@ -50,7 +50,7 @@ export const AddMark = (props) => {
 			spacing={2}
 			direction="row"
 			alignItems="center"
-			justify="space-around"
+			justifyContent="space-around"
 			className={classes.addMarkForm}>
 			<Grid item>
 				<FormControl className={classes.formControl}>

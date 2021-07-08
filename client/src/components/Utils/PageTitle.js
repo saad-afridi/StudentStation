@@ -25,7 +25,7 @@ export const PageTitle = (props) => {
 			container
 			spacing={3}
 			direction="row"
-			justify="center"
+			justifyContent="center"
 			alignItems="center"
 			className={classes.titleContainer}>
 			<Grid item className={classes.icon}>

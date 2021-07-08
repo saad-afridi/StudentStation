@@ -59,7 +59,7 @@ export const SectionModal = (props) => {
 			<Grid
 				container
 				direction="column"
-				justify="flex-start"
+				justifyContent="flex-start"
 				alignItems="stretch"
 				spacing={4}>
 				<Grid item>
@@ -82,7 +82,7 @@ export const SectionModal = (props) => {
 				<Grid
 					container
 					direction="row"
-					justify="center"
+					justifyContent="center"
 					alignItems="center"
 					spacing={1}
 					className={classes.buttonGroup}>

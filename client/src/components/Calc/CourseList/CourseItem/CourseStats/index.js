@@ -46,7 +46,7 @@ export const CourseStats = (props) => {
 			<Grid
 				container
 				direction="row"
-				justify="space-around"
+				justifyContent="space-around"
 				alignItems="center"
 				spacing={2}
 				className={classes.root}>

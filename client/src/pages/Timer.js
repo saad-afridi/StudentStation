@@ -65,7 +65,7 @@ class TimerPage extends React.Component {
 				<Grid
 					container
 					spacing={3}
-					justify="center"
+					justifyContent="center"
 					alignItems="center"
 					className={classes.controlButtons}>
 					<Grid item>

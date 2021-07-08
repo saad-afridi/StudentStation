@@ -62,7 +62,7 @@ const EditTodoModal = (props) => {
 			<Grid
 				container
 				direction="column"
-				justify="center"
+				justifyContent="center"
 				alignItems="stretch"
 				spacing={4}>
 				<Grid item style={{ minWidth: '400px v' }}>
@@ -84,7 +84,7 @@ const EditTodoModal = (props) => {
 						onKeyPress={(e) => submitForm(e, stateProps)}
 					/>
 				</Grid>
-				<Grid item alignItems="center" justify="center">
+				<Grid item alignItems="center" justifyContent="center">
 					<Button
 						variant="contained"
 						color="primary"

@@ -26,7 +26,7 @@ const AddTasksAndSections = () => {
 		<Grid
 			container
 			direction="row"
-			justify="center"
+			justifyContent="center"
 			alignItems="center"
 			spacing={3}>
 			<Grid item className={classes.addTask}>
@@ -42,7 +42,7 @@ const AddTasksAndSections = () => {
 					style={{
 						display: 'flex',
 						alignItems: 'center',
-						justifyContent: 'center',
+						justify: 'center',
 					}}
 					open={open1}
 					onClose={() => setOpen1(false)}>
@@ -62,7 +62,7 @@ const AddTasksAndSections = () => {
 					style={{
 						display: 'flex',
 						alignItems: 'center',
-						justifyContent: 'center',
+						justify: 'center',
 					}}
 					open={open2}
 					onClose={() => setOpen2(false)}>

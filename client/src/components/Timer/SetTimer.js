@@ -31,7 +31,7 @@ class SetTimer extends React.Component {
         const {classes} = this.props;
         return (
             <form onSubmit={this.submitAlarm}>
-                <Grid container spacing={3} direction="row" justify="center" alignItems="center"
+                <Grid container spacing={3} direction="row" justifyContent="center" alignItems="center"
                 className={classes.root}>
                     <Grid item>
                         <TextField variant="filled" type="number" label="Hours" id="set-hours" 

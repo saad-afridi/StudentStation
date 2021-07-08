@@ -30,7 +30,7 @@ export const TodoList = (props) => {
 	});
 
 	return (
-		<Grid container direction="column" justify="center" alignItems="center">
+		<Grid container direction="column" justifyContent="center" alignItems="center">
 			{notcompleted.map((_todo, _index) => {
 				return (
 					<TodoItem

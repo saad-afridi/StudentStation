@@ -28,6 +28,7 @@ router.post('/register', (req, res) => {
 // @desc Login User
 // @access Public
 router.get('/login', (req, res) => {
+	console.log(req.body);
 	const { username, password } = req.body;
 
 	User.findOne({ username })
@@ -35,8 +36,8 @@ router.get('/login', (req, res) => {
 			if (!user) {
 				return res.status(400).json('Username does not exist');
 			} else if (user.password != password) {
-                return res.status(400).json('Password is incorrect');
-            }
+				return res.status(400).json('Password is incorrect');
+			}
 			return res.json('User Logged In Sucessfully!');
 		})
 		.catch((err) => res.status(400).json('Error: ' + err));

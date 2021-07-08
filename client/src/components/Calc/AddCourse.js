@@ -34,7 +34,7 @@ export const AddCourse = () => {
 			spacing={1}
 			direction="row"
 			className={classes.root}
-			justify="space-between"
+			justifyContent="space-between"
 			alignItems="center"
 		>
 			<Grid item xs={9} sm={10} md={11}>

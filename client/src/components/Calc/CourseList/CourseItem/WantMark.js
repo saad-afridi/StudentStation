@@ -31,7 +31,7 @@ export const WantMark = (props) => {
 	return (
 		<Grid
 			container
-			justify="space-around"
+			justifyContent="space-around"
 			spacing={1}
 			alignItems="center"
 			className={classes.root}>

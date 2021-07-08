@@ -49,7 +49,7 @@ class ShowTime extends React.Component {
 		}
 
 		return (
-			<Grid container justify="center" alignItems="center">
+			<Grid container justifyContent="center" alignItems="center">
 				<Grid item>
 					<Typography
 						variant="h1"

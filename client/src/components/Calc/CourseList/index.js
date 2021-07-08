@@ -28,7 +28,7 @@ export const CourseList = () => {
 			spacing={2}
 			direction="row"
 			alignItems="flex-start"
-			justify="space-around"
+			justifyContent="space-around"
 			className={classes.coursesContainer}>
 			{courses.map((_value, _index) => {
 				return <CourseItem course={_value} key={_index} />;

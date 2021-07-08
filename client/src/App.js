@@ -30,14 +30,14 @@ import HomePage from './pages/Home';
 import { withStyles, ThemeProvider } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 import { teal, grey, indigo, pink } from '@material-ui/core/colors';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 // Sounds
 import alertSimple from './assets/sounds/alert_simple.wav'
 import notifSimple from './assets/sounds/notification_simple-02.wav'
 
-const themeLight = createMuiTheme({
+const themeLight = createTheme({
 	palette: {
 		primary: {
 			main: indigo[500],
@@ -63,7 +63,7 @@ const themeLight = createMuiTheme({
 	},
 });
 
-const themeDark = createMuiTheme({
+const themeDark = createTheme({
 	palette: {
 		primary: {
 			main: '#8bbee9',

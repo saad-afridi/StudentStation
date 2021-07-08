@@ -8,6 +8,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // Redux
 import { useDispatch } from 'react-redux';
+import authLogin from '../../../actions/authActions';
+import authRegister from '../../../actions/authActions';
 
 const useStyles = makeStyles({
 	auth: {
@@ -19,7 +21,11 @@ const Auth = () => {
 	const classes = useStyles();
 
 	const [username, setUsername] = React.useState();
-	const [pass, setPass] = React.useState();
+	const [password, setPass] = React.useState();
+
+	const dispatch = useDispatch();
+
+	const stateProps = { username, password, dispatch };
 
 	return (
 		<>
@@ -33,14 +39,14 @@ const Auth = () => {
 				direction="column"
 				className={classes.auth}
 				spacing={1}
-				justify="center"
+				justifyContent="center"
 				alignItems="center">
 				<Grid
 					container
 					direction="row"
 					spacing={2}
 					alignItems="center"
-					justify="center">
+					justifyContent="center">
 					<Grid item>
 						<TextField
 							variant="filled"
@@ -64,15 +70,21 @@ const Auth = () => {
 					container
 					direction="row"
 					spacing={2}
-					justify="center"
+					justifyContent="center"
 					alignItems="center">
 					<Grid item>
-						<Button variant="contained" color="primary">
+						<Button
+							variant="contained"
+							color="primary"
+							onClick={() => tryLogin(stateProps)}>
 							Login
 						</Button>
 					</Grid>
 					<Grid item>
-						<Button variant="outlined" color="secondary">
+						<Button
+							onClick={() => tryRegister(stateProps)}
+							variant="outlined"
+							color="secondary">
 							Register
 						</Button>
 					</Grid>
@@ -80,6 +92,16 @@ const Auth = () => {
 			</Grid>
 		</>
 	);
+};
+
+const tryLogin = (stateProps) => {
+	const { dispatch, username, password } = stateProps;
+	dispatch(authLogin({ username, password }));
+};
+
+const tryRegister = (stateProps) => {
+	const { dispatch, username, password } = stateProps;
+	dispatch(authRegister({ username, password }));
 };
 
 export default Auth;

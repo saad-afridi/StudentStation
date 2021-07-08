@@ -38,7 +38,7 @@ export const CourseItem = (props) => {
 			<Grid
 				container
 				alignItems="center"
-				justify="space-between"
+				justifyContent="space-between"
 				className={classes.title}>
 				<Grid item>
 					<Typography variant="h5" align="left">

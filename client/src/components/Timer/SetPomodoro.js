@@ -69,7 +69,7 @@ class SetPomodoro extends React.Component {
                 Pomodoro
             </Typography>
             <hr />
-            <Grid container spacing={2} direction="row" justify="center" alignItems="center"
+            <Grid container spacing={2} direction="row" justifyContent="center" alignItems="center"
             className={classes.root}>
                 <Grid item>
                     <FormControl variant="standard" className={classes.formControl}>
