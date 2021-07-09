@@ -4,7 +4,8 @@ A responsive web single-page-application (SPA) that contains essential tools for
 
 ### Technology and Tools
 
-![](https://img.shields.io/badge/Code-Javascript-informational?style=flat&logo=logo_name&logoColor=white&color=19A062) ![](https://img.shields.io/badge/Code-HTML-informational?style=flat&logo=logo_name&logoColor=white&color=19A062) ![](https://img.shields.io/badge/Code-CSS-informational?style=flat&logo=logo_name&logoColor=white&color=19A062) ![](https://img.shields.io/badge/Library-React-informational?style=flat&logo=logo_name&logoColor=white&color=19AF6B) ![](https://img.shields.io/badge/UI_Framework-Material_UI-informational?style=flat&logo=logo_name&logoColor=white&color=19A062) ![](https://img.shields.io/badge/State-Redux-informational?style=flat&logo=logo_name&logoColor=white&color=19A062)
+![](https://img.shields.io/badge/Code-Javascript-informational?style=flat&logo=logo_name&logoColor=white&color=19A062) ![](https://img.shields.io/badge/UI_Framework-Material_UI-informational?style=flat&logo=logo_name&logoColor=white&color=19A062) ![](https://img.shields.io/badge/State-Redux-informational?style=flat&logo=logo_name&logoColor=white&color=19A062) ![](https://img.shields.io/badge/Frontend-React-informational?style=flat&logo=logo_name&logoColor=white&color=19AF6B) ![](https://img.shields.io/badge/Backend-Express/Node-informational?style=flat&logo=logo_name&logoColor=white&color=19A062) ![](https://img.shields.io/badge/Database-MongoDB-informational?style=flat&logo=logo_name&logoColor=white&color=19A062)
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/saad-afridi/StudentStation)
 
 ## Demo
 
