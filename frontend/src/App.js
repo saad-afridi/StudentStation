@@ -30,14 +30,14 @@ import HomePage from './pages/Home';
 import { withStyles, ThemeProvider } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 import { teal, grey, indigo, pink } from '@material-ui/core/colors';
-import { createTheme } from '@material-ui/core/styles';
+import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 // Sounds
-import alertSimple from './assets/sounds/alert_simple.wav'
-import notifSimple from './assets/sounds/notification_simple-02.wav'
+import alertSimple from './assets/sounds/alert_simple.wav';
+import notifSimple from './assets/sounds/notification_simple-02.wav';
 
-const themeLight = createTheme({
+let themeLight = createTheme({
 	palette: {
 		primary: {
 			main: indigo[500],
@@ -63,7 +63,7 @@ const themeLight = createTheme({
 	},
 });
 
-const themeDark = createTheme({
+let themeDark = createTheme({
 	palette: {
 		primary: {
 			main: '#8bbee9',
@@ -92,6 +92,9 @@ const themeDark = createTheme({
 		fontFamily: ['Roboto'],
 	},
 });
+
+themeLight = responsiveFontSizes(themeLight);
+themeDark = responsiveFontSizes(themeDark);
 
 const styles = () => ({
 	title: {
@@ -125,7 +128,7 @@ class App extends React.Component {
 			pomOn: false,
 			pom: [25, 5, 30],
 			session: 0,
-            totalTime: 0
+			totalTime: 0,
 		};
 		this.setAlarmTime = this.setAlarmTime.bind(this);
 	}
@@ -191,7 +194,11 @@ class App extends React.Component {
 									label="Home"
 									icon={
 										<HomeIcon
-											color={darkMode ? 'secondary' : 'inherit'}
+											color={
+												darkMode
+													? 'secondary'
+													: 'inherit'
+											}
 										/>
 									}
 								/>
@@ -199,7 +206,11 @@ class App extends React.Component {
 									label="Todo List"
 									icon={
 										<ListIcon
-											color={darkMode ? 'secondary' : 'inherit'}
+											color={
+												darkMode
+													? 'secondary'
+													: 'inherit'
+											}
 										/>
 									}
 								/>
@@ -207,7 +218,11 @@ class App extends React.Component {
 									label="Timer"
 									icon={
 										<AccessAlarmIcon
-											color={darkMode ? 'secondary' : 'inherit'}
+											color={
+												darkMode
+													? 'secondary'
+													: 'inherit'
+											}
 										/>
 									}
 								/>
@@ -215,7 +230,11 @@ class App extends React.Component {
 									label="Calculator"
 									icon={
 										<FaceIcon
-											color={darkMode ? 'secondary' : 'inherit'}
+											color={
+												darkMode
+													? 'secondary'
+													: 'inherit'
+											}
 										/>
 									}
 								/>
@@ -241,14 +260,13 @@ class App extends React.Component {
 							checkPomFn={this.checkPom}
 							skipSessionFn={this.nextSession}
 							checkProgressFn={this.calculateProgress}
-                            resetTotalTimeFn={this.resetTotalTime}
+							resetTotalTimeFn={this.resetTotalTime}
 							alarm={this.state.alarm}
 							pomOn={this.state.pomOn}
 							session={this.state.session}
 							paused={this.state.paused}
 							pom={this.state.pom}
-                            totalTime={this.state.totalTime}
-                            ></TimerPage>
+							totalTime={this.state.totalTime}></TimerPage>
 					)}
 
 					{this.state.selectedTab === 3 && <CalculatorPage />}
@@ -289,11 +307,11 @@ class App extends React.Component {
 		} else if (this.state.alarm === -2) {
 			return;
 		} else if (this.state.alarm === -1) {
-            alertAudio.play()
+			alertAudio.play();
 			alert("Time's Up!");
 			this.setState({ alarm: -2 });
 		} else {
-            this.setState({ totalTime: this.state.totalTime + 1});
+			this.setState({ totalTime: this.state.totalTime + 1 });
 			this.setState({ alarm: this.state.alarm - 1 });
 		}
 	};
@@ -369,14 +387,14 @@ class App extends React.Component {
 				this.setState({ alarm: this.state.pom[0], session: 1 });
 			}
 		} else {
-            this.setState({ totalTime: this.state.totalTime + 1});
+			this.setState({ totalTime: this.state.totalTime + 1 });
 			this.setState({ alarm: this.state.alarm - 1 });
 		}
 	};
 
 	// Skipping to next Session
 	nextSession = () => {
-        notifAudio.play()
+		notifAudio.play();
 		// Work -> Long Break
 		if (this.state.session === 7) {
 			this.setState({
@@ -412,9 +430,9 @@ class App extends React.Component {
 		return (this.state.session / 8) * 100;
 	};
 
-    resetTotalTime = () => {
-        this.setState({ totalTime: 0 })
-    }
+	resetTotalTime = () => {
+		this.setState({ totalTime: 0 });
+	};
 }
 
 App.propTypes = {
