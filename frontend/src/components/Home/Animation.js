@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 const Animation = (props) => {
 	const classes = useStyles();
 	const { name } = props;
+    console.log(props);
 	return (
 		<Container className={classes.animation}>
 			<Typography variant="h1" color="primary">

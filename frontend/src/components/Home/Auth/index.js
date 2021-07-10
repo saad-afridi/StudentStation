@@ -8,8 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // Redux
 import { useDispatch } from 'react-redux';
-import authLogin from '../../../actions/authActions';
-import authRegister from '../../../actions/authActions';
+import { authLogin, authRegister } from '../../../actions/authActions';
 
 const useStyles = makeStyles({
 	auth: {

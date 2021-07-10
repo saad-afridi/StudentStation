@@ -10,25 +10,12 @@ router.get('/get-users', (req, res) => {
 		.catch((err) => res.status(400).json('Error: ' + err));
 });
 
-// @route POST api/users/register
-// @desc Add new User
-// @access Public
-router.post('/register', (req, res) => {
-	console.log(req.body);
-	const { username, password } = req.body;
-	const newUser = new User({ username, password });
 
-	newUser
-		.save()
-		.then(() => res.json('User added successfully!'))
-		.catch((err) => res.status(400).json('Error: ' + err));
-});
-
-// @route @GET api/users/login
+// @route POST api/users/login
 // @desc Login User
 // @access Public
-router.get('/login', (req, res) => {
-	console.log(req.body);
+router.post('/login', (req, res) => {
+	console.log("LOGIN (POST)", req.body);
 	const { username, password } = req.body;
 
 	User.findOne({ username })
@@ -38,8 +25,29 @@ router.get('/login', (req, res) => {
 			} else if (user.password != password) {
 				return res.status(400).json('Password is incorrect');
 			}
-			return res.json('User Logged In Sucessfully!');
+			return res.json(user);
 		})
 		.catch((err) => res.status(400).json('Error: ' + err));
 });
+
+
+// @route POST api/users/register
+// @desc Add new User
+// @access Public
+router.post('/register', (req, res) => {
+	console.log("REGISTER (POST)", req.body);
+	const { username, password } = req.body;
+	const newUser = new User({ username, password });
+
+	newUser
+		.save()
+		.then(() => res.json(newUser))
+		.catch((err) => {
+            console.log(err.name);
+            console.log("ERROR! : ", err)
+            return res.status(400).json('Error: ' + err);
+        });
+});
+
+
 module.exports = router;

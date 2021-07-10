@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
 const HomePage = () => {
 	const classes = useStyles();
 	const { authenticated, user } = useSelector((state) => state.authState);
+    console.log(user);
 
 	return (
 		<Container className={classes.root}>

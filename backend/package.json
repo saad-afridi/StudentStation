@@ -4,6 +4,7 @@
 	"description": "App for students",
 	"main": "server.js",
 	"scripts": {
+		"start": "nodemon server.js",
 		"server": "nodemon server.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
@@ -18,10 +19,10 @@
 	},
 	"homepage": "https://github.com/saad-afridi/StudentStation#readme",
 	"dependencies": {
+		"cors": "^2.8.5",
 		"dotenv": "^10.0.0",
 		"express": "^4.17.1",
 		"mongoose": "^5.13.0",
 		"nodemon": "^2.0.9"
-	},
-	"proxy": "http://localhost:5000"
+	}
 }
