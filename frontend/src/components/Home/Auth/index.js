@@ -7,7 +7,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import { makeStyles } from '@material-ui/core/styles';
 
 // Redux
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { authLogin, authRegister } from '../../../actions/authActions';
 
 const useStyles = makeStyles({
@@ -23,6 +23,18 @@ const Auth = () => {
 	const [password, setPass] = React.useState();
 
 	const dispatch = useDispatch();
+	const authErrors = useSelector((state) => state.authErrorsState);
+
+	console.log(authErrors);
+
+	// Error checking
+	const userError = authErrors.username.length > 0;
+	const passError = authErrors.password.length > 0;
+
+    let userErrorText = '';
+    let passErrorText = '';
+	if (userError) userErrorText = authErrors.username;
+	if (passError) passErrorText = authErrors.password;
 
 	const stateProps = { username, password, dispatch };
 
@@ -48,20 +60,23 @@ const Auth = () => {
 					justifyContent="center">
 					<Grid item>
 						<TextField
+							required
+							error={userError}
+							helperText={userErrorText}
+							onChange={(e) => setUsername(e.target.value)}
 							variant="filled"
-							label="Username"
-							onChange={(e) =>
-								setUsername(e.target.value)
-							}></TextField>
+							label="Username"></TextField>
 					</Grid>
 					<Grid item>
 						<TextField
+							minLength={5}
+							required
+							error={passError}
+							helperText={passErrorText}
+							onChange={(e) => setPass(e.target.value)}
 							type="password"
 							variant="filled"
-							label="Password"
-							onChange={(e) =>
-								setPass(e.target.value)
-							}></TextField>
+							label="Password"></TextField>
 					</Grid>
 				</Grid>
 				<Grid

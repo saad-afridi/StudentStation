@@ -15,7 +15,13 @@ export const authLogin = (userData) => (dispatch) => {
 				payload: res.data,
 			});
 		})
-		.catch((err) => console.log(err));
+		.catch((err) => {
+            console.log(err.response.data);
+            return dispatch({
+                type: err.response.data.type,
+                payload: err.response.data.message
+            })
+        });
 };
 
 export const authRegister = (userData) => (dispatch) => {
