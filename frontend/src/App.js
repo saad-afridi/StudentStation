@@ -116,10 +116,26 @@ const alertAudio = new Audio(alertSimple);
 const notifAudio = new Audio(notifSimple);
 
 class App extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+        super(props);
+        
+        const { match, history } = props;
+        console.log("HISTORY", history);
+		const { params } = match;
+		const { page } = params;
+
+        console.log("PAGE", page);
+
+        const tabNameToIndex = (page) => {
+            if (page === 'home') return 0;
+            if (page === 'todo') return 1;
+            if (page === 'timer') return 2;
+            if (page === 'calculator') return 3;
+            return 0;
+        }
+		
 		this.state = {
-			selectedTab: 0,
+			selectedTab: tabNameToIndex(page),
 			darkMode: false,
 
 			// Timer attributes
@@ -135,11 +151,11 @@ class App extends React.Component {
 
 	componentDidMount = () => {
 		document.title = 'Student Station';
-		const selectedTab = localStorage.getItem('tab');
-		if (selectedTab) {
-			const savedTab = JSON.parse(selectedTab);
-			this.setState({ selectedTab: savedTab });
-		}
+		// const selectedTab = localStorage.getItem('tab');
+		// if (selectedTab) {
+		// 	const savedTab = JSON.parse(selectedTab);
+		// 	this.setState({ selectedTab: savedTab });
+		// }
 		const darkMode = localStorage.getItem('theme');
 		if (darkMode) {
 			const savedTheme = JSON.parse(darkMode);
@@ -160,7 +176,6 @@ class App extends React.Component {
 	render() {
 		const { darkMode } = this.state;
 		const { classes } = this.props;
-
 		return (
 			<Container className="App">
 				<ThemeProvider theme={darkMode ? themeDark : themeLight}>
@@ -276,6 +291,17 @@ class App extends React.Component {
 	}
 
 	changeTabs = async (e, newTab) => {
+
+        const indexToTabName = {
+			0: 'home',
+			1: 'todo',
+			2: 'timer',
+			3: 'calculator',
+		};
+
+        const {history} = this.props;
+        history.push(`/${indexToTabName[newTab]}`);
+        
 		await this.setState({ selectedTab: newTab });
 		localStorage.setItem('tab', JSON.stringify(this.state.selectedTab));
 	};

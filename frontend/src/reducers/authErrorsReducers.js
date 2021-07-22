@@ -5,8 +5,6 @@ const initialState = {
 };
 
 export default function authErrorsReducers(state = initialState, error) {
-	console.log('STATE: ', state);
-	console.log('ERROR: ', error);
 	switch (error.type) {
 		case 'USERNAME':
 			return { password: '', username: error.payload, general: '' };

@@ -31,10 +31,8 @@ const Auth = () => {
 	const userError = authErrors.username.length > 0;
 	const passError = authErrors.password.length > 0;
 
-    let userErrorText = '';
-    let passErrorText = '';
-	if (userError) userErrorText = authErrors.username;
-	if (passError) passErrorText = authErrors.password;
+    let userErrorText = authErrors.username;
+    let passErrorText = authErrors.password;
 
 	const stateProps = { username, password, dispatch };
 
